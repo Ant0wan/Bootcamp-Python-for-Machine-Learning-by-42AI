@@ -23,7 +23,7 @@ It aims to foster the learning and the sharing of knowledge concerning artificia
 ## Summary
 
 ### Day00 - Basic stuff - Eleven Commandments
-**Let's get started with the Python language!** :snake:
+**Let's get started with the Python language!**
 > Basic setup, variables, types, functions, ...
 
 ### Day01 - Basics 2
@@ -40,7 +40,7 @@ It aims to foster the learning and the sharing of knowledge concerning artificia
 
 ### Day04 - Pandas
 **Time to use a Python library that will allow you to manipulate dataframes.**
-> Pandas! And Bamboos! :panda_face:
+> Pandas! And Bamboos!
 
 ### Rush - Scraping
 **Scraper**
