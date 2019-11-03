@@ -5,14 +5,8 @@
 <h1 align="center">
   Bootcamp Python
 </h1>
-<br/>
 
-
-### Table of Contents
-
-- [Curriculum](#curriculum)
-- [Acknowledgements](#acknowledgements)
-<br/>
+---
 
 This project was a Python programming and machine learning bootcamp [a 42 side-project] created by [42 AI](http://www.42ai.fr).
 It aimed to teach essential knowledge of **Machine Learning**, **Data Science** and **Statistics** all in **Python3**.
@@ -22,6 +16,7 @@ It started with basics of Python3 and then common data science and machine learn
 It aims to foster the learning and the sharing of knowledge concerning artificial intelligence, by organizing various activities such as lectures and workshops.
 <br/>
 
+---
 
 ## Curriculum
 
@@ -49,6 +44,8 @@ It aims to foster the learning and the sharing of knowledge concerning artificia
 **Scraper**
 > curl - class Sessions, regex: re lib
 <br/>
+
+---
 
 ## Acknowledgements
 
