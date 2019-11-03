@@ -6,8 +6,6 @@
   Bootcamp Python
 </h1>
 
----
-
 This project was a Python programming and machine learning bootcamp [a 42 side-project] created by [42 AI](http://www.42ai.fr).
 It aimed to teach essential knowledge of **Machine Learning**, **Data Science** and **Statistics** all in **Python3**.
 It started with basics of Python3 and then common data science and machine learning libraries.
