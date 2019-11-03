@@ -5,9 +5,6 @@
 <h1 align="center">
   Bootcamp Python
 </h1>
-<h3 align="center">
-  One week to learn Python for Machine Learning :rocket:
-</h3>
 <br/>
 
 
