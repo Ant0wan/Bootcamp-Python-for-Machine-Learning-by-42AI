@@ -26,3 +26,5 @@ function install_python()
 		printf "Failure: Python could not be installed.\n"
 	fi
 }
+
+install_python
