@@ -14,7 +14,8 @@
 import sys
 
 def rev_alpha():
-    print(sys.argv[1][::-1].swapcase(), end='\n')
+    if len(sys.argv) > 1:
+        print(sys.argv[1][::-1].swapcase(), end='\n')
 
 if __name__ == '__main__':
-    rev_alpha()
+	rev_alpha()
