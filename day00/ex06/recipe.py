@@ -18,16 +18,29 @@ cookbook = {
     }
 
 
-def recipe(name):
+def print_a_recipe(name):
     print('Recipe for {0}:\nIngredients list:\
  {1}\nTo be eaten for {2}.\nTakes {3} minutes\
  of cooking.'.format(name, cookbook[name]['ingredients'], cookbook[name]['meal'], cookbook[name]['prep_time']), end='\n')
 
 
+def delete_a_recipe(name):
+    del cookbook[name]
+
+
+def add_a_new_recipe(name, ingredients, meal, prep_time):
+    cookbook[name] = {'ingredients': ingredients, 'meal': meal, 'prep_time': prep_time}
+
+
+def print_all_recipe_name():
+    for i in cookbook.keys():
+        print(i)
+
+
 if __name__ == '__main__':
     name = input('Please enter the recipe\'s name to get its details:\n>> ')
     try:
-        recipe(name)
+        print_a_recipe(name)
     except KeyError:
         print('This option does not exist, please type the\
  corresponding number.\nTo exit, enter 5.', end='\n')
