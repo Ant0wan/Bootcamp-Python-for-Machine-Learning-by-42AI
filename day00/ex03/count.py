@@ -23,7 +23,7 @@ def output_analysis(c, ul, ll, pm, sp):
     print('\n'.join(list), end='\n')
 
 
-def text_analyzer(text):
+def text_analyzer(text=""):
     """Description of text_analyzer(text):
 
 This function counts the number of upper characters, lower characters,
@@ -33,6 +33,8 @@ Parameters: text (str): A text variable.
 
 Returns: no value.
 """
+    if not text:
+        text = input("What is the text to analyse?\n>> ")
     c, ul, ll, pm, sp = 0, 0, 0, 0, 0
     for i in text:
         c += 1
