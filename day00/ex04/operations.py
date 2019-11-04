@@ -14,9 +14,25 @@
 import sys
 import math
 
+
 def usage():
-    print('Usage: python operations.py\nExample:\n\tpython3.7 operations.py 10 3', end='\n')
-    
+    print('Usage: python operations.py', end='\n')
+    print('Example:\n\tpython3.7 operations.py 10 3', end='\n')
+
+
+def div(a, b):
+    if not b:
+        return ('ERROR (div by zero)')
+    else:
+        return (a / b)
+
+
+def mod(a, b):
+    if not b:
+        return ('ERROR (modulo by zero)')
+    else:
+        return (a % b)
+
 
 if __name__ == '__main__':
     argc = len(sys.argv)
@@ -30,9 +46,9 @@ if __name__ == '__main__':
             print('Sum: {:>20}'.format(math.fsum([a, b])), end='\n')
             print('Difference: {:>13}'.format(a - b), end='\n')
             print('Product: {:>16}'.format(a * b), end='\n')
-            print('Quotient: {:>15}'.format(a / b), end='\n')
-            print('Remainder: {:>14}'.format(a % b), end='\n')
-        except:
+            print('Quotient: {:>15}'.format(div(a, b)), end='\n')
+            print('Remainder: {:>14}'.format(mod(a, b)), end='\n')
+        except ValueError:
             print('InputError: only numbers', end='\n')
             usage()
     else:
