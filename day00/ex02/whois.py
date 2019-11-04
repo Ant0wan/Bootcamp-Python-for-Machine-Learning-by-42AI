@@ -25,7 +25,9 @@ def odd_or_even(nb):
 
 if __name__ == '__main__':
     argc = len(sys.argv)
-    if argc > 1 and argc < 3 and sys.argv[1].isdigit():
+    if argc == 1:
+        exit()
+    elif argc > 1 and argc < 3 and sys.argv[1].isdigit():
         odd_or_even(sys.argv[1])
     else:
         print('ERROR', end='\n')
