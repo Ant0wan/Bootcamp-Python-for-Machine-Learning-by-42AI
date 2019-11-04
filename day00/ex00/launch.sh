@@ -13,7 +13,7 @@
 
 if [ -d "/goinfre/miniconda" ]
 then
-	env PATH="/goinfre/miniconda/bin:$PATH" zsh
+	env PATH="/goinfre/miniconda/bin:$PATH" bash
 else
 	printf "Failure: Miniconda could not be found.\n"
 fi
