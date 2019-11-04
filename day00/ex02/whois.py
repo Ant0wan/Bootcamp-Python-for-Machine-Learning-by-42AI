@@ -15,14 +15,17 @@ import sys
 
 
 def odd_or_even(nb):
-    if not nb:
-    
-    if nb % 2:
-        print('I\'m Odd.')
+    if not int(nb):
+        print('I\'m Zero.', end='\n')
+    elif int(nb) % 2:
+        print('I\'m Odd.', end='\n')
     else:
-        print('I\'m Even.')
+        print('I\'m Even.', end='\n')
 
 
 if __name__ == '__main__':
-    if len(sys.argv) > 1 and len(sys.argv) < 2:
+    argc = len(sys.argv)
+    if argc > 1 and argc < 3 and sys.argv[1].isdigit():
         odd_or_even(sys.argv[1])
+    else:
+        print('ERROR', end='\n')
