@@ -12,12 +12,12 @@
 # **************************************************************************** #
 
 ingredients = {
-        'sandwich':[ 'ham', 'bread', 'cheese', 'tomatoes'],
+        'sandwich':['ham', 'bread', 'cheese', 'tomatoes'],
         'cake':['flour', 'sugar', 'eggs'],
         'salad':['avocado', 'arugula', 'tomatoes', 'spinach']
     }
 
-meal = {
+dish = {
         'sandwich':'lunch',
         'cake':'dessert',
         'salad':'lunch'
@@ -29,5 +29,12 @@ time = {
         'salad':15
     }
 
+def recipe(name):
+    print('Recipe for {0}:\nIngredients list: {1}\nTo be eaten for {2}.\nTakes {3} minutes of cooking.'.format(name, ingredients[name], dish[name], time[name]))
+
 if __name__ == '__main__':
-    print('ok')
+    name = input('Please enter the recipe\'s name to get its details:\n>> ')    
+    try:
+        recipe(name)
+    except:
+        exit()
