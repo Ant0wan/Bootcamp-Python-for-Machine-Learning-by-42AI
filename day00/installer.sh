@@ -11,5 +11,18 @@
 #                                                                              #
 # **************************************************************************** #
 
-curl -o /goinfre/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
-bash /goinfre/miniconda.sh -b -p /goinfre/miniconda
+function install_python()
+{
+	curl -o /goinfre/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+	if [ $? -ne 0 ]
+	then
+		printf "Failure: could not download miniconda.\n"
+	fi
+	bash /goinfre/miniconda.sh -b -p /goinfre/miniconda
+	if [ $? -eq 0 ]
+	then
+		printf "Python has been installed.\n"
+	else
+		printf "Failure: Python could not be installed.\n"
+	fi
+}

@@ -2,7 +2,7 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    installer.sh                                       :+:      :+:    :+:    #
+#    launch.sh                                          :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
@@ -11,4 +11,9 @@
 #                                                                              #
 # **************************************************************************** #
 
-env PATH="/goinfre/miniconda/bin:$PATH" bash
+if [ -d "/goinfre/miniconda" ]
+then
+	env PATH="/goinfre/miniconda/bin:$PATH" zsh
+else
+	printf "Failure: Miniconda could not be found.\n"
+fi
