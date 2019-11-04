@@ -14,8 +14,10 @@
 import sys
 
 def rev_alpha():
+	list = []
 	for i in sys.argv[:0:-1]:
-		print(i[::-1].swapcase(), end='\n')
+		list.append((i[::-1].swapcase()))
+	print(' '.join(list), end='\n')
 
 if __name__ == '__main__':
 	rev_alpha()
