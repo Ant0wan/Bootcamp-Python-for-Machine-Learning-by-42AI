@@ -20,7 +20,7 @@ def output_analysis(c, ul, ll, pm, sp):
     list.append('- {0} lower letters'.format(ll))
     list.append('- {0} punctuation marks'.format(pm))
     list.append('- {0} spaces'.format(sp))
-    print(' '.join(list), sep='\n', end='\n')
+    print('\n'.join(list), end='\n')
 
 
 def text_analyzer(text):
