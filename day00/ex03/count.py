@@ -24,11 +24,16 @@ def output_analysis(c, ul, ll, pm, sp):
 
 
 def text_analyzer(text):
-    c = 0
-    ul = 0
-    ll = 0
-    pm = 0
-    sp = 0
+    """Description of text_analyzer(text):
+
+This function counts the number of upper characters, lower characters,
+punctuation and spaces in a given text.
+
+Parameters: text (str): A text variable.
+
+Returns: no value.
+"""
+    c, ul, ll, pm, sp = 0, 0, 0, 0, 0
     for i in text:
         c += 1
         if i.isupper():
