@@ -19,7 +19,7 @@ def rev_alpha():
         list = []
         for i in sys.argv[:0:-1]:
             list.append((i[::-1].swapcase()))
-            print(' '.join(list), end='\n')
+        print(' '.join(list), end='\n')
 
 
 if __name__ == '__main__':
