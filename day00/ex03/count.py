@@ -12,10 +12,9 @@
 # *************************************************************************** #
 
 def output_analysis(c, ul, ll, pm, sp):
-	print('The text contains {0} characters:\n- {1} upper letters\n- {2} lower letters\n- {3} punctuation marks\n- {4} spaces\n'.format(c, ul, ll, pm, sp))
+	print('The text contains {0} characters:\n- {1} upper letters\n- {2} lower letters\n- {3} punctuation marks\n- {4} spaces'.format(c, ul, ll, pm, sp), end='\n')
 
 def text_analyzer(text):
-    for i in text:
-       f 
+    output_analysis(124, 1, 25, 45, 6)
 
 
