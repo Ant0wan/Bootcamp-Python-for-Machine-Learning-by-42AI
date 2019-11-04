@@ -14,6 +14,8 @@ It taught essential knowledge of **Machine Learning**, **Data Science** and **St
 
 It started with Python3 basics and then common machine learning libraries.
 
+Python norm PEP8 checker: [pycodestyle](https://github.com/PyCQA/pycodestyle)
+
 42 Artificial Intelligence is a student association at the Paris campus of 42. 
 It aims to foster the learning and the sharing of knowledge concerning artificial intelligence, by organizing various activities such as lectures and workshops.
 <br/>
