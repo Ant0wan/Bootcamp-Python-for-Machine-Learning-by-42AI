@@ -18,7 +18,7 @@ def rev_alpha():
     if len(sys.argv) > 1:
         list = []
         for i in sys.argv[:0:-1]:
-            list.append((i[::-1].swapcase()))
+            list.append(i[::-1].swapcase())
         print(' '.join(list), end='\n')
 
 
