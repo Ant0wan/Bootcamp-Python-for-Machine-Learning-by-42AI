@@ -11,10 +11,32 @@
 #                                                                             #
 # *************************************************************************** #
 
+import string
+
+
 def output_analysis(c, ul, ll, pm, sp):
-	print('The text contains {0} characters:\n- {1} upper letters\n- {2} lower letters\n- {3} punctuation marks\n- {4} spaces'.format(c, ul, ll, pm, sp), end='\n')
+    list = ['The text contains {0} characters:'.format(c)]
+    list.append('- {0} upper letters'.format(ul))
+    list.append('- {0} lower letters'.format(ll))
+    list.append('- {0} punctuation marks'.format(pm))
+    list.append('- {0} spaces'.format(sp))
+    print(' '.join(list), sep='\n', end='\n')
+
 
 def text_analyzer(text):
-    output_analysis(124, 1, 25, 45, 6)
-
-
+    c = 0
+    ul = 0
+    ll = 0
+    pm = 0
+    sp = 0
+    for i in text:
+        c += 1
+        if i.isupper():
+            ul += 1
+        elif i.islower():
+            ll += 1
+        elif i in string.punctuation:
+            pm += 1
+        elif i is ' ':
+            sp += 1
+    output_analysis(c, ul, ll, pm, sp)
