@@ -62,10 +62,18 @@ mapping = {
     }
 
 if __name__ == '__main__':
-    s = []
-    for i in sys.argv[1::]:
-        s.append(i.upper())
-    print(s)
-    for key, value in mapping.items():
-        morse = morse.replace(key, value)
-        print(morse)
+    if len(sys.argv) > 1:
+        try:
+            j = 0
+            s = []
+            enc = []
+            for i in sys.argv[1::]:
+                s.append(i.upper())
+            for word in s:
+                enc.append('')
+                for char in word:
+                    enc[j] += mapping[char]
+                j += 1
+            print(' / '.join(enc), end='\n')
+        except KeyError:
+            print('ERROR', end='\n')
