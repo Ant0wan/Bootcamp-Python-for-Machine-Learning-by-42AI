@@ -21,7 +21,7 @@ start = time()
 
 def ft_progress(listy):
     for i in listy:
-        print("ETA: {0:.2f}s [{1:4.0%}]".format(float(time() - start), (i + 1)/len(listy)), end='\r')
+        print("ETA: {0:4.2f}s [{1:4.0%}]".format(float(time() - start), (i + 1)/len(listy)), end='\r')
         yield i
 
 
