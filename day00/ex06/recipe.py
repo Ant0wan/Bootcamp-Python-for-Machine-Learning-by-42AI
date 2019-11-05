@@ -30,17 +30,21 @@ def print_a_recipe():
  of cooking.'.format(name, cookbook[name]['ingredients'], cookbook[name]['meal'], cookbook[name]['prep_time']), end='\n')
     except KeyError:
         print(name + ' is not in the cookbook.', end='\n')
-    
+
 
 def delete_a_recipe():
-    del cookbook[name]
+    name = input('What recipe do you want to delete ?\n>> ')
+    try:
+        del cookbook[name]
+    except KeyError:
+        print(name + ' is not in the cookbook.', end='\n')
 
 
 def add_a_new_recipe():
-    name =
-    ingredients =
-    meal = 
-    prep_time = 
+    name = input('Recipe name\n>> ')
+    ingredients = input('List ingredients\n>> ')
+    meal = input('What dish or meal time is it for ?\n>> ')
+    prep_time = input('How long does it take to cook it ?\n>> ')
     cookbook[name] = {'ingredients': ingredients, 'meal': meal, 'prep_time': prep_time}
 
 
