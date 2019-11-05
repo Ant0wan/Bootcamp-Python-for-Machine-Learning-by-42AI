@@ -15,18 +15,29 @@ from random import randint
 
 
 def intro():
-    print('This is an interactive guessing game!', 'You have to enter a number between 1 and 99 to find out the secret number.', 'Type \'exit\' to end the game.', 'Good luck!', sep='\n', end='\n')
+    print('This is an interactive guessing game!',
+          'You have to enter a number between 1 and 99\
+ to find out the secret number.',
+          'Type \'exit\' to end the game.', 'Good luck!', sep='\n', end='\n')
 
 
 if __name__ == '__main__':
-    number = randint(1, 99)
     intro()
-    user_input = 0
-    while user_input is not number:
-        user_input = int(input('What\'s your guess between 1 and 99?\n>> '))
-        if user_input > number:
-            print('Too high!', end='\n')
-        elif user_input < number:
-            print('Too low!', end='\n')
-    if user_input is number:
-        print('Congratulations, you\'ve got it!')
+    number, user_input, attempt = randint(1, 99), 0, 0
+    print(number)
+    while int(user_input) is not int(number):
+        try:
+            user_input = input('What\'s your guess between 1 and 99?\n>> ')
+            if user_input == 'exit':
+                print('Goodbye!', end='\n')
+                exit()
+            elif int(user_input) > number:
+                print('Too high!', end='\n')
+            elif int(user_input) < number:
+                print('Too low!', end='\n')
+        except ValueError:
+            print('That\'s not a number.', end='\n')
+            user_input = 0
+        attempt += 1
+    print('Congratulations, you\'ve got it!',
+          'You won in {0} attempts!'.format(attempt), sep='\n', end='\n')
