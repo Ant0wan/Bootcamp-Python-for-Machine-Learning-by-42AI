@@ -24,7 +24,6 @@ def intro():
 if __name__ == '__main__':
     intro()
     number, user_input, attempt = randint(1, 99), 0, 0
-    print(number)
     while int(user_input) is not int(number):
         try:
             user_input = input('What\'s your guess between 1 and 99?\n>> ')
