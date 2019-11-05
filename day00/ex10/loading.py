@@ -11,15 +11,17 @@
 #                                                                             #
 # *************************************************************************** #
 
-from time import sleep
+from time import sleep, time
 import sys
 '''
 ETA: 8.67s [ 23%][=====>                 ] 233/1000 | elapsed time 2.33s
 '''
 
+start = time()
+
 def ft_progress(listy):
     for i in listy:
-        print("{:4.0%}".format((i + 1)/len(listy)), end='\r')
+        print("ETA: {0:.2f}s [{1:4.0%}]".format(float(time() - start), (i + 1)/len(listy)), end='\r')
         yield i
 
 
