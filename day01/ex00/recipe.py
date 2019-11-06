@@ -14,11 +14,9 @@
 class Recipe(object):
     ''' Recipe class
 Init name, cooking_lvl, cooking_time, ingredients'''
-    def __init__(self, name=None):
-        self._name = name
 
-    def notvalid():
-        print('Not a valid type')
+    def __init__(self, name=None):
+        self._name = self.only_str(name)
 
     @property
     def name(self):
@@ -27,10 +25,28 @@ Init name, cooking_lvl, cooking_time, ingredients'''
 
     @name.setter
     def name(self, name):
-        if isinstance(name, str):
-            self._name = name
+        self._name = self.only_str(name)
+
+    @staticmethod
+    def only_str(s):
+        if isinstance(s, str):
+            return (s)
         else:
-            notvalid()
+            raise Exception('Not a valid type')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 '''
         try:

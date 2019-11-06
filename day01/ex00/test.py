@@ -16,11 +16,16 @@ from recipe import Recipe
 
 
 if __name__ == '__main__':
-    x=Recipe()
-    print(x.name)
-    x.name = 'Cake'
-    print(x.name)
-    print()    
+#    x=Recipe()
+#    print(x.name)
+#    x.name = 'Cake'
+#    print(x.name)
+#    print()    
     y=Recipe('salad')
     print(y.name)
+    x.name = 21
+    print()    
+    e=Recipe(11)
+    print(e.name)
+    e.name = 21
     exit()
