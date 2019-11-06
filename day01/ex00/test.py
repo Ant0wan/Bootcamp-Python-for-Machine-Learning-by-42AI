@@ -12,8 +12,15 @@
 # *************************************************************************** #
 
 from recipe import Recipe
-from book import Book
+#from book import Book
 
 
 if __name__ == '__main__':
-   
+    x=Recipe()
+    print(x.name)
+    x.name = 'Cake'
+    print(x.name)
+    print()    
+    y=Recipe('salad')
+    print(y.name)
+    exit()
