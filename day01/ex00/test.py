@@ -21,11 +21,11 @@ if __name__ == '__main__':
 #    x.name = 'Cake'
 #    print(x.name)
 #    print()    
-    y=Recipe('salad')
+    y=Recipe('salad', 1, 121, [], 'Ok', 'sdfsafasf')
     print(y.name)
-    x.name = 21
-    print()    
-    e=Recipe(11)
-    print(e.name)
-    e.name = 21
-    exit()
+#    x.name = 21
+#    print()    
+#    e=Recipe(11)
+#    print(e.name)
+#    e.name = 21
+#    exit()

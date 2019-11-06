@@ -15,12 +15,17 @@ class Recipe(object):
     ''' Recipe class
 Init name, cooking_lvl, cooking_time, ingredients'''
 
-    def __init__(self, name=None):
+    def __init__(self, name, lvl, time, ing, des, typ):
         self._name = self.only_str(name)
+        self._cooking_lvl = self.btwrange(lvl)
+        self._cooking_time = self.only_int(time)
+        self._ingredients = self.only_list(ing)
+        self._description = self.only_str(des)
+        self._recipe_type = self.isdish(typ)
 
     @property
     def name(self):
-        """I'm the 'name' property."""
+        """'Name' property"""
         return self._name
 
     @name.setter
@@ -30,33 +35,45 @@ Init name, cooking_lvl, cooking_time, ingredients'''
     @staticmethod
     def only_str(s):
         if isinstance(s, str):
+            return (str(s))
+        else:
+            raise ValueError('Not a valid type')
+
+    @staticmethod
+    def only_int(n):
+        if isinstance(n, int):
+            return (int(n))
+        else:
+            raise ValueError('Not a valid type')
+
+    @staticmethod
+    def only_list(lst):
+        if isinstance(lst, list):
+            return (list(lst))
+        else:
+            raise ValueError('Value must be between 0 to +inf')
+
+    @classmethod
+    def btwrange(self, n):
+        n = self.only_int(n)
+        if int(n) in range(1, 5):
+            return (n)
+        else:
+            raise ValueError('Value must be between 1 to 5')
+
+    @classmethod
+    def uptoinf(self, n):
+        n = self.only_int(n)
+        if int(n) >= 0:
+            return (n)
+        else:
+            raise ValueError('Value must be between 0 to +inf')
+
+    @classmethod
+    def isdish(self, s):
+        dishtypes = ['starter', 'lunch', 'dessert']
+        s = self.only_str(s)
+        if s in dishtypes:
             return (s)
         else:
-            raise Exception('Not a valid type')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-'''
-        try:
-            if str(name) and not name:
-                self.name = name
-            self.cooking_lvl = int(cooking_lvl)
-            self.cooking_time = int(cooking_time)
-            self.ingredients = list(ingredients)
-            self.description = str(description)
-            self.recipe_type = str(recipe_type)
-        except ValueError:
-            raise Exception('Could not instanciate Recipe attributes')
-'''
+            raise ValueError('Not a valid dish')
