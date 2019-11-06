@@ -56,7 +56,7 @@ Init name, cooking_lvl, cooking_time, ingredients'''
     @classmethod
     def btwrange(self, n):
         n = self.only_int(n)
-        if int(n) in range(1, 5):
+        if int(n) in range(1, 6):
             return (n)
         else:
             raise ValueError('Value must be between 1 to 5')

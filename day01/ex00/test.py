@@ -21,7 +21,7 @@ if __name__ == '__main__':
 #    x.name = 'Cake'
 #    print(x.name)
 #    print()    
-    y=Recipe('salad', 1, 121, [], 'Ok', 'sdfsafasf')
+    y=Recipe('salad', 5, 121, [], 'Ok', 'dessert')
     print(y.name)
 #    x.name = 21
 #    print()    
