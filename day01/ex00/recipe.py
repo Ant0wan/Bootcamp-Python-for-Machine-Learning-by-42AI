@@ -13,7 +13,7 @@
 
 class Recipe(object):
     ''' Recipe class
-Init name, cooking_lvl, cooking_time, ingredients'''
+ Init name, cooking_lvl, cooking_time, ingredients'''
 
     def __init__(self, name, lvl, time, ing, des, typ):
         self._name = self.only_str(name)
@@ -23,6 +23,7 @@ Init name, cooking_lvl, cooking_time, ingredients'''
         self._description = self.only_str(des)
         self._recipe_type = self.isdish(typ)
 
+
     @property
     def name(self):
         """'Name' property"""
@@ -31,6 +32,16 @@ Init name, cooking_lvl, cooking_time, ingredients'''
     @name.setter
     def name(self, name):
         self._name = self.only_str(name)
+
+    @property
+    def cooking_lvl(self):
+        """'Cooking level' property"""
+        return self._cooking_lvl
+
+    @cooking_lvl.setter
+    def cooking_lvl(self, lvl):
+        self._cooking_lvl = self.btwrange(lvl)
+
 
     @staticmethod
     def only_str(s):

@@ -22,6 +22,7 @@ if __name__ == '__main__':
 #    print(x.name)
 #    print()    
     y=Recipe('salad', 5, 121, [], 'Ok', 'dessert')
+    y.name='Hello'
     print(y.name)
 #    x.name = 21
 #    print()    
