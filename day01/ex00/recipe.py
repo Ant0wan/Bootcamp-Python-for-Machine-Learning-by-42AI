@@ -23,7 +23,6 @@ class Recipe(object):
         self._description = self.only_str(des)
         self._recipe_type = self.isdish(typ)
 
-
     @property
     def name(self):
         """'Name' property"""
@@ -42,6 +41,41 @@ class Recipe(object):
     def cooking_lvl(self, lvl):
         self._cooking_lvl = self.btwrange(lvl)
 
+    @property
+    def cooking_time(self):
+        """'Cooking time' property"""
+        return self._cooking_time
+
+    @cooking_time.setter
+    def cooking_time(self, time):
+        self._cooking_time = self.only_int(time)
+
+    @property
+    def ingredients(self):
+        """'Ingredients' property"""
+        return self._ingredients
+
+    @ingredients.setter
+    def ingredients(self, ing):
+        self._ingredients = self.only_list(ing)
+
+    @property
+    def description(self):
+        """'Name' property"""
+        return self._description
+
+    @description.setter
+    def description(self, des):
+        self._description = self.only_str(des)
+
+    @property
+    def recipe_type(self):
+        """'Name' property"""
+        return self._recipe_type
+
+    @recipe_type.setter
+    def recipe_type(self, typ):
+        self._recipe_type = self.isdish(typ)
 
     @staticmethod
     def only_str(s):
