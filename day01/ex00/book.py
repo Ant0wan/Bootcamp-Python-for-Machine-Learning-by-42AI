@@ -11,6 +11,7 @@
 # *************************************************************************** #
 
 import datetime
+from recipe import dishtypes
 
 
 class Book(object):
@@ -21,7 +22,19 @@ class Book(object):
         self._name = self.only_str(name)
         self._last_update = self.isdate(last_update)
         self._creation_date = self.isdate(creation_date)
-        self._recipe_list = self.only_dict(recipe_list)
+        self._recipe_list = self.only_dictoftype(recipe_list)
+
+    def get_recipe_by_name(self, name):
+        """Print a recipe with the name `name` and return the instance"""
+        return self
+
+    def get_recipes_by_types(self, recipe_type):
+        """Get all recipe names for a given recipe_type """
+        pass
+
+    def add_recipe(self, recipe):
+        """Add a recipe to the book and update last_update"""
+        pass
 
     def _get_name(self):
         return self._name
@@ -59,8 +72,11 @@ class Book(object):
             raise ValueError('Not a valid type')
 
     @staticmethod
-    def only_dict(lst):
+    def only_dictoftype(lst):
         if isinstance(lst, dict):
+            for t in dishtypes:
+                if t not in lst.keys():
+                    raise ValueError('Can only have dishtypes keys')
             return dict(lst)
         else:
             raise ValueError('Value must be dict')

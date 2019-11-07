@@ -11,6 +11,9 @@
 # *************************************************************************** #
 
 
+dishtypes = ('starter', 'lunch', 'dessert')
+
+
 class Recipe(object):
     ''' Recipe class
  Init name, cooking_lvl, cooking_time, ingredients, description and type'''
@@ -126,7 +129,6 @@ class Recipe(object):
 
     @classmethod
     def isdish(self, s):
-        dishtypes = ['starter', 'lunch', 'dessert']
         s = self.only_str(s)
         if s in dishtypes:
             return s
