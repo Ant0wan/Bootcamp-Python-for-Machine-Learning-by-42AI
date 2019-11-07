@@ -12,21 +12,10 @@
 # *************************************************************************** #
 
 from recipe import Recipe
-#from book import Book
+# from book import Book
 
 
 if __name__ == '__main__':
-#    x=Recipe()
-#    print(x.name)
-#    x.name = 'Cake'
-#    print(x.name)
-#    print()    
-    y=Recipe('salad', 5, 121, [], 'Ok', 'dessert')
-    y.name='Hello'
-    print(y.name)
-#    x.name = 21
-#    print()    
-#    e=Recipe(11)
-#    print(e.name)
-#    e.name = 21
-#    exit()
+    tourte = Recipe('Tourte', 2, 70, ['pate', 'lardons'], "Etape1.", 'lunch')
+    to_print = str(tourte)
+    print(to_print)

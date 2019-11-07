@@ -23,6 +23,16 @@ class Recipe(object):
         self._description = self.only_str(des)
         self._recipe_type = self.isdish(typ)
 
+    def __str__(self):
+        """Return the string to print with the recipe info"""
+        txt = self._name
+        txt += '\nLevel: ' + str(self._cooking_lvl) + '/5'
+        txt += '\nTime: ' + str(self._cooking_time) + 'min'
+        txt += '\nIngredients: ' + ', '.join(self._ingredients)
+        txt += '\n' + self._description
+        txt += '\nType: ' + self._recipe_type
+        return txt
+
     @property
     def name(self):
         """'Name' property"""
@@ -80,29 +90,29 @@ class Recipe(object):
     @staticmethod
     def only_str(s):
         if isinstance(s, str):
-            return (str(s))
+            return str(s)
         else:
             raise ValueError('Not a valid type')
 
     @staticmethod
     def only_int(n):
         if isinstance(n, int):
-            return (int(n))
+            return int(n)
         else:
             raise ValueError('Not a valid type')
 
     @staticmethod
     def only_list(lst):
         if isinstance(lst, list):
-            return (list(lst))
+            return list(lst)
         else:
-            raise ValueError('Value must be between 0 to +inf')
+            raise ValueError('Value must be list')
 
     @classmethod
     def btwrange(self, n):
         n = self.only_int(n)
         if int(n) in range(1, 6):
-            return (n)
+            return n
         else:
             raise ValueError('Value must be between 1 to 5')
 
@@ -110,7 +120,7 @@ class Recipe(object):
     def uptoinf(self, n):
         n = self.only_int(n)
         if int(n) >= 0:
-            return (n)
+            return n
         else:
             raise ValueError('Value must be between 0 to +inf')
 
@@ -119,6 +129,6 @@ class Recipe(object):
         dishtypes = ['starter', 'lunch', 'dessert']
         s = self.only_str(s)
         if s in dishtypes:
-            return (s)
+            return s
         else:
             raise ValueError('Not a valid dish')
