@@ -26,6 +26,9 @@ class Book(object):
 
     def get_recipe_by_name(self, name):
         """Print a recipe with the name `name` and return the instance"""
+        for t in dishtypes:
+            if name in _recipe_list.get(t):
+                print(_recipe_list.get(t)[name])
         return self
 
     def get_recipes_by_types(self, recipe_type):
@@ -77,6 +80,8 @@ class Book(object):
             for t in dishtypes:
                 if t not in lst.keys():
                     raise ValueError('Can only have dishtypes keys')
+                if not isinstance(lst.get(t), list):
+                    raise ValueError('Items must be of list type')
             return dict(lst)
         else:
             raise ValueError('Value must be dict')
