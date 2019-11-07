@@ -17,6 +17,7 @@ function install_python()
 	if [ $? -ne 0 ]
 	then
 		printf "Failure: could not download miniconda.\n"
+		exit()
 	fi
 	bash /goinfre/miniconda.sh -b -p /goinfre/miniconda
 	if [ $? -eq 0 ]
@@ -24,6 +25,7 @@ function install_python()
 		printf "Python has been installed.\n"
 	else
 		printf "Failure: Python could not be installed.\n"
+		exit()
 	fi
 }
 
