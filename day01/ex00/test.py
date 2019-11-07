@@ -18,6 +18,6 @@ from book import Book
 if __name__ == '__main__':
     tourte = Recipe('Tourte', 2, 70, ['pate', 'lardons'], "Etape1.", 'lunch')
     to_print = str(tourte)
-    print(to_print)
     book = Book('ok', '2019-12-01', '2018-02-14',
-                {"starter": [], "lunch": [], "dessert": []})
+                {"starter": [tourte], "lunch": [], "dessert": []})
+    book.get_recipe_by_name('Tourte')

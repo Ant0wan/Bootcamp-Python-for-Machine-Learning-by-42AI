@@ -27,9 +27,11 @@ class Book(object):
     def get_recipe_by_name(self, name):
         """Print a recipe with the name `name` and return the instance"""
         for t in dishtypes:
-            if name in _recipe_list.get(t):
-                print(_recipe_list.get(t)[name])
-        return self
+            if self._recipe_list.get(t):
+                if name is self._recipe_list.get(t)[0].name:
+                    print(self._recipe_list.get(t)[0])
+                    return self._recipe_list.get(t)
+        return None
 
     def get_recipes_by_types(self, recipe_type):
         """Get all recipe names for a given recipe_type """
