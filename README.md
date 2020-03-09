@@ -8,13 +8,11 @@
 
 <br/>
 
-This project was a Python and machine learning bootcamp [a 42 side-project] created by [42 AI](http://www.42ai.fr).
+This project was a Python and a machine learning bootcamp [a 42 side-project] created by [42 AI](http://www.42ai.fr).
 
 It taught essential knowledge of **Machine Learning**, **Data Science** and **Statistics** all in **Python3**.
 
 It started with Python3 basics and then common machine learning libraries.
-
-Python norm PEP8 checker: [pycodestyle](https://github.com/PyCQA/pycodestyle)
 
 42 Artificial Intelligence is a student association at the Paris campus of 42. 
 It aims to foster the learning and the sharing of knowledge concerning artificial intelligence, by organizing various activities such as lectures and workshops.
@@ -24,50 +22,18 @@ It aims to foster the learning and the sharing of knowledge concerning artificia
 
 ## Summary
 
-### Day00 - Basic stuff - Eleven Commandments
-**Let's get started with the Python language!**
-> Basic setup, variables, types, functions, ...
+### Python Bootcamp
 
-### Day01 - Basics 2
-**Get acquainted with object-oriented programming and much more.**
-> Objects, cast, inheritance, built-in functions, generator, construtors, iterator, ...
+> Day00: Basic setup, variables, types, functions, ...
 
-### Day02 - Basics 3
-**Continue practicing with more advanced Python programming exercises.**
-> Decorators, multiprocessing, lambda, build package, ...
+> Day01: Objects, cast, inheritance, built-in functions, generator, construtors, iterator, ...
 
-### Day03 - NumPy
-**Learn how to use the NumPy library, manipulate multidimensional arrays and perform complex mathematical operations on matrices!**
-> NumPy array, slicing, stacking, dimensions, broadcasting, normalization, etc...
+> Day02: Decorators, multiprocessing, lambda, build package, ...
 
-### Day04 - Pandas
-**Time to use a Python library that will allow you to manipulate dataframes.**
-> Pandas! And Bamboos!
+> Day03: NumPy array, slicing, stacking, dimensions, broadcasting, normalization, etc...
 
-### Rush - Scraping
-**Scraper**
-> curl - class Sessions, regex: re lib
-<br/>
+> Day04: Pandas library.
 
----
+> Rush: Scraping.
 
-## Acknowledgements
-
-Big thumbs up to the creators of this bootcamp:
-
-### Contributors
-
-* Maxime Choulika (maxime@42ai.fr)
-* Baptiste Lefeuvre (blefeuvr@student.42.fr)
-* Amric Trudel (amric@42ai.fr)
-* Mathilde Boivin (mboivin@student.42.fr)
-* Tristan Duquesne (tduquesn@student.42.fr)
-* Pierre Peigné (ppeigne@student.42.fr)
-
-### Beta-testers
-
-* Barthélémy Leveque (bleveque@student.42.fr)
-* Remy Oster (roster@student.42.fr)
-* Quentin Bragard (qbragard@student.42.fr)
-* Marie Dufourq (madufour@student.42.fr)
-* Adrien Vardon (advardon@student.42.fr)
+### Machine Learning Bootcamp
