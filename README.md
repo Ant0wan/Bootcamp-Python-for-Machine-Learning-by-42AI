@@ -3,7 +3,7 @@
 </p>
 
 <h1 align="center">
-  Bootcamp Python
+  42AI Bootcamp
 </h1>
 
 <br/>
