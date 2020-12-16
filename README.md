@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/42-AI/bootcamp_python/master/assets/logo_v4_noir.png" width="200" alt="42 AI Logo" />
+  <img src="https://raw.githubusercontent.com/42-AI/bootcamp_python/master/assets/42ai_logo.png" width="200" alt="42 AI Logo" />
 </p>
 
 <h1 align="center">
