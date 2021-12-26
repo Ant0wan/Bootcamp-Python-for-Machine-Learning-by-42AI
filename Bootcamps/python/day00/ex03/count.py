@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3.7
+#!/usr/bin/env python3
 # *************************************************************************** #
 #                                                                             #
 #                                                        :::      ::::::::    #
@@ -44,6 +44,6 @@ Returns: no value.
             ll += 1
         elif i in string.punctuation:
             pm += 1
-        elif i is ' ':
+        elif i == ' ':
             sp += 1
     output_analysis(c, ul, ll, pm, sp)
