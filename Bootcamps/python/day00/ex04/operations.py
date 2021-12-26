@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3.7
+#!/usr/bin/env python3
 # *************************************************************************** #
 #                                                                             #
 #                                                        :::      ::::::::    #
@@ -39,7 +39,7 @@ if __name__ == '__main__':
     if argc > 3:
         print('InputError: too many arguments', end='\n')
         usage()
-    elif argc is 3:
+    elif argc == 3:
         try:
             a = float(sys.argv[1])
             b = float(sys.argv[2])
