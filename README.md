@@ -1,9 +1,9 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/42-AI/bootcamp_python/master/assets/42ai_logo.png" width="200" alt="42 AI Logo" />
+  <img src="https://raw.githubusercontent.com/42-AI/bootcamp_python/master/assets/42ai_logo.png" width="100" alt="42 AI Logo" />
 </p>
 
 <h1 align="center">
-  42AI Bootcamps
+  42AI Python Modules
 </h1>
 
 <br/>
@@ -14,7 +14,7 @@ It taught essential knowledge of **Machine Learning**, **Data Science** and **St
 
 It started with Python3 basics and then common machine learning libraries.
 
-42 Artificial Intelligence is a student association at the Paris campus of 42. 
+42 Artificial Intelligence is a student association at the Paris campus of 42.
 It aims to foster the learning and the sharing of knowledge concerning artificial intelligence, by organizing various activities such as lectures and workshops.
 <br/>
 
@@ -35,5 +35,3 @@ It aims to foster the learning and the sharing of knowledge concerning artificia
 > Day04: Pandas library.
 
 > Rush: Scraping.
-
-### Machine Learning Bootcamp
