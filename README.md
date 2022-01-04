@@ -3,7 +3,7 @@
 </p>
 
 <h1 align="center">
-  42AI Python Modules
+	Python Modules
 </h1>
 
 <br/>
