@@ -20,22 +20,32 @@ ETA: 8.67s [ 23%][=====>                 ] 233/1000 | elapsed time 2.33s
 '''
 
 
-start = time()
-
-
 def ft_progress(listy):
+    start = time()
+    total = len(listy)
     for i in listy:
+        elapsed = float(time() - start)
         eta = float(time() - start)
         prct = (i + 1) / len(listy)
-        print("ETA: {0:4.2f}s [{1:4.0%}]".format(eta, prct), end='\r')
+#        print("ETA: {:4.2f}s [{:4.0%}] {}/{} | elapsed time elapsed {:4.2f}s".format(eta, prct, i+1, total, elapsed))
+        print("ETA: {:4.2f}s [{:4.0%}] {}/{} | elapsed time elapsed {:4.2f}s".format(eta, prct, i+1, total, elapsed), end='\r')
         yield i
 
 
 if __name__ == "__main__":
-    listy = range(100)
+    listy = range(1000)
     ret = 0
     for elem in ft_progress(listy):
         ret += (elem + 3) % 5
         sleep(0.01)
     print()
     print(ret)
+
+#    listy = range(3333)
+#    ret = 0
+#    for elem in ft_progress(listy):
+#        ret += elem
+#        sleep(0.005)
+#    print()
+#    print(ret)
+
