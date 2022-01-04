@@ -4,6 +4,10 @@
 
 <h1 align="center">
 	Python Modules
+	
+	
+[![Pylint](https://github.com/Ant0wan/PythonModules/actions/workflows/pylint.yml/badge.svg?branch=master)](https://github.com/Ant0wan/PythonModules/actions/workflows/pylint.yml)
+	
 </h1>
 
 <br/>
