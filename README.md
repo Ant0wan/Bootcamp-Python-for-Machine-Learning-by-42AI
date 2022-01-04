@@ -18,20 +18,17 @@ It started with Python3 basics and then common machine learning libraries.
 It aims to foster the learning and the sharing of knowledge concerning artificial intelligence, by organizing various activities such as lectures and workshops.
 <br/>
 
----
 
 ## Summary
 
-### Python Bootcamp
+- Day00: Basic setup, variables, types, functions, ...
 
-> Day00: Basic setup, variables, types, functions, ...
+- Day01: Objects, cast, inheritance, built-in functions, generator, construtors, iterator, ...
 
-> Day01: Objects, cast, inheritance, built-in functions, generator, construtors, iterator, ...
+- Day02: Decorators, multiprocessing, lambda, build package, ...
 
-> Day02: Decorators, multiprocessing, lambda, build package, ...
+- Day03: NumPy array, slicing, stacking, dimensions, broadcasting, normalization, etc...
 
-> Day03: NumPy array, slicing, stacking, dimensions, broadcasting, normalization, etc...
+- Day04: Pandas library.
 
-> Day04: Pandas library.
-
-> Rush: Scraping.
+- Rush: Scraping.
