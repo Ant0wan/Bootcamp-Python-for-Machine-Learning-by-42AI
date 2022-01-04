@@ -12,9 +12,35 @@
 # *************************************************************************** #
 
 cookbook = {
-        'sandwich': {'ingredients': ['ham', 'bread', 'cheese', 'tomatoes'], 'meal': 'lunch', 'prep_time': '10'},
-        'cake': {'ingredients': ['flour', 'sugar', 'eggs'], 'meal': 'dessert', 'prep_time': '60'},
-        'salad': {'ingredients': ['avocado', 'arugula', 'tomatoes', 'spinach'], 'meal': 'lunch', 'prep_time': '15'}
+        'sandwich': {
+            'ingredients': [
+                'ham',
+                'bread',
+                'cheese',
+                'tomatoes'
+                ],
+            'meal': 'lunch',
+            'prep_time': '10'
+            },
+        'cake': {
+            'ingredients': [
+                'flour',
+                'sugar',
+                'eggs'
+                ],
+            'meal': 'dessert',
+            'prep_time': '60'
+            },
+        'salad': {
+            'ingredients': [
+                'avocado',
+                'arugula',
+                'tomatoes',
+                'spinach'
+                ],
+            'meal': 'lunch',
+            'prep_time': '15'
+            }
     }
 
 
@@ -24,10 +50,15 @@ def quit_fn():
 
 def print_a_recipe():
     try:
-        name = input('Please enter the recipe\'s name to get its details:\n>> ')
+        name = input('Please enter the recipe\'s \
+                name to get its details:\n>> ')
         print('Recipe for {0}:\nIngredients list:\
  {1}\nTo be eaten for {2}.\nTakes {3} minutes\
- of cooking.'.format(name, cookbook[name]['ingredients'], cookbook[name]['meal'], cookbook[name]['prep_time']), end='\n')
+ of cooking.'.format(
+                        name,
+                        cookbook[name]['ingredients'],
+                        cookbook[name]['meal'],
+                        cookbook[name]['prep_time']), end='\n')
     except KeyError:
         print(name + ' is not in the cookbook.', end='\n')
 
@@ -45,7 +76,11 @@ def add_a_new_recipe():
     ingredients = input('List ingredients\n>> ')
     meal = input('What dish or meal time is it for ?\n>> ')
     prep_time = input('How long does it take to cook it ?\n>> ')
-    cookbook[name] = {'ingredients': ingredients, 'meal': meal, 'prep_time': prep_time}
+    cookbook[name] = {
+            'ingredients': ingredients,
+            'meal': meal,
+            'prep_time': prep_time
+            }
 
 
 def print_all_recipe_name():
