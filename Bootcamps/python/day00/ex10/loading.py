@@ -25,9 +25,9 @@ def ft_progress(listy):
     total = len(listy)
     for i in listy:
         elapsed = float(time() - start)
-        eta = float(time() - start)
-        prct = (i + 1) / len(listy)
-#        print("ETA: {:4.2f}s [{:4.0%}] {}/{} | elapsed time elapsed {:4.2f}s".format(eta, prct, i+1, total, elapsed))
+        avg_per_operation = elapsed / (i + 1)
+        eta = avg_per_operation * (total - i - 1)
+        prct = (i + 1) / total
         print("ETA: {:4.2f}s [{:4.0%}] {}/{} | elapsed time elapsed {:4.2f}s".format(eta, prct, i+1, total, elapsed), end='\r')
         yield i
 
