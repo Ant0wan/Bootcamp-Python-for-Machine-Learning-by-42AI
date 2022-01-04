@@ -28,7 +28,13 @@ def ft_progress(listy):
         avg_per_operation = elapsed / (i + 1)
         eta = avg_per_operation * (total - i - 1)
         prct = (i + 1) / total
-        print("ETA: {:4.2f}s [{:4.0%}] {}/{} | elapsed time elapsed {:4.2f}s".format(eta, prct, i+1, total, elapsed), end='\r')
+        print("ETA: {:4.2f}s [{:4.0%}][{:=>{}}{:{}}] {}/{} \
+| elapsed time elapsed {:4.2f}s".format(
+            eta,
+            prct,
+            '=', i * 25 / total,
+            '>', 25 - i * 25 // total, i + 1,
+            total, elapsed), end='\r')
         yield i
 
 
@@ -41,11 +47,10 @@ if __name__ == "__main__":
     print()
     print(ret)
 
-#    listy = range(3333)
-#    ret = 0
-#    for elem in ft_progress(listy):
-#        ret += elem
-#        sleep(0.005)
-#    print()
-#    print(ret)
-
+    listy = range(3333)
+    ret = 0
+    for elem in ft_progress(listy):
+        ret += elem
+        sleep(0.005)
+    print()
+    print(ret)
