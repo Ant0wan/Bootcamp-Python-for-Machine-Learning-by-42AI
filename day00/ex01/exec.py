@@ -1,25 +1,20 @@
 #!/usr/bin/env python3
-# *************************************************************************** #
-#                                                                             #
-#                                                        :::      ::::::::    #
-#   exec.py                                            :+:      :+:    :+:    #
-#                                                    +:+ +:+         +:+      #
-#   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
-#                                                +#+#+#+#+#+   +#+            #
-#   Created: 2019/11/04 09:36:12 by abarthel          #+#    #+#              #
-#   Updated: 2019/11/04 09:36:14 by abarthel         ###   ########.fr        #
-#                                                                             #
-# *************************************************************************** #
+"""
+ex00
+"""
 
 import sys
 
 
 def rev_alpha():
+    """
+    Reverse string arguments, capitals and stings.
+    """
     if len(sys.argv) > 1:
-        list = []
+        letter_list = []
         for i in sys.argv[:0:-1]:
-            list.append(i[::-1].swapcase())
-        print(' '.join(list), end='\n')
+            letter_list.append(i[::-1].swapcase())
+        print(' '.join(letter_list), end='\n')
 
 
 if __name__ == '__main__':
