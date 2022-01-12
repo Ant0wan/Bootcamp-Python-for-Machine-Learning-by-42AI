@@ -1,49 +1,47 @@
 #!/usr/bin/env python3
-# *************************************************************************** #
-#                                                                             #
-#                                                        :::      ::::::::    #
-#   count.py                                           :+:      :+:    :+:    #
-#                                                    +:+ +:+         +:+      #
-#   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
-#                                                +#+#+#+#+#+   +#+            #
-#   Created: 2019/11/04 12:35:58 by abarthel          #+#    #+#              #
-#   Updated: 2019/11/04 12:35:58 by abarthel         ###   ########.fr        #
-#                                                                             #
-# *************************************************************************** #
+"""
+ex03
+"""
 
 import string
 
 
-def output_analysis(c, ul, ll, pm, sp):
-    list = ['The text contains {0} characters:'.format(c)]
-    list.append('- {0} upper letters'.format(ul))
-    list.append('- {0} lower letters'.format(ll))
-    list.append('- {0} punctuation marks'.format(pm))
-    list.append('- {0} spaces'.format(sp))
-    print('\n'.join(list), end='\n')
+def output_analysis(count, upper_letters, lower_letters, punctuation_marks, spaces):
+    """Description of output_analysis(...):
+
+    This function append all letters in a string
+
+    Returns: no value.
+    """
+    displayed_list = [f'The text contains {count} characters:']
+    displayed_list.append(f'- {upper_letters} upper letters')
+    displayed_list.append(f'- {lower_letters} lower letters')
+    displayed_list.append(f'- {punctuation_marks} punctuation marks')
+    displayed_list.append(f'- {spaces} spaces')
+    print('\n'.join(displayed_list), end='\n')
 
 
 def text_analyzer(text=""):
     """Description of text_analyzer(text):
 
-This function counts the number of upper characters, lower characters,
-punctuation and spaces in a given text.
+    This function counts the number of upper characters, lower characters,
+    punctuation and spaces in a given text.
 
-Parameters: text (str): A text variable.
+    Parameters: text (str): A text variable.
 
-Returns: no value.
-"""
+    Returns: no value.
+    """
     if not text:
         text = input("What is the text to analyse?\n>> ")
-    c, ul, ll, pm, sp = 0, 0, 0, 0, 0
+    count, upper_letters, lower_letters, punctuation_marks, spaces = 0, 0, 0, 0, 0
     for i in text:
-        c += 1
+        count += 1
         if i.isupper():
-            ul += 1
+            upper_letters += 1
         elif i.islower():
-            ll += 1
+            lower_letters += 1
         elif i in string.punctuation:
-            pm += 1
+            punctuation_marks += 1
         elif i == ' ':
-            sp += 1
-    output_analysis(c, ul, ll, pm, sp)
+            spaces += 1
+    output_analysis(count, upper_letters, lower_letters, punctuation_marks, spaces)
