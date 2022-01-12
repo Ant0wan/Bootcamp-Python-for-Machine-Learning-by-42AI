@@ -1,3 +1,4 @@
+# pylint: disable=consider-using-f-string
 from the_bank import Account, Bank
 
 if __name__ == "__main__":
