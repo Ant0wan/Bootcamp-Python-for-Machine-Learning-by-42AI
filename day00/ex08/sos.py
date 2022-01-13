@@ -1,20 +1,12 @@
 #!/usr/bin/env python3
-# *************************************************************************** #
-#                                                                             #
-#                                                        :::      ::::::::    #
-#   sos.py                                             :+:      :+:    :+:    #
-#                                                    +:+ +:+         +:+      #
-#   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
-#                                                +#+#+#+#+#+   +#+            #
-#   Created: 2019/11/05 10:41:47 by abarthel          #+#    #+#              #
-#   Updated: 2019/11/05 10:41:47 by abarthel         ###   ########.fr        #
-#                                                                             #
-# *************************************************************************** #
+"""
+sos
+"""
 
 import sys
 
 
-mapping = {
+MAPPING = {
     'A': '.-',
     'B': '-…',
     'C': '-.-.',
@@ -54,7 +46,6 @@ mapping = {
     ',': '–…--',
     '.': '.-.-.-',
     '?': '…–…',
-    ' ': '-…-.',
     '-': '-….-',
     '[': '-.–.',
     ']': '-.–.-',
@@ -65,14 +56,14 @@ mapping = {
 if __name__ == '__main__':
     if len(sys.argv) > 1:
         try:
-            j, s, enc = 0, [], []
+            j, s, encoded = 0, [], []
             for i in sys.argv[1::]:
                 s.append(i.upper())
             for word in s:
-                enc.append('')
+                encoded.append('')
                 for char in word:
-                    enc[j] += mapping[char] + ' '
+                    encoded[j] += MAPPING[char] + ' '
                 j += 1
-            print(' / '.join(enc), end='\n')
+            print(' / '.join(encoded), end='\n')
         except KeyError:
             print('ERROR', end='\n')
