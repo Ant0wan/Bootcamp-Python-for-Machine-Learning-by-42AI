@@ -1,26 +1,17 @@
 #!/usr/bin/env python3
-# *************************************************************************** #
-#                                                                             #
-#                                                        :::      ::::::::    #
-#   loading.py                                         :+:      :+:    :+:    #
-#                                                    +:+ +:+         +:+      #
-#   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
-#                                                +#+#+#+#+#+   +#+            #
-#   Created: 2019/11/05 13:41:50 by abarthel          #+#    #+#              #
-#   Updated: 2019/11/05 13:41:50 by abarthel         ###   ########.fr        #
-#                                                                             #
-# *************************************************************************** #
+"""
+loading
+
+Display like:
+ETA: 8.67s [ 23%][=====>                 ] 233/1000 | elapsed time 2.33s
+"""
 
 from time import sleep, time
 import sys
 
 
-'''
-ETA: 8.67s [ 23%][=====>                 ] 233/1000 | elapsed time 2.33s
-'''
-
-
 def ft_progress(listy):
+    """Yield function"""
     start = time()
     total = len(listy)
     for i in listy:
