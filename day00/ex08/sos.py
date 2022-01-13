@@ -49,7 +49,7 @@ MAPPING = {
     '-': '-….-',
     '[': '-.–.',
     ']': '-.–.-',
-    ' ': ' / '
+    ' ': '/'
     }
 
 
@@ -62,7 +62,9 @@ if __name__ == '__main__':
             for word in s:
                 encoded.append('')
                 for char in word:
-                    encoded[j] += MAPPING[char] + ' '
+                    encoded[j] += MAPPING[char]
+                    if char != word[-1]:
+                        encoded[j] += ' '
                 j += 1
             print(' / '.join(encoded), end='\n')
         except KeyError:
