@@ -7,41 +7,38 @@ ETA: 8.67s [ 23%][=====>                 ] 233/1000 | elapsed time 2.33s
 """
 
 from time import sleep, time
-import sys
+from collections import namedtuple
 
+ProgressBar = namedtuple('ProgressBar', ['size', 'edge_position'])
 
-def ft_progress(listy):
+def ft_progress(lst):
     """Yield function"""
     start = time()
-    total = len(listy)
-    for i in listy:
+    total = len(lst)
+    for i in lst:
         elapsed = float(time() - start)
         avg_per_operation = elapsed / (i + 1)
         eta = avg_per_operation * (total - i - 1)
         prct = (i + 1) / total
-        print("ETA: {:4.2f}s [{:4.0%}][{:=>{}}{:{}}] {}/{} \
-| elapsed time elapsed {:4.2f}s".format(
-            eta,
-            prct,
-            '=', i * 25 / total,
-            '>', 25 - i * 25 // total, i + 1,
-            total, elapsed), end='\r')
+        pbar = ProgressBar(i * 25 / total, 25 - i * 25 // total)
+        print(f"ETA: {eta:4.2f}s [{prct:4.0%}][{'=':=>{pbar.size}}{'>':{pbar.edge_position}}]\
+ {(i + 1)}/{total} | elapsed time elapsed {elapsed:4.2f}s", end='\r')
         yield i
 
 
 if __name__ == "__main__":
     listy = range(1000)
-    ret = 0
+    RET = 0
     for elem in ft_progress(listy):
-        ret += (elem + 3) % 5
+        RET += (elem + 3) % 5
         sleep(0.01)
     print()
-    print(ret)
+    print(RET)
 
     listy = range(3333)
-    ret = 0
+    RET = 0
     for elem in ft_progress(listy):
-        ret += elem
+        RET += elem
         sleep(0.005)
     print()
-    print(ret)
+    print(RET)
