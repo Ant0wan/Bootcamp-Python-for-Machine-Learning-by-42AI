@@ -11,6 +11,7 @@ from collections import namedtuple
 
 ProgressBar = namedtuple('ProgressBar', ['size', 'edge_position'])
 
+
 def ft_progress(lst):
     """Yield function"""
     start = time()
@@ -21,8 +22,9 @@ def ft_progress(lst):
         eta = avg_per_operation * (total - i - 1)
         prct = (i + 1) / total
         pbar = ProgressBar(i * 25 / total, 25 - i * 25 // total)
-        print(f"ETA: {eta:4.2f}s [{prct:4.0%}][{'=':=>{pbar.size}}{'>':{pbar.edge_position}}]\
- {(i + 1)}/{total} | elapsed time elapsed {elapsed:4.2f}s", end='\r')
+        print(f"ETA: {eta:4.2f}s [{prct:4.0%}][{'=':=>{pbar.size}}\
+{'>':{pbar.edge_position}}] {(i + 1)}/{total} | elapsed time elapsed\
+{elapsed:4.2f}s", end='\r')
         yield i
 
 
