@@ -7,8 +7,7 @@ else
 fi
 curl -o /tmp/$TARGET https://repo.anaconda.com/miniconda/$TARGET
 bash /tmp/$TARGET -b -p $MINICONDA_PATH
-grep -qxF 'export PATH=\$MINICONDA_PATH:\$PATH' ~/.${SHELL##*/}rc || echo 'export PATH=\$MINICONDA_PATH:\$PATH' >> ~/.${SHELL##*/}rc
-echo '
+grep -qxF 'export PATH=$MINICONDA_PATH:$PATH' ~/.${SHELL##*/}rc || echo 'export PATH=$MINICONDA_PATH:$PATH' >> ~/.${SHELL##*/}rc
 builtin type python
 python --version
-conda install -y "jupyter" "numpy" "pandas"'
+conda install -y "jupyter" "numpy" "pandas"
