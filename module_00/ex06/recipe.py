@@ -44,15 +44,12 @@ def quit_fn():
 def print_a_recipe():
     """Print recipe"""
     try:
-        name = input('Please enter the recipe\'s \
-                name to get its details:\n>> ')
-        print('Recipe for {0}:\nIngredients list:\
- {1}\nTo be eaten for {2}.\nTakes {3} minutes\
- of cooking.'.format(
-     name,
-     COOKBOOK[name]['ingredients'],
-     COOKBOOK[name]['meal'],
-     COOKBOOK[name]['prep_time']), end='\n')
+        name = input('Please enter the recipe\'s\
+ name to get its details:\n>> ')
+        print(f"Recipe for {name}:\nIngredients list:\
+ {COOKBOOK[name]['ingredients']}\nTo be eaten for\
+ {COOKBOOK[name]['meal']}.\nTakes {COOKBOOK[name]['prep_time']}\
+ minutes of cooking.", end='\n')
     except KeyError:
         print(name + ' is not in the cookbook.', end='\n')
 
@@ -97,8 +94,8 @@ MENU = {
 if __name__ == '__main__':
     while True:
         print('Please select an option by typing the corresponding number:')
-        for i in MENU:
-            print(i, MENU[i][0], sep=': ', end='\n')
+        for item in MENU.items():
+            print(item[0], item[1][0], sep=': ', end='\n')
         CHOICE = input('>> ')
         try:
             MENU[CHOICE][1]()

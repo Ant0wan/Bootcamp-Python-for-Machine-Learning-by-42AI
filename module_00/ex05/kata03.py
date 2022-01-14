@@ -6,4 +6,4 @@ kata03
 PHRASE = "The right format"
 
 if __name__ == '__main__':
-    print('{0:->42}'.format(PHRASE), end='')
+    print(f'{PHRASE:->42}', end='')
