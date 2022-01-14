@@ -36,11 +36,11 @@ if __name__ == '__main__':
         try:
             ARG_ONE = float(sys.argv[1])
             ARG_TWO = float(sys.argv[2])
-            print('Sum: {:>20}'.format(math.fsum([ARG_ONE, ARG_TWO])), end='\n')
-            print('Difference: {:>13}'.format(ARG_ONE - ARG_TWO), end='\n')
-            print('Product: {:>16}'.format(ARG_ONE * ARG_TWO), end='\n')
-            print('Quotient: {:>15}'.format(div(ARG_ONE, ARG_TWO)), end='\n')
-            print('Remainder: {:>14}'.format(mod(ARG_ONE, ARG_TWO)), end='\n')
+            print(f'Sum: {math.fsum([ARG_ONE, ARG_TWO]):>20.1f}', end='\n')
+            print(f'Difference: {(ARG_ONE - ARG_TWO):>13.1f}', end='\n')
+            print(f'Product: {(ARG_ONE * ARG_TWO):>16.1f}', end='\n')
+            print(f'Quotient: {div(ARG_ONE, ARG_TWO):>15.1f}', end='\n')
+            print(f'Remainder: {mod(ARG_ONE, ARG_TWO):>14.1f}', end='\n')
         except ValueError:
             print('InputError: only numbers', end='\n')
             usage()
