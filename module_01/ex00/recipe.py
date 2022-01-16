@@ -1,17 +1,8 @@
-# *************************************************************************** #
-#                                                                             #
-#                                                        :::      ::::::::    #
-#   recipe.py                                          :+:      :+:    :+:    #
-#                                                    +:+ +:+         +:+      #
-#   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
-#                                                +#+#+#+#+#+   +#+            #
-#   Created: 2019/11/05 18:25:29 by abarthel          #+#    #+#              #
-#   Updated: 2019/11/05 18:25:54 by abarthel         ###   ########.fr        #
-#                                                                             #
-# *************************************************************************** #
+"""
+Recipe Class Definition
+"""
 
-
-dishtypes = ('starter', 'lunch', 'dessert')
+DISHTYPES = ('starter', 'lunch', 'dessert')
 
 
 class Recipe(object):
@@ -130,7 +121,7 @@ class Recipe(object):
     @classmethod
     def isdish(self, s):
         s = self.only_str(s)
-        if s in dishtypes:
+        if s in DISHTYPES:
             return s
         else:
             raise ValueError('Not a valid dish')

@@ -1,15 +1,7 @@
 #!/usr/bin/env python3
-# *************************************************************************** #
-#                                                                             #
-#                                                        :::      ::::::::    #
-#   test.py                                            :+:      :+:    :+:    #
-#                                                    +:+ +:+         +:+      #
-#   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
-#                                                +#+#+#+#+#+   +#+            #
-#   Created: 2019/11/05 15:19:57 by abarthel          #+#    #+#              #
-#   Updated: 2019/11/05 15:19:57 by abarthel         ###   ########.fr        #
-#                                                                             #
-# *************************************************************************** #
+"""
+Test script for Recipe and Book Classes
+"""
 
 from recipe import Recipe
 from book import Book

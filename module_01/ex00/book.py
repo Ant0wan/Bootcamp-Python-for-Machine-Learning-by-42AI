@@ -1,22 +1,15 @@
-# *************************************************************************** #
-#                                                                             #
-#                                                        :::      ::::::::    #
-#   book.py                                            :+:      :+:    :+:    #
-#                                                    +:+ +:+         +:+      #
-#   By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
-#                                                +#+#+#+#+#+   +#+            #
-#   Created: 2019/11/05 18:25:29 by abarthel          #+#    #+#              #
-#   Updated: 2019/11/05 18:25:54 by abarthel         ###   ########.fr        #
-#                                                                             #
-# *************************************************************************** #
+"""
+Book Class Definition
+"""
 
 import datetime
 from recipe import dishtypes
 
 
 class Book(object):
-    ''' Book class
- Init name, last_update, creation_date, recipe_list'''
+    """ Book class
+    Init name, last_update, creation_date, recipe_list
+    """
 
     def __init__(self, name, last_update, creation_date, recipe_list):
         self._name = self.only_str(name)
