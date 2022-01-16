@@ -2,7 +2,7 @@
 Recipe Class Definition
 """
 
-DISHTYPES = ('starter', 'lunch', 'dessert')
+dishtypes = ('starter', 'lunch', 'dessert')
 
 
 class Recipe(object):
@@ -10,76 +10,80 @@ class Recipe(object):
  Init name, cooking_lvl, cooking_time, ingredients, description and type'''
 
     def __init__(self, name, lvl, time, ing, des, typ):
-        self._name = self.only_str(name)
-        self._cooking_lvl = self.btwrange(lvl)
-        self._cooking_time = self.only_int(time)
-        self._ingredients = self.only_list(ing)
-        self._description = self.only_str(des)
-        self._recipe_type = self.isdish(typ)
+        self.__name = self.only_str(name)
+        self.__cooking_lvl = self.btwrange(lvl)
+        self.__cooking_time = self.only_int(time)
+        self.__ingredients = self.only_list(ing)
+        self.__description = self.only_str(des)
+        self.__recipe_type = self.isdish(typ)
 
     def __str__(self):
         """Return the string to print with the recipe info"""
-        txt = self._name
-        txt += '\nLevel: ' + str(self._cooking_lvl) + '/5'
-        txt += '\nTime: ' + str(self._cooking_time) + 'min'
-        txt += '\nIngredients: ' + ', '.join(self._ingredients)
-        txt += '\n' + self._description
-        txt += '\nType: ' + self._recipe_type
+        txt = self.__name
+        txt += '\nLevel: ' + str(self.__cooking_lvl) + '/5'
+        txt += '\nTime: ' + str(self.__cooking_time) + 'min'
+        txt += '\nIngredients: ' + ', '.join(self.__ingredients)
+        txt += '\n' + self.__description
+        txt += '\nType: ' + self.__recipe_type
         return txt
+
+    def __del__(self):
+        """Destructor"""
+        print(f'{self.name} deleted')
 
     @property
     def name(self):
         """'Name' property"""
-        return self._name
+        return self.__name
 
     @name.setter
     def name(self, name):
-        self._name = self.only_str(name)
+        self.__name = self.only_str(name)
 
     @property
     def cooking_lvl(self):
         """'Cooking level' property"""
-        return self._cooking_lvl
+        return self.__cooking_lvl
 
     @cooking_lvl.setter
     def cooking_lvl(self, lvl):
-        self._cooking_lvl = self.btwrange(lvl)
+        self.__cooking_lvl = self.btwrange(lvl)
 
     @property
     def cooking_time(self):
         """'Cooking time' property"""
-        return self._cooking_time
+        return self.__cooking_time
 
     @cooking_time.setter
     def cooking_time(self, time):
-        self._cooking_time = self.only_int(time)
+        self.__cooking_time = self.only_int(time)
 
     @property
     def ingredients(self):
         """'Ingredients' property"""
-        return self._ingredients
+        return self.__ingredients
 
     @ingredients.setter
     def ingredients(self, ing):
-        self._ingredients = self.only_list(ing)
+        self.__ingredients = self.only_list(ing)
 
     @property
     def description(self):
         """'Description' property"""
-        return self._description
+        return self.__description
 
     @description.setter
     def description(self, des):
-        self._description = self.only_str(des)
+        self.__description = self.only_str(des)
 
     @property
     def recipe_type(self):
         """'Recipe type' property"""
-        return self._recipe_type
+        return self.__recipe_type
 
     @recipe_type.setter
     def recipe_type(self, typ):
-        self._recipe_type = self.isdish(typ)
+        self.__recipe_type = self.isdish(typ)
 
     @staticmethod
     def only_str(s):
@@ -121,7 +125,7 @@ class Recipe(object):
     @classmethod
     def isdish(self, s):
         s = self.only_str(s)
-        if s in DISHTYPES:
+        if s in dishtypes:
             return s
         else:
             raise ValueError('Not a valid dish')
