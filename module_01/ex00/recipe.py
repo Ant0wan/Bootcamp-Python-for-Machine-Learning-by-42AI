@@ -70,43 +70,46 @@ class Recipe:
         self.__name = self._only_str(name)
 
     @cooking_lvl.setter
-    def cooking_lvl(self, lvl):
-        self.__cooking_lvl = self._btwrange(lvl)
+    def cooking_lvl(self, cooking_lvl):
+        self.__cooking_lvl = self._btwrange(cooking_lvl)
 
     @cooking_time.setter
-    def cooking_time(self, time):
-        self.__cooking_time = self._only_int(time)
+    def cooking_time(self, cooking_time):
+        self.__cooking_time = self._only_int(cooking_time)
 
     @ingredients.setter
-    def ingredients(self, ing):
-        self.__ingredients = self._only_list(ing)
+    def ingredients(self, ingredients):
+        self.__ingredients = self._only_list(ingredients)
 
     @description.setter
-    def description(self, des):
-        self.__description = self._only_str(des)
+    def description(self, description):
+        self.__description = self._only_str(description)
 
     @recipe_type.setter
-    def recipe_type(self, typ):
-        self.__recipe_type = self._isdish(typ)
+    def recipe_type(self, recipe_type):
+        self.__recipe_type = self._isdish(recipe_type)
 
     @staticmethod
     def _only_str(string):
         """Check whether it is string"""
         if isinstance(string, str):
             return str(string)
-        raise ValueError('Not a valid type')
+        raise ValueError('Value must be a string')
 
     @staticmethod
     def _only_int(number):
         """Check whether it is integer"""
         if isinstance(number, int):
             return int(number)
-        raise ValueError('Not a valid type')
+        raise ValueError('Value must be an integer')
 
     @staticmethod
     def _only_list(lst):
         """Check whether it is a list"""
         if isinstance(lst, list):
+            for item in lst:
+                if not isinstance(item, str):
+                    raise ValueError('Value must be a string')
             return list(lst)
         raise ValueError('Value must be list')
 

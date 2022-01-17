@@ -12,6 +12,7 @@ if __name__ == '__main__':
     DISHTYPES = ()
     tourte = Recipe('Tourte', 2, 70, ['pate', 'lardons'], "Etape1.", 'lunch')
     bread = Recipe('Bread', 4, 120, ['four', 'salt'], "Pain.", 'starter')
+#    bread = Recipe('Bread', 4, 120, [4545, 'salt'], "Pain.", 'starter')
     bread.name = "Rotten bread"
     bread.cooking_lvl = 5
     print(Recipe._only_int(1))
