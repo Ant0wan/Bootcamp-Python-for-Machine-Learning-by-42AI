@@ -57,17 +57,17 @@ class Book(object):
     last_update = property(_get_last_update, _set_last_update)
 
     def _get_creation_date(self):
-        return self._creation_date
+        return self.__creation_date
 
     def _set_creation_date(self, creation_date):
-        self._creation_date = self.only_int(creation_date)
+        self.__creation_date = self.only_int(creation_date)
     creation_date = property(_get_creation_date, _set_creation_date)
 
     def _set_recipe_list(self):
-        return self._recipe_list
+        return self.__recipe_list
 
     def _get_recipe_list(self, recipe_list):
-        self._recipe_list = self.only_list(recipe_list)
+        self.__recipe_list = self.only_list(recipe_list)
     recipe_list = property(_set_recipe_list, _get_recipe_list)
 
     @staticmethod

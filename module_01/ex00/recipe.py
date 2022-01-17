@@ -36,50 +36,50 @@ class Recipe(object):
         """'Name' property"""
         return self.__name
 
-    @name.setter
-    def name(self, name):
-        self.__name = self.only_str(name)
-
     @property
     def cooking_lvl(self):
         """'Cooking level' property"""
         return self.__cooking_lvl
-
-    @cooking_lvl.setter
-    def cooking_lvl(self, lvl):
-        self.__cooking_lvl = self.btwrange(lvl)
 
     @property
     def cooking_time(self):
         """'Cooking time' property"""
         return self.__cooking_time
 
-    @cooking_time.setter
-    def cooking_time(self, time):
-        self.__cooking_time = self.only_int(time)
-
     @property
     def ingredients(self):
         """'Ingredients' property"""
         return self.__ingredients
-
-    @ingredients.setter
-    def ingredients(self, ing):
-        self.__ingredients = self.only_list(ing)
 
     @property
     def description(self):
         """'Description' property"""
         return self.__description
 
-    @description.setter
-    def description(self, des):
-        self.__description = self.only_str(des)
-
     @property
     def recipe_type(self):
         """'Recipe type' property"""
         return self.__recipe_type
+
+    @name.setter
+    def name(self, name):
+        self.__name = self.only_str(name)
+
+    @cooking_lvl.setter
+    def cooking_lvl(self, lvl):
+        self.__cooking_lvl = self.btwrange(lvl)
+
+    @cooking_time.setter
+    def cooking_time(self, time):
+        self.__cooking_time = self.only_int(time)
+
+    @ingredients.setter
+    def ingredients(self, ing):
+        self.__ingredients = self.only_list(ing)
+
+    @description.setter
+    def description(self, des):
+        self.__description = self.only_str(des)
 
     @recipe_type.setter
     def recipe_type(self, typ):
