@@ -15,7 +15,7 @@ class Recipe:
             self, name, cooking_lvl, cooking_time, ingredients,
             description, recipe_type
             ):
-        self.__name = self._only_str(name)
+        self.__name = self._notfalsy(self._only_str(name))
         self.__cooking_lvl = self._btwrange(cooking_lvl)
         self.__cooking_time = self._uptoinf(cooking_time)
         self.__ingredients = self._only_list(ingredients)
@@ -30,10 +30,6 @@ class Recipe:
                 \nIngredients: {', '.join(self.__ingredients)}\
                 \n{self.__description}\
                 \nType: {self.__recipe_type}"
-
-    def __del__(self):
-        """Destructor"""
-        print(f'{self.name} deleted')
 
     @property
     def name(self):
@@ -88,6 +84,13 @@ class Recipe:
     @recipe_type.setter
     def recipe_type(self, recipe_type):
         self.__recipe_type = self._isdish(recipe_type)
+
+    @staticmethod
+    def _notfalsy(something):
+        """Check whether argument is falsy"""
+        if something:
+            return something
+        raise ValueError('Value must not be empty')
 
     @staticmethod
     def _only_str(string):
