@@ -5,10 +5,11 @@ Recipe Class Definition
 dishtypes = ('starter', 'lunch', 'dessert')
 
 
-class Recipe():
+class Recipe:
     ''' Recipe class
- Init name, cooking_lvl, cooking_time, ingredients, description and type'''
+    Init name, cooking_lvl, cooking_time, ingredients, description and type'''
 
+    # pylint: disable=too-many-arguments
     def __init__(self, name, lvl, time, ing, des, typ):
         self.__name = self._only_str(name)
         self.__cooking_lvl = self._btwrange(lvl)
