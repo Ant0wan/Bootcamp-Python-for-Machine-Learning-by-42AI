@@ -11,13 +11,16 @@ class Recipe:
     """
 
     # pylint: disable=too-many-arguments
-    def __init__(self, name, lvl, time, ing, des, typ):
+    def __init__(
+            self, name, cooking_lvl, cooking_time, ingredients,
+            description, recipe_type
+            ):
         self.__name = self._only_str(name)
-        self.__cooking_lvl = self._btwrange(lvl)
-        self.__cooking_time = self._uptoinf(time)
-        self.__ingredients = self._only_list(ing)
-        self.__description = self._only_str(des)
-        self.__recipe_type = self._isdish(typ)
+        self.__cooking_lvl = self._btwrange(cooking_lvl)
+        self.__cooking_time = self._uptoinf(cooking_time)
+        self.__ingredients = self._only_list(ingredients)
+        self.__description = self._only_str(description)
+        self.__recipe_type = self._isdish(recipe_type)
 
     def __str__(self):
         """Return the string to print with the recipe info"""
