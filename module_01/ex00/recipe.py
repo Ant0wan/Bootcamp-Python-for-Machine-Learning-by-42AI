@@ -2,7 +2,7 @@
 Recipe Class Definition
 """
 
-dishtypes = ('starter', 'lunch', 'dessert')
+DISHTYPES = ('starter', 'lunch', 'dessert')
 
 
 class Recipe:
@@ -127,6 +127,6 @@ class Recipe:
     def _isdish(string):
         """Check whether it is a dish"""
         string = Recipe._only_str(string)
-        if string in dishtypes:
+        if string in DISHTYPES:
             return string
         raise ValueError('Not a valid dish')

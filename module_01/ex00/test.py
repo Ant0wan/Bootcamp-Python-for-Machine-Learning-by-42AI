@@ -3,11 +3,13 @@
 Test script for Recipe and Book Classes
 """
 
-from recipe import Recipe
+from recipe import Recipe, DISHTYPES
 from book import Book
 
 
 if __name__ == '__main__':
+    print(DISHTYPES)
+    DISHTYPES = ()
     tourte = Recipe('Tourte', 2, 70, ['pate', 'lardons'], "Etape1.", 'lunch')
     bread = Recipe('Bread', 4, 120, ['four', 'salt'], "Pain.", 'starter')
     bread.name = "Rotten bread"
@@ -24,6 +26,7 @@ if __name__ == '__main__':
     print(book._get_name())
     print(book.get_recipes_by_types('starter'))
 
+    print(DISHTYPES)
     # Test destructor
     del tourte
     del bread

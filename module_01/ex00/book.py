@@ -3,7 +3,7 @@ Book Class Definition
 """
 
 import datetime
-from recipe import dishtypes
+from recipe import DISHTYPES
 
 
 class Book(object):
@@ -20,7 +20,7 @@ class Book(object):
     def get_recipe_by_name(self, name):
         """Print a recipe with the name `name` and return the instance"""
         self.only_str(name)
-        for t in dishtypes:
+        for t in DISHTYPES:
             if self.__recipe_list.get(t):
                 if name is self.__recipe_list.get(t)[0].name:
                     print(self.__recipe_list.get(t)[0])
@@ -30,7 +30,7 @@ class Book(object):
     def get_recipes_by_types(self, recipe_type):
         """Get all recipe names for a given recipe_type """
         self.only_str(recipe_type)
-        if recipe_type in dishtypes:
+        if recipe_type in DISHTYPES:
             allnames = list()
             for i in self.__recipe_list.get(recipe_type):
                 allnames.append(i.name)
@@ -80,7 +80,7 @@ class Book(object):
     @staticmethod
     def only_dictoftype(lst):
         if isinstance(lst, dict):
-            for t in dishtypes:
+            for t in DISHTYPES:
                 if t not in lst.keys():
                     raise ValueError('Can only have dishtypes keys')
                 if not isinstance(lst.get(t), list):
