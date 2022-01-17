@@ -106,12 +106,10 @@ class Recipe:
     @staticmethod
     def _only_list(lst):
         """Check whether it is a list"""
-        if isinstance(lst, list):
-            for item in lst:
-                if not isinstance(item, str):
-                    raise ValueError('Value must be a string')
+        if (isinstance(lst, list)
+                and all(isinstance(item, str) for item in lst)):
             return list(lst)
-        raise ValueError('Value must be list')
+        raise ValueError('Value must be list containing only strings')
 
     @staticmethod
     def _btwrange(number):
