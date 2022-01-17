@@ -10,6 +10,11 @@ from book import Book
 if __name__ == '__main__':
     tourte = Recipe('Tourte', 2, 70, ['pate', 'lardons'], "Etape1.", 'lunch')
     bread = Recipe('Bread', 4, 120, ['four', 'salt'], "Pain.", 'starter')
+    bread.name = "Rotten bread"
+    bread.cooking_lvl = 5
+    print('', end='\n')
+    print(bread)
+    print('', end='\n')
     to_print = str(tourte)
     book = Book('GoodOmens', '2019-12-01', '2018-02-14',
                 {"starter": [], "lunch": [], "dessert": []})

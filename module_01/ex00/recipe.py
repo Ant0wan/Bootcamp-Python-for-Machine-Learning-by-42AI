@@ -86,46 +86,46 @@ class Recipe(object):
         self.__recipe_type = self.isdish(typ)
 
     @staticmethod
-    def only_str(s):
-        if isinstance(s, str):
-            return str(s)
-        else:
-            raise ValueError('Not a valid type')
+    def only_str(string):
+        """Check whether it is string"""
+        if isinstance(string, str):
+            return str(string)
+        raise ValueError('Not a valid type')
 
     @staticmethod
-    def only_int(n):
-        if isinstance(n, int):
-            return int(n)
-        else:
-            raise ValueError('Not a valid type')
+    def only_int(number):
+        """Check whether it is integer"""
+        if isinstance(number, int):
+            return int(number)
+        raise ValueError('Not a valid type')
 
     @staticmethod
     def only_list(lst):
+        """Check whether it is a list"""
         if isinstance(lst, list):
             return list(lst)
-        else:
-            raise ValueError('Value must be list')
+        raise ValueError('Value must be list')
 
     @classmethod
-    def btwrange(self, n):
-        n = self.only_int(n)
-        if int(n) in range(1, 6):
-            return n
-        else:
-            raise ValueError('Value must be between 1 to 5')
+    def btwrange(self, number):
+        """Check whether number is in range"""
+        number = self.only_int(number)
+        if int(number) in range(1, 6):
+            return number
+        raise ValueError('Value must be between 1 to 5')
 
     @classmethod
-    def uptoinf(self, n):
-        n = self.only_int(n)
-        if int(n) >= 0:
-            return n
-        else:
-            raise ValueError('Value must be between 0 to +inf')
+    def uptoinf(self, number):
+        """Check whether the number is greater than 0"""
+        number = self.only_int(number)
+        if int(number) >= 0:
+            return number
+        raise ValueError('Value must be between 0 to +inf')
 
     @classmethod
-    def isdish(self, s):
-        s = self.only_str(s)
-        if s in dishtypes:
-            return s
-        else:
-            raise ValueError('Not a valid dish')
+    def isdish(self, string):
+        """Check whether it is a dish"""
+        string = self.only_str(string)
+        if string in dishtypes:
+            return string
+        raise ValueError('Not a valid dish')
