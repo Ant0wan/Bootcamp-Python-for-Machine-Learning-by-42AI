@@ -5,17 +5,17 @@ Recipe Class Definition
 dishtypes = ('starter', 'lunch', 'dessert')
 
 
-class Recipe(object):
+class Recipe():
     ''' Recipe class
  Init name, cooking_lvl, cooking_time, ingredients, description and type'''
 
     def __init__(self, name, lvl, time, ing, des, typ):
         self.__name = self._only_str(name)
-        self.__cooking_lvl = self.btwrange(lvl)
-        self.__cooking_time = self._only_int(time)
+        self.__cooking_lvl = self._btwrange(lvl)
+        self.__cooking_time = self._uptoinf(time)
         self.__ingredients = self._only_list(ing)
         self.__description = self._only_str(des)
-        self.__recipe_type = self.isdish(typ)
+        self.__recipe_type = self._isdish(typ)
 
     def __str__(self):
         """Return the string to print with the recipe info"""
@@ -67,7 +67,7 @@ class Recipe(object):
 
     @cooking_lvl.setter
     def cooking_lvl(self, lvl):
-        self.__cooking_lvl = self.btwrange(lvl)
+        self.__cooking_lvl = self._btwrange(lvl)
 
     @cooking_time.setter
     def cooking_time(self, time):
@@ -83,7 +83,7 @@ class Recipe(object):
 
     @recipe_type.setter
     def recipe_type(self, typ):
-        self.__recipe_type = self.isdish(typ)
+        self.__recipe_type = self._isdish(typ)
 
     @staticmethod
     def _only_str(string):
@@ -106,26 +106,26 @@ class Recipe(object):
             return list(lst)
         raise ValueError('Value must be list')
 
-    @classmethod
-    def btwrange(self, number):
+    @staticmethod
+    def _btwrange(number):
         """Check whether number is in range"""
-        number = self._only_int(number)
+        number = Recipe._only_int(number)
         if int(number) in range(1, 6):
             return number
         raise ValueError('Value must be between 1 to 5')
 
-    @classmethod
-    def uptoinf(self, number):
+    @staticmethod
+    def _uptoinf(number):
         """Check whether the number is greater than 0"""
-        number = self._only_int(number)
+        number = Recipe._only_int(number)
         if int(number) >= 0:
             return number
         raise ValueError('Value must be between 0 to +inf')
 
-    @classmethod
-    def isdish(self, string):
+    @staticmethod
+    def _isdish(string):
         """Check whether it is a dish"""
-        string = self._only_str(string)
+        string = Recipe._only_str(string)
         if string in dishtypes:
             return string
         raise ValueError('Not a valid dish')
