@@ -10,11 +10,11 @@ class Recipe(object):
  Init name, cooking_lvl, cooking_time, ingredients, description and type'''
 
     def __init__(self, name, lvl, time, ing, des, typ):
-        self.__name = self.only_str(name)
+        self.__name = self._only_str(name)
         self.__cooking_lvl = self.btwrange(lvl)
-        self.__cooking_time = self.only_int(time)
-        self.__ingredients = self.only_list(ing)
-        self.__description = self.only_str(des)
+        self.__cooking_time = self._only_int(time)
+        self.__ingredients = self._only_list(ing)
+        self.__description = self._only_str(des)
         self.__recipe_type = self.isdish(typ)
 
     def __str__(self):
@@ -63,7 +63,7 @@ class Recipe(object):
 
     @name.setter
     def name(self, name):
-        self.__name = self.only_str(name)
+        self.__name = self._only_str(name)
 
     @cooking_lvl.setter
     def cooking_lvl(self, lvl):
@@ -71,36 +71,36 @@ class Recipe(object):
 
     @cooking_time.setter
     def cooking_time(self, time):
-        self.__cooking_time = self.only_int(time)
+        self.__cooking_time = self._only_int(time)
 
     @ingredients.setter
     def ingredients(self, ing):
-        self.__ingredients = self.only_list(ing)
+        self.__ingredients = self._only_list(ing)
 
     @description.setter
     def description(self, des):
-        self.__description = self.only_str(des)
+        self.__description = self._only_str(des)
 
     @recipe_type.setter
     def recipe_type(self, typ):
         self.__recipe_type = self.isdish(typ)
 
     @staticmethod
-    def only_str(string):
+    def _only_str(string):
         """Check whether it is string"""
         if isinstance(string, str):
             return str(string)
         raise ValueError('Not a valid type')
 
     @staticmethod
-    def only_int(number):
+    def _only_int(number):
         """Check whether it is integer"""
         if isinstance(number, int):
             return int(number)
         raise ValueError('Not a valid type')
 
     @staticmethod
-    def only_list(lst):
+    def _only_list(lst):
         """Check whether it is a list"""
         if isinstance(lst, list):
             return list(lst)
@@ -109,7 +109,7 @@ class Recipe(object):
     @classmethod
     def btwrange(self, number):
         """Check whether number is in range"""
-        number = self.only_int(number)
+        number = self._only_int(number)
         if int(number) in range(1, 6):
             return number
         raise ValueError('Value must be between 1 to 5')
@@ -117,7 +117,7 @@ class Recipe(object):
     @classmethod
     def uptoinf(self, number):
         """Check whether the number is greater than 0"""
-        number = self.only_int(number)
+        number = self._only_int(number)
         if int(number) >= 0:
             return number
         raise ValueError('Value must be between 0 to +inf')
@@ -125,7 +125,7 @@ class Recipe(object):
     @classmethod
     def isdish(self, string):
         """Check whether it is a dish"""
-        string = self.only_str(string)
+        string = self._only_str(string)
         if string in dishtypes:
             return string
         raise ValueError('Not a valid dish')
