@@ -6,8 +6,9 @@ DISHTYPES = ('starter', 'lunch', 'dessert')
 
 
 class Recipe:
-    ''' Recipe class
-    Init name, cooking_lvl, cooking_time, ingredients, description and type'''
+    """Recipe class
+    Init name, cooking_lvl, cooking_time, ingredients, description and type
+    """
 
     # pylint: disable=too-many-arguments
     def __init__(self, name, lvl, time, ing, des, typ):
@@ -20,13 +21,12 @@ class Recipe:
 
     def __str__(self):
         """Return the string to print with the recipe info"""
-        txt = self.__name
-        txt += '\nLevel: ' + str(self.__cooking_lvl) + '/5'
-        txt += '\nTime: ' + str(self.__cooking_time) + 'min'
-        txt += '\nIngredients: ' + ', '.join(self.__ingredients)
-        txt += '\n' + self.__description
-        txt += '\nType: ' + self.__recipe_type
-        return txt
+        return f"{self.__name}\
+                \nLevel: {self.__cooking_lvl}/5\
+                \nTime: {self.__cooking_time}min\
+                \nIngredients: {', '.join(self.__ingredients)}\
+                \n{self.__description}\
+                \nType: {self.__recipe_type}"
 
     def __del__(self):
         """Destructor"""
