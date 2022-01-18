@@ -3,7 +3,7 @@ Book Class Definition
 """
 
 import datetime
-from recipe import DISHTYPES
+from recipe import FormatCheck
 
 
 class Book(object):
