@@ -11,6 +11,7 @@ class Book:
     Init name, last_update, creation_date, recipe_list
     """
 
+    # pylint: disable=too-many-arguments
     def __init__(self, name, last_update, creation_date, recipe_list):
         self.__name = only_str(name)
         self.__last_update = self._isdate(last_update)
@@ -42,18 +43,22 @@ class Book:
         """Add a recipe to the book and update last_update"""
         pass
 
-    def _get_name(self):
+    @property
+    def name(self):
+        """'Name' property"""
         return self.__name
 
-    def _set_name(self, name):
+    @name.setter
+    def name(self, name):
         self.__name = only_str(name)
-    name = property(_get_name, _set_name)
 
-    def _get_last_update(self):
+    @property
+    def last_update(self):
         return self.__last_update
 
-    def _set_last_update(self, last_update):
-        self.__last_update = self.isdate(last_update)
+    @last_update.setter
+    def last_update(self, last_update):
+        self.__last_update = self._isdate(last_update)
     last_update = property(_get_last_update, _set_last_update)
 
     def _get_creation_date(self):

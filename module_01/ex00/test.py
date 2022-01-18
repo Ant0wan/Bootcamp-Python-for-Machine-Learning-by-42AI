@@ -23,7 +23,7 @@ if __name__ == '__main__':
                 {"starter": [], "lunch": [], "dessert": []})
 #                {"starter": [tourte, bread], "lunch": [], "dessert": []})
 #    book.get_recipe_by_name('Tourte')
-    print(book._get_name())
+    print(book.name)
     print(book.get_recipes_by_types('starter'))
 
     # Test destructor
