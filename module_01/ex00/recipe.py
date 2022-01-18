@@ -2,74 +2,63 @@
 Recipe Class Definition
 """
 
-class FormatCheck:
-    """Prent class for checking arguments format of:
-    Recipe class
-    Book class
-    """
-
-    __DISHTYPES = ('starter', 'lunch', 'dessert')
-
-    #???
-    def dishtypes(cls):
-        """'Recipe type' property"""
-        return cls.__DISHTYPES
-
-    @staticmethod
-    def _notfalsy(something):
-        """Check whether argument is falsy"""
-        if something:
-            return something
-        raise ValueError('Value must not be empty')
-
-    @staticmethod
-    def _only_str(string):
-        """Check whether it is string"""
-        if isinstance(string, str):
-            return str(string)
-        raise ValueError('Value must be a string')
-
-    @staticmethod
-    def _only_int(number):
-        """Check whether it is integer"""
-        if isinstance(number, int):
-            return int(number)
-        raise ValueError('Value must be an integer')
-
-    @staticmethod
-    def _only_list(lst):
-        """Check whether it is a list"""
-        if (isinstance(lst, list)
-                and all(isinstance(item, str) for item in lst)):
-            return list(lst)
-        raise ValueError('Value must be list containing only strings')
-
-    @staticmethod
-    def _btwrange(number):
-        """Check whether number is in range"""
-        number = Recipe._only_int(number)
-        if int(number) in range(1, 6):
-            return number
-        raise ValueError('Value must be between 1 to 5')
-
-    @staticmethod
-    def _uptoinf(number):
-        """Check whether the number is greater than 0"""
-        number = Recipe._only_int(number)
-        if int(number) >= 0:
-            return number
-        raise ValueError('Value must be between 0 to +inf')
-
-    @staticmethod
-    def _isdish(string):
-        """Check whether it is a dish"""
-        string = Recipe._only_str(string)
-        if string in FormatCheck.__DISHTYPES:
-            return string
-        raise ValueError('Not a valid dish')
+DISHTYPES = ('starter', 'lunch', 'dessert')
 
 
-class Recipe(FormatCheck):
+def notfalsy(something):
+    """Check whether argument is falsy"""
+    if something:
+        return something
+    raise ValueError('Value must not be empty')
+
+
+def only_str(string):
+    """Check whether it is string"""
+    if isinstance(string, str):
+        return str(string)
+    raise ValueError('Value must be a string')
+
+
+def only_int(number):
+    """Check whether it is integer"""
+    if isinstance(number, int):
+        return int(number)
+    raise ValueError('Value must be an integer')
+
+
+def only_list(lst):
+    """Check whether it is a list"""
+    if (isinstance(lst, list)
+            and all(isinstance(item, str) for item in lst)):
+        return list(lst)
+    raise ValueError('Value must be list containing only strings')
+
+
+def btwrange(number):
+    """Check whether number is in range"""
+    number = only_int(number)
+    if int(number) in range(1, 6):
+        return number
+    raise ValueError('Value must be between 1 to 5')
+
+
+def uptoinf(number):
+    """Check whether the number is greater than 0"""
+    number = only_int(number)
+    if int(number) >= 0:
+        return number
+    raise ValueError('Value must be between 0 to +inf')
+
+
+def isdish(string):
+    """Check whether it is a dish"""
+    string = only_str(string)
+    if string in DISHTYPES:
+        return string
+    raise ValueError('Not a valid dish')
+
+
+class Recipe:
     """Recipe class
     Init name, cooking_lvl, cooking_time, ingredients, description and type
     """
@@ -79,12 +68,12 @@ class Recipe(FormatCheck):
             self, name, cooking_lvl, cooking_time, ingredients,
             description, recipe_type
             ):
-        self.__name = self._notfalsy(self._only_str(name))
-        self.__cooking_lvl = self._btwrange(cooking_lvl)
-        self.__cooking_time = self._uptoinf(cooking_time)
-        self.__ingredients = self._only_list(ingredients)
-        self.__description = self._only_str(description)
-        self.__recipe_type = self._isdish(recipe_type)
+        self.__name = notfalsy(only_str(name))
+        self.__cooking_lvl = btwrange(cooking_lvl)
+        self.__cooking_time = uptoinf(cooking_time)
+        self.__ingredients = only_list(ingredients)
+        self.__description = only_str(description)
+        self.__recipe_type = isdish(recipe_type)
 
     def __str__(self):
         """Return the string to print with the recipe info"""
@@ -127,25 +116,24 @@ class Recipe(FormatCheck):
 
     @name.setter
     def name(self, name):
-        self.__name = self._only_str(name)
+        self.__name = only_str(name)
 
     @cooking_lvl.setter
     def cooking_lvl(self, cooking_lvl):
-        self.__cooking_lvl = self._btwrange(cooking_lvl)
+        self.__cooking_lvl = btwrange(cooking_lvl)
 
     @cooking_time.setter
     def cooking_time(self, cooking_time):
-        self.__cooking_time = self._only_int(cooking_time)
+        self.__cooking_time = only_int(cooking_time)
 
     @ingredients.setter
     def ingredients(self, ingredients):
-        self.__ingredients = self._only_list(ingredients)
+        self.__ingredients = only_list(ingredients)
 
     @description.setter
     def description(self, description):
-        self.__description = self._only_str(description)
+        self.__description = only_str(description)
 
     @recipe_type.setter
     def recipe_type(self, recipe_type):
-        self.__recipe_type = self._isdish(recipe_type)
-
+        self.__recipe_type = isdish(recipe_type)
