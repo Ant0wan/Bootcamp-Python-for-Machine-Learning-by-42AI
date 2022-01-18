@@ -15,7 +15,6 @@ if __name__ == '__main__':
 #    bread = Recipe('Bread', 4, 120, [4545, 'salt'], "Pain.", 'starter')
     bread.name = "Rotten bread"
     bread.cooking_lvl = 5
-    print(Recipe._only_int(1))
     print('', end='\n')
     print(bread)
     print('', end='\n')
