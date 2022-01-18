@@ -13,9 +13,9 @@ class Book:
 
     def __init__(self, name, last_update, creation_date, recipe_list):
         self.__name = only_str(name)
-        self.__last_update = self.isdate(last_update)
-        self.__creation_date = self.isdate(creation_date)
-        self.__recipe_list = only_dictoftype(recipe_list)
+        self.__last_update = self._isdate(last_update)
+        self.__creation_date = self._isdate(creation_date)
+        self.__recipe_list = self._only_dictoftype(recipe_list)
 
     def get_recipe_by_name(self, name):
         """Print a recipe with the name `name` and return the instance"""
