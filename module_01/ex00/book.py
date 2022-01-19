@@ -4,7 +4,7 @@ Book Class Definition
 
 import datetime
 
-from recipe import DISHTYPES, only_str, only_int, only_list
+from recipe import DISHTYPES, only_str, only_int, only_strlist
 
 
 class Book:
@@ -50,7 +50,7 @@ class Book:
 
     @recipe_list.setter
     def recipe_list(self, recipe_list):
-        self.__recipe_list = only_list(recipe_list)
+        self.__recipe_list = only_strlist(recipe_list)
 
     @staticmethod
     def _only_dictoftype(lst):

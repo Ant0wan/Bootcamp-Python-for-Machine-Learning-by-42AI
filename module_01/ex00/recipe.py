@@ -26,7 +26,7 @@ def only_int(number):
     raise ValueError('Value must be an integer')
 
 
-def only_list(lst):
+def only_strlist(lst):
     """Check whether it is a list"""
     if (isinstance(lst, list)
             and all(isinstance(item, str) for item in lst)):
@@ -71,7 +71,7 @@ class Recipe:
         self.__name = notfalsy(only_str(name))
         self.__cooking_lvl = btwrange(cooking_lvl)
         self.__cooking_time = uptoinf(cooking_time)
-        self.__ingredients = only_list(ingredients)
+        self.__ingredients = only_strlist(ingredients)
         self.__description = only_str(description)
         self.__recipe_type = isdish(recipe_type)
 
@@ -128,7 +128,7 @@ class Recipe:
 
     @ingredients.setter
     def ingredients(self, ingredients):
-        self.__ingredients = only_list(ingredients)
+        self.__ingredients = only_strlist(ingredients)
 
     @description.setter
     def description(self, description):

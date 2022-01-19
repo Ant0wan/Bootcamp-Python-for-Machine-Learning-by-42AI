@@ -16,6 +16,7 @@ class TestRecipeClass(unittest.TestCase):
     def test_dishtypes_constant_value(self):
         """Test DISHTYPES validity"""
         self.assertIsInstance(DISHTYPES, tuple, "given DISHTYPES is not instance of tuple")
+        self.assertTrue(DISHTYPES)
 
     def test_notfalsy(self):
         """Test notfalsy function"""
@@ -62,6 +63,18 @@ class TestRecipeClass(unittest.TestCase):
         self.assertEqual(btwrange(4), 4)
         self.assertEqual(btwrange(5), 5)
 
+    def test_only_list(self):
+        """Test """
+        self.assertRaises(ValueError, only_strlist, "Hello")
+        self.assertRaises(ValueError, only_strlist, ("plop", "toto"))
+        self.assertRaises(ValueError, only_strlist, 0)
+        self.assertRaises(ValueError, only_strlist, ["Toto", 0, ["Hey"]])
+        self.assertEqual(only_strlist(["Hello", "World"]), ["Hello", "World"])
+        self.assertEqual(only_strlist(["", "World"]), ["", "World"])
+
+#    def test_(self):
+#        """Test """
+#        self.
 
 
 if __name__ == '__main__':
