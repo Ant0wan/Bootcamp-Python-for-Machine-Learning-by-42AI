@@ -56,6 +56,13 @@ class Book:
         self.__recipe_list = only_strlist(recipe_list)
 
     @staticmethod
+    def _isdate(val):
+        if datetime.datetime.strptime(val, '%Y-%m-%d'):
+            return val
+        raise ValueError("Incorrect data format, should be YYYY-MM-DD")
+
+# broken method
+    @staticmethod
     def _only_dictoftype(lst):
         if isinstance(lst, dict):
             for dishtype in DISHTYPES:
@@ -65,12 +72,6 @@ class Book:
                     raise ValueError('Items must be of list type')
             return dict(lst)
         raise ValueError('Value must be dict')
-
-    @staticmethod
-    def _isdate(val):
-        if datetime.datetime.strptime(val, '%Y-%m-%d'):
-            return val
-        raise ValueError("Incorrect data format, should be YYYY-MM-DD")
 
     def get_recipe_by_name(self, name):
         """Print a recipe with the name `name` and return the instance"""
@@ -95,4 +96,7 @@ class Book:
 
     def add_recipe(self, recipe):
         """Add a recipe to the book and update last_update"""
-        pass
+        if isinstance(recipe, Recipe):
+            print(recipe)
+            pass
+        raise ValueError('Value must be of type Recipe')
