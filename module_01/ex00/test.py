@@ -97,9 +97,22 @@ class TestRecipeClass(unittest.TestCase):
     """Test Class for Recipe class unit tests"""
 
     def test_init(self):
-        """Test """
+        """Test init"""
         tourte = Recipe(name='Tourte', cooking_lvl=2, cooking_time=70, ingredients=['pate', 'lardons'], description="Etape1.", recipe_type='lunch')
         bread = Recipe('Bread', 4, 120, ['four', 'salt'], "Pain.", 'starter')
+
+    def test_getters(self):
+        """Test getters"""
+        name, cooking_lvl, cooking_time = 'Bread', 4, 120
+        ingredients, description, recipe_type = ['four', 'salt'], 'Pain.', DISHTYPES[0]
+        bread = Recipe(name, cooking_lvl, cooking_time, ingredients, description, recipe_type)
+        self.assertEqual(bread.name, name)
+        self.assertEqual(bread.cooking_lvl, cooking_lvl)
+        self.assertEqual(bread.cooking_time, cooking_time)
+        self.assertEqual(bread.ingredients, ingredients)
+        self.assertEqual(bread.description, description)
+        self.assertEqual(bread.recipe_type, recipe_type)
+
 
     #def test_false_init(self):
     #    self.assertRaises(ValueError, Recipe("", 4, 120, ['four', 'salt'], "Pain.", 'starter'))
