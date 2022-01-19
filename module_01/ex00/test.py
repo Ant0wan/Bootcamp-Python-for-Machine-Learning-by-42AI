@@ -29,6 +29,7 @@ class TestRecipeModule(unittest.TestCase):
         self.assertEqual(notfalsy(" "), " ")
 
     def test_only_str(self):
+        """Test only_str function"""
         self.assertRaises(ValueError, only_str, 321)
         self.assertRaises(ValueError, only_str, ())
         self.assertRaises(ValueError, only_str, ("Hello", "Bla"))
@@ -86,7 +87,7 @@ class TestRecipeModule(unittest.TestCase):
         self.assertEqual(uptoinf(100000), 100000)
 
     def test_isdish(self):
-        """Test """
+        """Test isdish function"""
         self.assertRaises(ValueError, isdish, "")
         self.assertRaises(ValueError, isdish, 123)
         self.assertRaises(ValueError, isdish, ["", "Hello"])
@@ -97,12 +98,12 @@ class TestRecipeClass(unittest.TestCase):
     """Test Class for Recipe class unit tests"""
 
     def test_init(self):
-        """Test init"""
+        """Test instantiate Recipe class"""
         tourte = Recipe(name='Tourte', cooking_lvl=2, cooking_time=70, ingredients=['pate', 'lardons'], description="Etape1.", recipe_type='lunch')
         bread = Recipe('Bread', 4, 120, ['four', 'salt'], "Pain.", 'starter')
 
     def test_getters(self):
-        """Test getters"""
+        """Test Recipe getters"""
         name, cooking_lvl, cooking_time = 'Bread', 4, 120
         ingredients, description, recipe_type = ['four', 'salt'], 'Pain.', DISHTYPES[0]
         bread = Recipe(name, cooking_lvl, cooking_time, ingredients, description, recipe_type)
@@ -113,6 +114,21 @@ class TestRecipeClass(unittest.TestCase):
         self.assertEqual(bread.description, description)
         self.assertEqual(bread.recipe_type, recipe_type)
 
+    def test_setters(self):
+        """Test Recipe setters"""
+        bread = Recipe('Bread', 4, 120, ['four', 'salt'], 'C\'est du pain', DISHTYPES[0])
+        bread.name = 'Pain'
+        self.assertEqual(bread.name, 'Pain')
+        bread.cooking_lvl = 3
+        self.assertEqual(bread.cooking_lvl, 3)
+        bread.cooking_time = 90
+        self.assertEqual(bread.cooking_time, 90)
+        bread.ingredients = ['four', 'water']
+        self.assertEqual(bread.ingredients, ['four', 'water'])
+        bread.description = 'C\'est aussi du pain'
+        self.assertEqual(bread.description, 'C\'est aussi du pain')
+        bread.recipe_type = DISHTYPES[0]
+        self.assertEqual(bread.recipe_type, DISHTYPES[0])
 
     #def test_false_init(self):
     #    self.assertRaises(ValueError, Recipe("", 4, 120, ['four', 'salt'], "Pain.", 'starter'))
