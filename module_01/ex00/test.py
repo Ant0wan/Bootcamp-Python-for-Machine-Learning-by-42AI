@@ -98,7 +98,7 @@ class TestRecipeClass(unittest.TestCase):
     """Test Class for Recipe class unit tests"""
 
     def test_init(self):
-        """Test instantiate Recipe class"""
+        """Test instantiate Recipe class object"""
         tourte = Recipe(name='Tourte', cooking_lvl=2, cooking_time=70, ingredients=['pate', 'lardons'], description="Etape1.", recipe_type='lunch')
         bread = Recipe('Bread', 4, 120, ['four', 'salt'], "Pain.", 'starter')
 
@@ -134,6 +134,21 @@ class TestRecipeClass(unittest.TestCase):
         """Test Recipe class object as a string"""
         pancakes = Recipe('Pancakes', 4, 120, ['salt', 'salt'], "Pain.", 'starter')
         self.assertEqual(str(pancakes), "Name: Pancakes\nLevel: 4/5\nTime: 120min\nIngredients: salt, salt\nDescription: Pain.\nType: starter")
+
+
+class TestBookClass(unittest.TestCase):
+    """Test Class for Book class unit tests"""
+
+    def test_isdate(self):
+        self.assertRaises(ValueError, Book._isdate, "2019-12-010")
+        self.assertRaises(ValueError, Book._isdate, "2019-19-10")
+        self.assertRaises(ValueError, Book._isdate, "2019-00-00")
+        self.assertRaises(ValueError, Book._isdate, "0000-00-00")
+        self.assertEqual(Book._isdate("2019-12-10"), "2019-12-10")
+
+    def test_init(self):
+        """Test instantiate Book class object"""
+        tourte = Recipe(name='Tourte', cooking_lvl=2, cooking_time=70, ingredients=['pate', 'lardons'], description="Etape1.", recipe_type='lunch')
 
 
 if __name__ == '__main__':

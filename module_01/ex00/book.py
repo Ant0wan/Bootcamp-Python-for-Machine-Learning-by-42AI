@@ -72,7 +72,7 @@ class Book:
             date = datetime.datetime.strptime(val, '%Y-%m-%d')
         except ValueError:
             raise ValueError("Incorrect data format, should be YYYY-MM-DD")
-        return date
+        return val
 
     def get_recipe_by_name(self, name):
         """Print a recipe with the name `name` and return the instance"""
