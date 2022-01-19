@@ -78,11 +78,11 @@ class Recipe:
     def __str__(self):
         """Return the string to print with the recipe info"""
         return f"Name: {self.__name}\
-                \nLevel: {self.__cooking_lvl}/5\
-                \nTime: {self.__cooking_time}min\
-                \nIngredients: {', '.join(self.__ingredients)}\
-                \nDescription: {self.__description}\
-                \nType: {self.__recipe_type}"
+\nLevel: {self.__cooking_lvl}/5\
+\nTime: {self.__cooking_time}min\
+\nIngredients: {', '.join(self.__ingredients)}\
+\nDescription: {self.__description}\
+\nType: {self.__recipe_type}"
 
     @property
     def name(self):

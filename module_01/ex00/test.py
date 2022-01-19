@@ -130,25 +130,15 @@ class TestRecipeClass(unittest.TestCase):
         bread.recipe_type = DISHTYPES[0]
         self.assertEqual(bread.recipe_type, DISHTYPES[0])
 
-    #def test_false_init(self):
-    #    self.assertRaises(ValueError, Recipe("", 4, 120, ['four', 'salt'], "Pain.", 'starter'))
-
-#    def test_(self):
-#        """Test """
-#        self.
+    def test_classobject_as_string(self):
+        """Test Recipe class object as a string"""
+        pancakes = Recipe('Pancakes', 4, 120, ['salt', 'salt'], "Pain.", 'starter')
+        self.assertEqual(str(pancakes), "Name: Pancakes\nLevel: 4/5\nTime: 120min\nIngredients: salt, salt\nDescription: Pain.\nType: starter")
 
 
 if __name__ == '__main__':
     unittest.main()
-##    bread = Recipe("", 4, 120, ['four', 'salt'], "Pain.", 'starter')
-##    bread = Recipe(0, 4, 120, ['four', 'salt'], "Pain.", 'starter')
-##    bread = Recipe('Bread', 4, 120, [4545, 'salt'], "Pain.", 'starter')
-#    bread.name = "Rotten bread"
-#    bread.cooking_lvl = 5
-#    print('', end='\n')
-#    print(bread)
-#    print('', end='\n')
-#    to_print = str(tourte)
+
 #    book = Book('GoodOmens', '2019-12-01', '2018-02-14',
 #                {"starter": [], "lunch": [], "dessert": []})
 ##                {"starter": [tourte, bread], "lunch": [], "dessert": []})
