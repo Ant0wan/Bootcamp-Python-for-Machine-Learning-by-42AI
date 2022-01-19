@@ -1,13 +1,12 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/42-AI/bootcamp_python/master/assets/42ai_logo.png" width="100" alt="42 AI Logo" />
+  <img src="logo.png" width="100" alt="PythonModules" />
 </p>
 
 <h1 align="center">
 	Python Modules
-	
-	
+
 [![Pylint](https://github.com/Ant0wan/PythonModules/actions/workflows/pylint.yml/badge.svg?branch=master)](https://github.com/Ant0wan/PythonModules/actions/workflows/pylint.yml)
-	
+
 </h1>
 
 <br/>
