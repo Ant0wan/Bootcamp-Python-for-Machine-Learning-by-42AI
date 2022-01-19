@@ -11,7 +11,7 @@ from book import Book
 
 
 class TestRecipeModule(unittest.TestCase):
-    """Test Class for Recipe class unit tests"""
+    """Test Class for functions and constant from recipe module"""
 
     def test_dishtypes_constant_value(self):
         """Test DISHTYPES validity"""
@@ -85,6 +85,25 @@ class TestRecipeModule(unittest.TestCase):
         self.assertEqual(uptoinf(0), 0)
         self.assertEqual(uptoinf(100000), 100000)
 
+    def test_isdish(self):
+        """Test """
+        self.assertRaises(ValueError, isdish, "")
+        self.assertRaises(ValueError, isdish, 123)
+        self.assertRaises(ValueError, isdish, ["", "Hello"])
+        self.assertEqual(isdish(DISHTYPES[0]), DISHTYPES[0])
+
+
+class TestRecipeClass(unittest.TestCase):
+    """Test Class for Recipe class unit tests"""
+
+    def test_init(self):
+        """Test """
+        tourte = Recipe(name='Tourte', cooking_lvl=2, cooking_time=70, ingredients=['pate', 'lardons'], description="Etape1.", recipe_type='lunch')
+        bread = Recipe('Bread', 4, 120, ['four', 'salt'], "Pain.", 'starter')
+
+    #def test_false_init(self):
+    #    self.assertRaises(ValueError, Recipe("", 4, 120, ['four', 'salt'], "Pain.", 'starter'))
+
 #    def test_(self):
 #        """Test """
 #        self.
@@ -92,8 +111,6 @@ class TestRecipeModule(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-#    tourte = Recipe(name='Tourte', cooking_lvl=2, cooking_time=70, ingredients=['pate', 'lardons'], description="Etape1.", recipe_type='lunch')
-#    bread = Recipe('Bread', 4, 120, ['four', 'salt'], "Pain.", 'starter')
 ##    bread = Recipe("", 4, 120, ['four', 'salt'], "Pain.", 'starter')
 ##    bread = Recipe(0, 4, 120, ['four', 'salt'], "Pain.", 'starter')
 ##    bread = Recipe('Bread', 4, 120, [4545, 'salt'], "Pain.", 'starter')
