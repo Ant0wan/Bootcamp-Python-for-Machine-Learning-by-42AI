@@ -3,30 +3,49 @@
 Test script for Recipe and Book Classes
 """
 
-from recipe import Recipe
+import unittest
+
+from recipe import *
+
 from book import Book
 
 
-if __name__ == '__main__':
-    tourte = Recipe('Tourte', 2, 70, ['pate', 'lardons'], "Etape1.", 'lunch')
-    bread = Recipe('Bread', 4, 120, ['four', 'salt'], "Pain.", 'starter')
-#    bread = Recipe("", 4, 120, ['four', 'salt'], "Pain.", 'starter')
-#    bread = Recipe(0, 4, 120, ['four', 'salt'], "Pain.", 'starter')
-#    bread = Recipe('Bread', 4, 120, [4545, 'salt'], "Pain.", 'starter')
-    bread.name = "Rotten bread"
-    bread.cooking_lvl = 5
-    print('', end='\n')
-    print(bread)
-    print('', end='\n')
-    to_print = str(tourte)
-    book = Book('GoodOmens', '2019-12-01', '2018-02-14',
-                {"starter": [], "lunch": [], "dessert": []})
-#                {"starter": [tourte, bread], "lunch": [], "dessert": []})
-#    book.get_recipe_by_name('Tourte')
-    print(book.name)
-    print(book.get_recipes_by_types('starter'))
+class TestRecipeClass(unittest.TestCase):
 
-    # Test destructor
-    del tourte
-    del bread
-    del book
+    def test_only_int(self):
+        self.assertRaises(ValueError, only_int, "Hello")
+        self.assertRaises(ValueError, only_int, "12")
+        self.assertRaises(ValueError, only_int, "")
+        self.assertRaises(ValueError, only_int, (12, 11))
+        self.assertRaises(ValueError, only_int, ("Hello", 11))
+        self.assertEqual(only_int(0), 0)
+        self.assertEqual(only_int(3213210), 3213210)
+        self.assertEqual(only_int(-1), -1)
+
+
+
+unittest.main()
+
+#if __name__ == '__main__':
+#    tourte = Recipe(name='Tourte', cooking_lvl=2, cooking_time=70, ingredients=['pate', 'lardons'], description="Etape1.", recipe_type='lunch')
+#    bread = Recipe('Bread', 4, 120, ['four', 'salt'], "Pain.", 'starter')
+##    bread = Recipe("", 4, 120, ['four', 'salt'], "Pain.", 'starter')
+##    bread = Recipe(0, 4, 120, ['four', 'salt'], "Pain.", 'starter')
+##    bread = Recipe('Bread', 4, 120, [4545, 'salt'], "Pain.", 'starter')
+#    bread.name = "Rotten bread"
+#    bread.cooking_lvl = 5
+#    print('', end='\n')
+#    print(bread)
+#    print('', end='\n')
+#    to_print = str(tourte)
+#    book = Book('GoodOmens', '2019-12-01', '2018-02-14',
+#                {"starter": [], "lunch": [], "dessert": []})
+##                {"starter": [tourte, bread], "lunch": [], "dessert": []})
+##    book.get_recipe_by_name('Tourte')
+#    print(book.name )
+#    print(book.get_recipes_by_types('starter'))
+#
+#    # Test destructor
+#    del tourte
+#    del bread
+#    del book
