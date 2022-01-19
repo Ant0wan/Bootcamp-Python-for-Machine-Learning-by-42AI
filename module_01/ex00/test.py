@@ -13,6 +13,10 @@ from book import Book
 class TestRecipeClass(unittest.TestCase):
     """Test Class for Recipe class unit tests"""
 
+    def test_dishtypes_constant_value(self):
+        """Test DISHTYPES validity"""
+        self.assertIsInstance(DISHTYPES, tuple, "given DISHTYPES is not instance of tuple")
+
     def test_notfalsy(self):
         """Test notfalsy function"""
         self.assertRaises(ValueError, notfalsy, "")
@@ -42,11 +46,26 @@ class TestRecipeClass(unittest.TestCase):
         self.assertEqual(only_int(3213210), 3213210)
         self.assertEqual(only_int(-1), -1)
 
+    def test_btwrange(self):
+        """Test btwrange function"""
+        self.assertRaises(ValueError, btwrange, "Hello")
+        self.assertRaises(ValueError, btwrange, -1)
+        self.assertRaises(ValueError, btwrange, 0)
+        self.assertRaises(ValueError, btwrange, 6)
+        self.assertRaises(ValueError, btwrange, 4.5)
+        self.assertRaises(ValueError, btwrange, ())
+        self.assertRaises(ValueError, btwrange, [2])
+        self.assertRaises(ValueError, btwrange, (2, 3))
+        self.assertEqual(btwrange(1), 1)
+        self.assertEqual(btwrange(2), 2)
+        self.assertEqual(btwrange(3), 3)
+        self.assertEqual(btwrange(4), 4)
+        self.assertEqual(btwrange(5), 5)
 
 
-unittest.main()
 
-#if __name__ == '__main__':
+if __name__ == '__main__':
+    unittest.main()
 #    tourte = Recipe(name='Tourte', cooking_lvl=2, cooking_time=70, ingredients=['pate', 'lardons'], description="Etape1.", recipe_type='lunch')
 #    bread = Recipe('Bread', 4, 120, ['four', 'salt'], "Pain.", 'starter')
 ##    bread = Recipe("", 4, 120, ['four', 'salt'], "Pain.", 'starter')

@@ -39,7 +39,7 @@ def btwrange(number):
     number = only_int(number)
     if int(number) in range(1, 6):
         return number
-    raise ValueError('Value must be between 1 to 5')
+    raise ValueError('Value must be an integer between 1 to 5')
 
 
 def uptoinf(number):
