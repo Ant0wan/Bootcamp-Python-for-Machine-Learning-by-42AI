@@ -23,6 +23,14 @@ class TestRecipeClass(unittest.TestCase):
         self.assertEqual(notfalsy(("", 0)), ("", 0))
         self.assertEqual(notfalsy(" "), " ")
 
+    def test_only_str(self):
+        self.assertRaises(ValueError, only_str, 321)
+        self.assertRaises(ValueError, only_str, ())
+        self.assertRaises(ValueError, only_str, ("Hello", "Bla"))
+        self.assertEqual(only_str(""), "")
+        self.assertEqual(only_str(" "), " ")
+        self.assertEqual(only_str("Hello world 321"), "Hello world 321")
+
     def test_only_int(self):
         """Test only_int function"""
         self.assertRaises(ValueError, only_int, "Hello")
