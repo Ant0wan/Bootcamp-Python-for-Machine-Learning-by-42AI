@@ -68,11 +68,9 @@ class Book:
 
     @staticmethod
     def _isdate(val):
-        try:
-            date = datetime.datetime.strptime(val, '%Y-%m-%d')
-        except ValueError:
-            raise ValueError("Incorrect data format, should be YYYY-MM-DD")
-        return val
+        if datetime.datetime.strptime(val, '%Y-%m-%d'):
+            return val
+        raise ValueError("Incorrect data format, should be YYYY-MM-DD")
 
     def get_recipe_by_name(self, name):
         """Print a recipe with the name `name` and return the instance"""

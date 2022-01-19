@@ -139,7 +139,15 @@ class TestRecipeClass(unittest.TestCase):
 class TestBookClass(unittest.TestCase):
     """Test Class for Book class unit tests"""
 
+    def test_only_dictoftype(self):
+        """Test only_dictoftype staticmethod"""
+        #self.assertRaises(ValueError, Book._only_dictoftype, )
+        di = {'starter': '', 'lunch': '', 'dessert': ''}
+        print(type(di))
+        self.assertTrue(Book._only_dictoftype({'starter': '', 'lunch': '', 'dessert': ''}))
+
     def test_isdate(self):
+        """Test isdate staticmethod"""
         self.assertRaises(ValueError, Book._isdate, "2019-12-010")
         self.assertRaises(ValueError, Book._isdate, "2019-19-10")
         self.assertRaises(ValueError, Book._isdate, "2019-00-00")
@@ -148,7 +156,7 @@ class TestBookClass(unittest.TestCase):
 
     def test_init(self):
         """Test instantiate Book class object"""
-        tourte = Recipe(name='Tourte', cooking_lvl=2, cooking_time=70, ingredients=['pate', 'lardons'], description="Etape1.", recipe_type='lunch')
+        tourte = Recipe('Tourte', 2, 70, ['pate', 'lardons'], "Etape1.", 'lunch')
 
 
 if __name__ == '__main__':
