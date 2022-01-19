@@ -11,8 +11,20 @@ from book import Book
 
 
 class TestRecipeClass(unittest.TestCase):
+    """Test Class for Recipe class unit tests"""
+
+    def test_notfalsy(self):
+        """Test notfalsy function"""
+        self.assertRaises(ValueError, notfalsy, "")
+        self.assertRaises(ValueError, notfalsy, 0)
+        self.assertRaises(ValueError, notfalsy, ())
+        self.assertRaises(ValueError, notfalsy, [])
+        self.assertRaises(ValueError, notfalsy, (""))
+        self.assertEqual(notfalsy(("", 0)), ("", 0))
+        self.assertEqual(notfalsy(" "), " ")
 
     def test_only_int(self):
+        """Test only_int function"""
         self.assertRaises(ValueError, only_int, "Hello")
         self.assertRaises(ValueError, only_int, "12")
         self.assertRaises(ValueError, only_int, "")
