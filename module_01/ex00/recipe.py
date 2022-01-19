@@ -47,7 +47,7 @@ def uptoinf(number):
     number = only_int(number)
     if int(number) >= 0:
         return number
-    raise ValueError('Value must be between 0 to +inf')
+    raise ValueError('Value must be an integer between 0 to +inf')
 
 
 def isdish(string):

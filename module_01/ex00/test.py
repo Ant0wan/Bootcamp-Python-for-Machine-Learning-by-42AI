@@ -10,7 +10,7 @@ from recipe import *
 from book import Book
 
 
-class TestRecipeClass(unittest.TestCase):
+class TestRecipeModule(unittest.TestCase):
     """Test Class for Recipe class unit tests"""
 
     def test_dishtypes_constant_value(self):
@@ -47,6 +47,15 @@ class TestRecipeClass(unittest.TestCase):
         self.assertEqual(only_int(3213210), 3213210)
         self.assertEqual(only_int(-1), -1)
 
+    def test_only_strlist(self):
+        """Test only_strlist function"""
+        self.assertRaises(ValueError, only_strlist, "Hello")
+        self.assertRaises(ValueError, only_strlist, ("plop", "toto"))
+        self.assertRaises(ValueError, only_strlist, 0)
+        self.assertRaises(ValueError, only_strlist, ["Toto", 0, ["Hey"]])
+        self.assertEqual(only_strlist(["Hello", "World"]), ["Hello", "World"])
+        self.assertEqual(only_strlist(["", "World"]), ["", "World"])
+
     def test_btwrange(self):
         """Test btwrange function"""
         self.assertRaises(ValueError, btwrange, "Hello")
@@ -63,14 +72,18 @@ class TestRecipeClass(unittest.TestCase):
         self.assertEqual(btwrange(4), 4)
         self.assertEqual(btwrange(5), 5)
 
-    def test_only_list(self):
-        """Test """
-        self.assertRaises(ValueError, only_strlist, "Hello")
-        self.assertRaises(ValueError, only_strlist, ("plop", "toto"))
-        self.assertRaises(ValueError, only_strlist, 0)
-        self.assertRaises(ValueError, only_strlist, ["Toto", 0, ["Hey"]])
-        self.assertEqual(only_strlist(["Hello", "World"]), ["Hello", "World"])
-        self.assertEqual(only_strlist(["", "World"]), ["", "World"])
+    def test_uptoinf(self):
+        """Test uptoinf function"""
+        self.assertRaises(ValueError, uptoinf, [2])
+        self.assertRaises(ValueError, uptoinf, "")
+        self.assertRaises(ValueError, uptoinf, " ")
+        self.assertRaises(ValueError, uptoinf, (0, 1))
+        self.assertRaises(ValueError, uptoinf, -1)
+        self.assertRaises(ValueError, uptoinf, 0.12)
+        self.assertRaises(ValueError, uptoinf, -0.9999)
+        self.assertEqual(uptoinf(1), 1)
+        self.assertEqual(uptoinf(0), 0)
+        self.assertEqual(uptoinf(100000), 100000)
 
 #    def test_(self):
 #        """Test """
