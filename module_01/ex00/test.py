@@ -7,7 +7,8 @@ import io
 import unittest
 import sys
 
-from recipe import *
+from recipe import (Recipe, DISHTYPES, notfalsy, only_str, only_int,
+        only_strlist, btwrange, uptoinf, isdish)
 
 from book import Book
 
@@ -101,7 +102,9 @@ class TestRecipeClass(unittest.TestCase):
 
     def test_init(self):
         """Test instantiate Recipe class object"""
-        self.assertTrue(Recipe(name='Tourte', cooking_lvl=2, cooking_time=70, ingredients=['pate', 'lardons'], description="Etape1.", recipe_type=DISHTYPES[0]))
+        self.assertTrue(Recipe(
+            name='Tourte', cooking_lvl=2, cooking_time=70,
+            ingredients=['pate', 'lardons'], description="Etape1.", recipe_type=DISHTYPES[0]))
         self.assertTrue(Recipe('Tourte', 2, 70, ['pate', 'lardons'], "Etape1.", DISHTYPES[0]))
         self.assertTrue(Recipe('Bread', 4, 120, [''], "Pain.", DISHTYPES[0]))
         self.assertTrue(Recipe('Bread', 4, 120, [''], "", DISHTYPES[0]))
@@ -143,7 +146,10 @@ class TestRecipeClass(unittest.TestCase):
     def test_classobject_as_string(self):
         """Test Recipe class object as a string"""
         pancakes = Recipe('Pancakes', 4, 120, ['salt', 'salt'], "Pain.", 'starter')
-        self.assertEqual(str(pancakes), "Name: Pancakes\nLevel: 4/5\nTime: 120min\nIngredients: salt, salt\nDescription: Pain.\nType: starter")
+        self.assertEqual(
+                str(pancakes),
+                "Name: Pancakes\nLevel: 4/5\nTime: 120min\nIngredients: salt, salt\
+\nDescription: Pain.\nType: starter")
 
 
 class TestBookClass(unittest.TestCase):
@@ -159,7 +165,9 @@ class TestBookClass(unittest.TestCase):
 
     def test_only_dictoftype(self):
         """Test only_dictoftype staticmethod"""
-        self.assertRaises(ValueError, Book._only_dictoftype, {'starter': '', 'lunch': '', 'dessert': ''})
+        self.assertRaises(
+                ValueError, Book._only_dictoftype,
+                {'starter': '', 'lunch': '', 'dessert': ''})
         self.assertTrue(Book._only_dictoftype({dishtype:{} for dishtype in DISHTYPES}))
         self.assertTrue(Book._only_dictoftype({dishtype:{} for dishtype in DISHTYPES[::-1]}))
         with self.assertRaises(ValueError):
@@ -211,7 +219,9 @@ class TestBookClass(unittest.TestCase):
         soba = Recipe('Soba', 5, 60, ['water', 'sarrasin'], "Nouilles de soba", DISHTYPES[0])
         self.assertTrue(mybook.add_recipe(soba))
         self.assertTrue(mybook.add_recipe(soba))
-        soba = Recipe('Soba', 5, 120, ['water', 'sarrasin'], "Nouilles de soba is difficult", DISHTYPES[0])
+        soba = Recipe(
+                'Soba', 5, 120, ['water', 'sarrasin'],
+                "Nouilles de soba is difficult", DISHTYPES[0])
         self.assertTrue(mybook.add_recipe(soba))
 
     def test_get_recipe_by_name(self):
@@ -240,7 +250,8 @@ class TestBookClass(unittest.TestCase):
         mybook.add_recipe(soba)
         mybook.add_recipe(ubon)
         mybook.add_recipe(tourte)
-        self.assertEqual(mybook.get_recipes_by_types(DISHTYPES[0]), ['Soba', 'Tourte', 'Ubon Noodles'])
+        self.assertEqual(mybook.get_recipes_by_types(DISHTYPES[0]),
+                ['Soba', 'Tourte', 'Ubon Noodles'])
 
 
 if __name__ == '__main__':
