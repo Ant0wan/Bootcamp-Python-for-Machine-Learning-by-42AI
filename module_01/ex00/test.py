@@ -113,6 +113,7 @@ class TestRecipeClass(unittest.TestCase):
         with self.assertRaises(ValueError):
             Recipe(2342, 2, 70, ['pate', 'lardons'], "Etape1.", 'reveil-matin')
         with self.assertRaises(TypeError):
+            # pylint: disable=no-value-for-parameter
             Recipe('', 2, 70, ['pate', 'lardons'], "Etape1.")
 
     def test_getters(self):
@@ -157,6 +158,7 @@ class TestBookClass(unittest.TestCase):
 
     def test_isdate(self):
         """Test isdate staticmethod"""
+        # pylint: disable=protected-access
         self.assertRaises(ValueError, Book._isdate, "2019-12-010")
         self.assertRaises(ValueError, Book._isdate, "2019-19-10")
         self.assertRaises(ValueError, Book._isdate, "2019-00-00")
@@ -165,8 +167,8 @@ class TestBookClass(unittest.TestCase):
 
     def test_only_dictoftype(self):
         """Test only_dictoftype staticmethod"""
-        self.assertRaises(
-                ValueError, Book._only_dictoftype,
+        # pylint: disable=protected-access
+        self.assertRaises(ValueError, Book._only_dictoftype,
                 {'starter': '', 'lunch': '', 'dessert': ''})
         self.assertTrue(Book._only_dictoftype({dishtype:{} for dishtype in DISHTYPES}))
         self.assertTrue(Book._only_dictoftype({dishtype:{} for dishtype in DISHTYPES[::-1]}))
@@ -181,6 +183,7 @@ class TestBookClass(unittest.TestCase):
         with self.assertRaises(ValueError):
             Book._only_dictoftype({'':dishtype for dishtype in DISHTYPES})
         with self.assertRaises(TypeError):
+            # pylint: disable=no-value-for-parameter
             Book._only_dictoftype()
 
     def test_init(self):
@@ -215,6 +218,7 @@ class TestBookClass(unittest.TestCase):
             Book('TheRecipeBook', '2019-13-01', '2018-02-00', recipe_dict)
 
     def test_add_recipe(self):
+        """Test add_recipe Book class method"""
         mybook = Book('TheUltimateBook')
         soba = Recipe('Soba', 5, 60, ['water', 'sarrasin'], "Nouilles de soba", DISHTYPES[0])
         self.assertTrue(mybook.add_recipe(soba))
@@ -225,6 +229,7 @@ class TestBookClass(unittest.TestCase):
         self.assertTrue(mybook.add_recipe(soba))
 
     def test_get_recipe_by_name(self):
+        """Test get_recipe_by_name Book class method"""
         name_tourte = 'Tourte'
         tourte = Recipe(name_tourte, 2, 70, ['pate', 'lardons'], "Etape1.", DISHTYPES[0])
         soba = Recipe('Soba', 5, 60, ['water', 'sarrasin'], "Nouilles de soba", DISHTYPES[0])
@@ -242,7 +247,7 @@ class TestBookClass(unittest.TestCase):
         del soba
 
     def test_recipes_by_types(self):
-        """Get all recipe names for a given recipe_type"""
+        """Test recipes_by_types Book class method"""
         tourte = Recipe('Tourte', 2, 70, ['pate', 'lardons'], "Etape1.", DISHTYPES[0])
         soba = Recipe('Soba', 5, 60, ['water', 'sarrasin'], "Nouilles de soba", DISHTYPES[0])
         ubon = Recipe('Ubon Noodles', 3, 120, ['water', 'four'], "Noodles made easy", DISHTYPES[0])
