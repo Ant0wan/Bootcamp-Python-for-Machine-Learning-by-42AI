@@ -8,7 +8,7 @@ import unittest
 import sys
 
 from recipe import (Recipe, DISHTYPES, notfalsy, only_str, only_int,
-        only_strlist, btwrange, uptoinf, isdish)
+                    only_strlist, btwrange, uptoinf, isdish)
 
 from book import Book
 
@@ -18,7 +18,8 @@ class TestRecipeModule(unittest.TestCase):
 
     def test_dishtypes_constant_value(self):
         """Test DISHTYPES validity"""
-        self.assertIsInstance(DISHTYPES, tuple, "given DISHTYPES is not instance of tuple")
+        self.assertIsInstance(DISHTYPES, tuple, "given DISHTYPES is \
+not instance of tuple")
         self.assertTrue(DISHTYPES)
 
     def test_notfalsy(self):
@@ -104,8 +105,10 @@ class TestRecipeClass(unittest.TestCase):
         """Test instantiate Recipe class object"""
         self.assertTrue(Recipe(
             name='Tourte', cooking_lvl=2, cooking_time=70,
-            ingredients=['pate', 'lardons'], description="Etape1.", recipe_type=DISHTYPES[0]))
-        self.assertTrue(Recipe('Tourte', 2, 70, ['pate', 'lardons'], "Etape1.", DISHTYPES[0]))
+            ingredients=['pate', 'lardons'], description="Etape1.",
+            recipe_type=DISHTYPES[0]))
+        self.assertTrue(Recipe('Tourte', 2, 70, ['pate', 'lardons'],
+                        "Etape1.", DISHTYPES[0]))
         self.assertTrue(Recipe('Bread', 4, 120, [''], "Pain.", DISHTYPES[0]))
         self.assertTrue(Recipe('Bread', 4, 120, [''], "", DISHTYPES[0]))
         with self.assertRaises(ValueError):
@@ -119,8 +122,10 @@ class TestRecipeClass(unittest.TestCase):
     def test_getters(self):
         """Test Recipe getters"""
         name, cooking_lvl, cooking_time = 'Bread', 4, 120
-        ingredients, description, recipe_type = ['four', 'salt'], 'Pain.', DISHTYPES[0]
-        bread = Recipe(name, cooking_lvl, cooking_time, ingredients, description, recipe_type)
+        ingredients, description = ['four', 'salt'], 'Pain.'
+        recipe_type = DISHTYPES[0]
+        bread = Recipe(name, cooking_lvl, cooking_time, ingredients,
+                       description, recipe_type)
         self.assertEqual(bread.name, name)
         self.assertEqual(bread.cooking_lvl, cooking_lvl)
         self.assertEqual(bread.cooking_time, cooking_time)
@@ -130,7 +135,8 @@ class TestRecipeClass(unittest.TestCase):
 
     def test_setters(self):
         """Test Recipe setters"""
-        bread = Recipe('Bread', 4, 120, ['four', 'salt'], 'C\'est du pain', DISHTYPES[0])
+        bread = Recipe('Bread', 4, 120, ['four', 'salt'],
+                       'C\'est du pain', DISHTYPES[0])
         bread.name = 'Pain'
         self.assertEqual(bread.name, 'Pain')
         bread.cooking_lvl = 3
@@ -146,11 +152,12 @@ class TestRecipeClass(unittest.TestCase):
 
     def test_classobject_as_string(self):
         """Test Recipe class object as a string"""
-        pancakes = Recipe('Pancakes', 4, 120, ['salt', 'salt'], "Pain.", 'starter')
+        pancakes = Recipe('Pancakes', 4, 120,
+                          ['salt', 'salt'], "Pain.", 'starter')
         self.assertEqual(
                 str(pancakes),
-                "Name: Pancakes\nLevel: 4/5\nTime: 120min\nIngredients: salt, salt\
-\nDescription: Pain.\nType: starter")
+                "Name: Pancakes\nLevel: 4/5\nTime: 120min\n\
+Ingredients: salt, salt\nDescription: Pain.\nType: starter")
 
 
 class TestBookClass(unittest.TestCase):
@@ -169,58 +176,66 @@ class TestBookClass(unittest.TestCase):
         """Test only_dictoftype staticmethod"""
         # pylint: disable=protected-access
         self.assertRaises(ValueError, Book._only_dictoftype,
-                {'starter': '', 'lunch': '', 'dessert': ''})
-        self.assertTrue(Book._only_dictoftype({dishtype:{} for dishtype in DISHTYPES}))
-        self.assertTrue(Book._only_dictoftype({dishtype:{} for dishtype in DISHTYPES[::-1]}))
+                          {'starter': '', 'lunch': '', 'dessert': ''})
+        self.assertTrue(Book._only_dictoftype(
+                        {dishtype: {} for dishtype in DISHTYPES}))
+        self.assertTrue(Book._only_dictoftype(
+                        {dishtype: {} for dishtype in DISHTYPES[::-1]}))
         with self.assertRaises(ValueError):
-            Book._only_dictoftype({dishtype:{} for dishtype in DISHTYPES[0]})
+            Book._only_dictoftype({dishtype: {} for dishtype in DISHTYPES[0]})
         with self.assertRaises(ValueError):
-            Book._only_dictoftype({dishtype:'' for dishtype in DISHTYPES})
+            Book._only_dictoftype({dishtype: '' for dishtype in DISHTYPES})
         with self.assertRaises(ValueError):
-            Book._only_dictoftype({dishtype:[] for dishtype in DISHTYPES})
+            Book._only_dictoftype({dishtype: [] for dishtype in DISHTYPES})
         with self.assertRaises(ValueError):
             Book._only_dictoftype({})
         with self.assertRaises(ValueError):
-            Book._only_dictoftype({'':dishtype for dishtype in DISHTYPES})
+            Book._only_dictoftype({'': dishtype for dishtype in DISHTYPES})
         with self.assertRaises(TypeError):
             # pylint: disable=no-value-for-parameter
             Book._only_dictoftype()
 
     def test_init(self):
         """Test instantiate Book class object"""
-        recipe_dict = {dishtype:{} for dishtype in DISHTYPES}
-        self.assertTrue(Book('TheRecipeBook', '2019-12-01', '2018-02-14', recipe_dict))
-        self.assertTrue(Book('TheRecipeBook', '2019-12-01', '2022-02-14', recipe_dict))
-        self.assertTrue(Book('TheRecipeBook', '2019-12-01', '2019-12-01', recipe_dict))
-        rev_recipe_dict = {dishtype:{} for dishtype in DISHTYPES[::-1]}
-        self.assertTrue(Book('TheRecipeBook', '2019-12-01', '2018-02-14', rev_recipe_dict))
+        recipe_dict = {dishtype: {} for dishtype in DISHTYPES}
+        self.assertTrue(Book('TheRecipeBook', '2019-12-01',
+                             '2018-02-14', recipe_dict))
+        self.assertTrue(Book('TheRecipeBook', '2019-12-01',
+                             '2022-02-14', recipe_dict))
+        self.assertTrue(Book('TheRecipeBook', '2019-12-01',
+                             '2019-12-01', recipe_dict))
+        rev_recipe_dict = {dishtype: {} for dishtype in DISHTYPES[::-1]}
+        self.assertTrue(Book('TheRecipeBook', '2019-12-01',
+                             '2018-02-14', rev_recipe_dict))
         self.assertTrue(Book('TheRecipeBook', '2019-12-01'))
         self.assertTrue(Book('TheRecipeBook'))
         self.assertTrue(Book(name='TheRecipeBook', last_update='2019-12-01'))
         self.assertTrue(Book(name='TheRecipeBook', creation_date='2019-12-01'))
-        self.assertTrue(Book(name='TheRecipeBook', recipe_list=rev_recipe_dict))
+        self.assertTrue(Book(name='TheRecipeBook',
+                             recipe_list=rev_recipe_dict))
         with self.assertRaises(ValueError):
-            Book('TheRecipeBook', '2019-12-01', '2018-02-14', {'':{}})
+            Book('TheRecipeBook', '2019-12-01', '2018-02-14', {'': {}})
         with self.assertRaises(ValueError):
-            recipe_dict = {dishtype:'' for dishtype in DISHTYPES}
+            recipe_dict = {dishtype: '' for dishtype in DISHTYPES}
             Book('TheRecipeBook', '2019-12-01', '2018-02-14', recipe_dict)
         with self.assertRaises(ValueError):
-            recipe_dict = {dishtype:'' for dishtype in DISHTYPES[::-1]}
+            recipe_dict = {dishtype: '' for dishtype in DISHTYPES[::-1]}
             Book('TheRecipeBook', '2019-12-01', '2018-02-14', recipe_dict)
         with self.assertRaises(ValueError):
-            recipe_dict = {dishtype:[] for dishtype in DISHTYPES[0]}
+            recipe_dict = {dishtype: [] for dishtype in DISHTYPES[0]}
             Book('TheRecipeBook', '2019-12-01', '2018-02-14', recipe_dict)
         with self.assertRaises(ValueError):
-            recipe_dict = {dishtype:[] for dishtype in DISHTYPES[0]}
+            recipe_dict = {dishtype: [] for dishtype in DISHTYPES[0]}
             Book('TheRecipeBook', '2019-13-01', '2018-02-14', recipe_dict)
         with self.assertRaises(ValueError):
-            recipe_dict = {dishtype:[] for dishtype in DISHTYPES[0]}
+            recipe_dict = {dishtype: [] for dishtype in DISHTYPES[0]}
             Book('TheRecipeBook', '2019-13-01', '2018-02-00', recipe_dict)
 
     def test_add_recipe(self):
         """Test add_recipe Book class method"""
         mybook = Book('TheUltimateBook')
-        soba = Recipe('Soba', 5, 60, ['water', 'sarrasin'], "Nouilles de soba", DISHTYPES[0])
+        soba = Recipe('Soba', 5, 60, ['water', 'sarrasin'],
+                      "Nouilles de soba", DISHTYPES[0])
         self.assertTrue(mybook.add_recipe(soba))
         self.assertTrue(mybook.add_recipe(soba))
         soba = Recipe(
@@ -231,8 +246,10 @@ class TestBookClass(unittest.TestCase):
     def test_get_recipe_by_name(self):
         """Test get_recipe_by_name Book class method"""
         name_tourte = 'Tourte'
-        tourte = Recipe(name_tourte, 2, 70, ['pate', 'lardons'], "Etape1.", DISHTYPES[0])
-        soba = Recipe('Soba', 5, 60, ['water', 'sarrasin'], "Nouilles de soba", DISHTYPES[0])
+        tourte = Recipe(name_tourte, 2, 70, ['pate', 'lardons'],
+                        "Etape1.", DISHTYPES[0])
+        soba = Recipe('Soba', 5, 60, ['water', 'sarrasin'],
+                      "Nouilles de soba", DISHTYPES[0])
         mybook = Book('AwesomeRecipeBook')
         mybook.add_recipe(soba)
         mybook.add_recipe(tourte)
@@ -248,15 +265,18 @@ class TestBookClass(unittest.TestCase):
 
     def test_recipes_by_types(self):
         """Test recipes_by_types Book class method"""
-        tourte = Recipe('Tourte', 2, 70, ['pate', 'lardons'], "Etape1.", DISHTYPES[0])
-        soba = Recipe('Soba', 5, 60, ['water', 'sarrasin'], "Nouilles de soba", DISHTYPES[0])
-        ubon = Recipe('Ubon Noodles', 3, 120, ['water', 'four'], "Noodles made easy", DISHTYPES[0])
+        tourte = Recipe('Tourte', 2, 70, ['pate', 'lardons'], "Etape1.",
+                        DISHTYPES[0])
+        soba = Recipe('Soba', 5, 60, ['water', 'sarrasin'],
+                      "Nouilles de soba", DISHTYPES[0])
+        ubon = Recipe('Ubon Noodles', 3, 120, ['water', 'four'],
+                      "Noodles made easy", DISHTYPES[0])
         mybook = Book('The Last Recipe Book')
         mybook.add_recipe(soba)
         mybook.add_recipe(ubon)
         mybook.add_recipe(tourte)
         self.assertEqual(mybook.get_recipes_by_types(DISHTYPES[0]),
-                ['Soba', 'Tourte', 'Ubon Noodles'])
+                         ['Soba', 'Tourte', 'Ubon Noodles'])
 
 
 if __name__ == '__main__':
