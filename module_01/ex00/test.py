@@ -3,8 +3,8 @@
 Test script for Recipe and Book Classes
 """
 
-import unittest
 import io
+import unittest
 import sys
 
 from recipe import *
@@ -214,39 +214,20 @@ class TestBookClass(unittest.TestCase):
         soba = Recipe('Soba', 5, 120, ['water', 'sarrasin'], "Nouilles de soba is difficult", DISHTYPES[0])
         self.assertTrue(mybook.add_recipe(soba))
 
-   # def test_get_recipe_by_name(self):
-   #     tourte = Recipe('Tourte', 2, 70, ['pate', 'lardons'], "Etape1.", DISHTYPES[0])
-   #     mybook = Book('AwesomeRecipeBook', '2019-12-01', '2018-02-14', {dishtype:[] for dishtype in DISHTYPES})
-   #     mybook.add_recipe(tourte)
-   #     captured_output = io.StringIO()
-   #     sys.stdout = captured_output
-   #     mybook.get_recipe_by_name(tourte.name)
-   #     sys.stdout = sys.__stdout__
-   #     self.assertEqual(captured_output.getvalue(), str(tourte))
-
+    def test_get_recipe_by_name(self):
+        name_tourte = 'Tourte'
+        tourte = Recipe(name_tourte, 2, 70, ['pate', 'lardons'], "Etape1.", DISHTYPES[0])
+        soba = Recipe('Soba', 5, 60, ['water', 'sarrasin'], "Nouilles de soba", DISHTYPES[0])
+        mybook = Book('AwesomeRecipeBook')
+        mybook.add_recipe(soba)
+        mybook.add_recipe(tourte)
+        captured_output = io.StringIO()
+        sys.stdout = captured_output
+        retval = str(mybook.get_recipe_by_name(tourte.name))
+        sys.stdout = sys.__stdout__
+        self.assertEqual(captured_output.getvalue(), str(tourte) + '\n')
+        self.assertEqual(retval, str(tourte))
 
 
 if __name__ == '__main__':
-   #  tourte = Recipe('Tourte', 2, 70, ['pate', 'lardons'], "Etape1.", DISHTYPES[0])
-   #  mybook = Book('AwesomeRecipeBook', '2019-12-01', '2018-02-14', {dishtype:[] for dishtype in DISHTYPES})
-   #  mybook.add_recipe(tourte)
-   #  mybook.add_recipe(tourte)
-   #  mybook.add_recipe(tourte)
-  #   print(mybook)
-  #   mybook.add_recipe(tourte)
-  #   print(mybook)
-    unittest.main(verbosity=2)
-
-#    tourte = Recipe('Tourte', 2, 70, ['pate', 'lardons'], "Etape1.", DISHTYPES[0])
-#    bread = Recipe('Bread', 4, 120, [''], "Pain.", DISHTYPES[0])
-#    book = Book('GoodOmens', '2019-12-01', '2018-02-14',
-#                {"starter": [], "lunch": [], "dessert": []})
-#                {"starter": [tourte, bread], "lunch": [], "dessert": []})
-#    book.get_recipe_by_name('Tourte')
-#    print(book.name )
-#    print(book.get_recipes_by_types('starter'))
-#
-#    # Test destructor
-#    del tourte
-#    del bread
-#    del book
+    unittest.main(verbosity=1)
