@@ -42,18 +42,6 @@ class Book:
     def name(self, name):
         self.__name = only_str(name)
 
-    @last_update.setter
-    def last_update(self, last_update):
-        self.__last_update = self._isdate(last_update)
-
-    @creation_date.setter
-    def creation_date(self, creation_date):
-        self.__creation_date = only_int(creation_date)
-
-    @recipe_list.setter
-    def recipe_list(self, recipe_list):
-        self.__recipe_list = only_strlist(recipe_list)
-
     @staticmethod
     def _isdate(val):
         if datetime.strptime(val, '%Y-%m-%d'):
@@ -70,6 +58,15 @@ class Book:
                     raise ValueError('Items must be of dict type')
             return dict(lst)
         raise ValueError('Value must be dict')
+
+    def add_recipe(self, recipe):
+        """Add a recipe to the book and update last_update"""
+        if isinstance(recipe, Recipe):
+            self.__recipe_list[recipe.recipe_type].update({recipe.name: recipe})
+            self.__last_update = str(date.today())
+            return True
+        raise(ValueError, "Value must be of class type Recipe")
+
 
     #def get_recipe_by_name(self, name):
     #    """Print a recipe with the name `name` and return the instance"""
@@ -108,4 +105,3 @@ class Book:
    #         self.__recipe_list[recipe.recipe_type].append(recipe)
    #         print(self.__recipe_list[recipe.recipe_type])
    #         return self.__recipe_list
-   #     raise(ValueError, "Value must be of class type Recipe")

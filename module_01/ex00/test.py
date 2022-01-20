@@ -206,6 +206,14 @@ class TestBookClass(unittest.TestCase):
             recipe_dict = {dishtype:[] for dishtype in DISHTYPES[0]}
             Book('TheRecipeBook', '2019-13-01', '2018-02-00', recipe_dict)
 
+    def test_add_recipe(self):
+        mybook = Book('TheUltimateBook')
+        soba = Recipe('Soba', 5, 60, ['water', 'sarrasin'], "Nouilles de soba", DISHTYPES[0])
+        self.assertTrue(mybook.add_recipe(soba))
+        self.assertTrue(mybook.add_recipe(soba))
+        soba = Recipe('Soba', 5, 120, ['water', 'sarrasin'], "Nouilles de soba is difficult", DISHTYPES[0])
+        self.assertTrue(mybook.add_recipe(soba))
+
    # def test_get_recipe_by_name(self):
    #     tourte = Recipe('Tourte', 2, 70, ['pate', 'lardons'], "Etape1.", DISHTYPES[0])
    #     mybook = Book('AwesomeRecipeBook', '2019-12-01', '2018-02-14', {dishtype:[] for dishtype in DISHTYPES})
