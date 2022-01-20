@@ -2,7 +2,7 @@
 Book Class Definition
 """
 
-import datetime
+from datetime import date, datetime
 
 from recipe import Recipe, DISHTYPES, only_str, only_int, only_strlist
 
@@ -12,7 +12,7 @@ class Book:
     Init name, last_update, creation_date, recipe_list
     """
 
-    def __init__(self, name, last_update, creation_date, recipe_list):
+    def __init__(self, name, creation_date=str(date.today()), recipe_list={dishtype:[] for dishtype in DISHTYPES[0]}, last_update=str(date.today())):
         self.__name = only_str(name)
         self.__last_update = self._isdate(last_update)
         self.__creation_date = self._isdate(creation_date)
@@ -56,7 +56,7 @@ class Book:
 
     @staticmethod
     def _isdate(val):
-        if datetime.datetime.strptime(val, '%Y-%m-%d'):
+        if datetime.strptime(val, '%Y-%m-%d'):
             return val
         raise ValueError("Incorrect data format, should be YYYY-MM-DD")
 
@@ -66,50 +66,46 @@ class Book:
             for dishtype in DISHTYPES:
                 if dishtype not in lst.keys():
                     raise ValueError('Can only have dishtypes keys')
-                if not isinstance(lst.get(dishtype), list):
-                    raise ValueError('Items must be of list type')
+                if not isinstance(lst.get(dishtype), dict):
+                    raise ValueError('Items must be of dict type')
             return dict(lst)
         raise ValueError('Value must be dict')
 
-    def get_recipe_by_name(self, name):
-        """Print a recipe with the name `name` and return the instance"""
-        only_str(name)
-        for dishtype in DISHTYPES:
-            if self.__recipe_list.get(dishtype):
-                if name is self.__recipe_list.get(dishtype)[0].name:
-                    print(self.__recipe_list.get(dishtype)[0])
-                    return self.__recipe_list.get(dishtype)
-        return None
+    #def get_recipe_by_name(self, name):
+    #    """Print a recipe with the name `name` and return the instance"""
+    #    only_str(name)
+    #    for dishtype in DISHTYPES:
+    #        if self.__recipe_list.get(dishtype):
+    #            if name is self.__recipe_list.get(dishtype)[0].name:
+    #                print(self.__recipe_list.get(dishtype)[0])
+    #                return self.__recipe_list.get(dishtype)
+    #    return None
 
-    def get_recipes_by_types(self, recipe_type):
-        """Get all recipe names for a given recipe_type """
-        only_str(recipe_type)
-        if recipe_type in DISHTYPES:
-            allnames = []
-            for i in self.__recipe_list.get(recipe_type):
-                allnames.append(i.name)
-            if allnames:
-                return allnames
-        return None
+   # def get_recipes_by_types(self, recipe_type):
+   #     """Get all recipe names for a given recipe_type """
+   #     only_str(recipe_type)
+   #     if recipe_type in DISHTYPES:
+   #         allnames = []
+   #         for i in self.__recipe_list.get(recipe_type):
+   #             allnames.append(i.name)
+   #         if allnames:
+   #             return allnames
+   #     return None
 
-    def add_recipe(self, recipe):
-        """Add a recipe to the book and update last_update
-        1. check type Recipe
-        2. check is DISHTYPE starter, lunch or dessert
-        3. insert in Book:
-            a. if exists then update
-            b. if does not exist then add
-        """
+   # def add_recipe(self, recipe):
+   #     """Add a recipe to the book and update last_update"""
 
-        if isinstance(recipe, Recipe):
-            name = recipe.name
-            recipe_type = recipe.recipe_type
-            for each in self.__recipe_list[recipe_type]:
-                print(each)
+   #     if isinstance(recipe, Recipe):
+   #         try:
+   #             self.__recipe_list[recipe.recipe_type].index(obj)
+   #         name = recipe.name
+   #         recipe_type = recipe.recipe_type
+   #         for each in self.__recipe_list[recipe_type]:
+   #             print(each)
 
 
 
-            self.__recipe_list[recipe.recipe_type].append(recipe)
-            print(self.__recipe_list[recipe.recipe_type])
-            return self.__recipe_list
-        raise(ValueError, "Value must be of class type Recipe")
+   #         self.__recipe_list[recipe.recipe_type].append(recipe)
+   #         print(self.__recipe_list[recipe.recipe_type])
+   #         return self.__recipe_list
+   #     raise(ValueError, "Value must be of class type Recipe")
