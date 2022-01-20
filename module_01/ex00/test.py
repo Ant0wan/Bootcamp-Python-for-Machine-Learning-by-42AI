@@ -155,13 +155,22 @@ class TestBookClass(unittest.TestCase):
         self.assertRaises(ValueError, Book._isdate, "0000-00-00")
         self.assertEqual(Book._isdate("2019-12-10"), "2019-12-10")
 
-#    def test_only_dictoftype(self):
-#        """Test only_dictoftype staticmethod"""
-#        #self.assertRaises(ValueError, Book._only_dictoftype, )
-#        di = {'starter': '', 'lunch': '', 'dessert': ''}
-#        print(type(di))
-#        self.assertTrue(Book._only_dictoftype({'starter': '', 'lunch': '', 'dessert': ''}))
-#
+    def test_only_dictoftype(self):
+        """Test only_dictoftype staticmethod"""
+        self.assertRaises(ValueError, Book._only_dictoftype, {'starter': '', 'lunch': '', 'dessert': ''})
+        self.assertTrue(Book._only_dictoftype({dishtype:[] for dishtype in DISHTYPES}))
+        self.assertTrue(Book._only_dictoftype({dishtype:[] for dishtype in DISHTYPES[::-1]}))
+        with self.assertRaises(ValueError):
+            Book._only_dictoftype({dishtype:[] for dishtype in DISHTYPES[0]})
+        with self.assertRaises(ValueError):
+            Book._only_dictoftype({dishtype:'' for dishtype in DISHTYPES})
+        with self.assertRaises(ValueError):
+            Book._only_dictoftype({})
+        with self.assertRaises(ValueError):
+            Book._only_dictoftype({'':dishtype for dishtype in DISHTYPES})
+        with self.assertRaises(TypeError):
+            Book._only_dictoftype()
+
     def test_init(self):
         """Test instantiate Book class object"""
         recipe_dict = {dishtype:[] for dishtype in DISHTYPES}
