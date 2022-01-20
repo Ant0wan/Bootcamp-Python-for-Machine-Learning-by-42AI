@@ -1,7 +1,7 @@
-#!/usr/bin/env python3
 """
 ex01: game
 """
+
 
 class GotCharacter:
     """Recipe class
@@ -9,17 +9,17 @@ class GotCharacter:
     """
 
     def __init__(self, first_name, is_alive=True):
-        self.__first_name = first_name
-        self.__is_alive = is_alive
+        self.__first_name = str(first_name)
+        self.__is_alive = bool(is_alive)
 
     @property
     def first_name(self):
-    """'GotCharacter first_name' property"""
+        """'first_name' property"""
         return self.__first_name
 
     @property
     def is_alive(self):
-    """'GotCharacter is_alive' property"""
+        """'is_alive' property"""
         return self.__is_alive
 
     @is_alive.setter
@@ -28,20 +28,28 @@ class GotCharacter:
 
 
 class Stark(GotCharacter):
-    """Recipe class
-    Init family_name, house_words
-    """
+    """A class representing the Stark family.\
+ Or when bad things happen to good people."""
 
-    def __init__(self)
+    def __init__(self, first_name=None, is_alive=True):
+        super().__init__(first_name, is_alive)
         self.__family_name = "Stark"
         self.__house_words = "Winter is Coming"
 
     @property
     def family_name(self):
-    """'Stark family_name' property"""
+        """'family_name' property"""
         return self.__family_name
 
     @property
     def house_words(self):
-    """'Stark house_words' property"""
+        """'house_words' property"""
         return self.__house_words
+
+    def print_house_words(self):
+        """Display the house words"""
+        print(self.__house_words)
+
+    def die(self):
+        """Set is_alive to False"""
+        self.is_alive = False
