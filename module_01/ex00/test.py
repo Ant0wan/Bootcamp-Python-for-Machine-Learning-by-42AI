@@ -99,8 +99,16 @@ class TestRecipeClass(unittest.TestCase):
 
     def test_init(self):
         """Test instantiate Recipe class object"""
-        tourte = Recipe(name='Tourte', cooking_lvl=2, cooking_time=70, ingredients=['pate', 'lardons'], description="Etape1.", recipe_type='lunch')
-        bread = Recipe('Bread', 4, 120, ['four', 'salt'], "Pain.", 'starter')
+        self.assertTrue(Recipe(name='Tourte', cooking_lvl=2, cooking_time=70, ingredients=['pate', 'lardons'], description="Etape1.", recipe_type=DISHTYPES[0]))
+        self.assertTrue(Recipe('Tourte', 2, 70, ['pate', 'lardons'], "Etape1.", DISHTYPES[0]))
+        self.assertTrue(Recipe('Bread', 4, 120, [''], "Pain.", DISHTYPES[0]))
+        self.assertTrue(Recipe('Bread', 4, 120, [''], "", DISHTYPES[0]))
+        with self.assertRaises(ValueError):
+            Recipe('', 2, 70, ['pate', 'lardons'], "Etape1.", DISHTYPES[0])
+        with self.assertRaises(ValueError):
+            Recipe(2342, 2, 70, ['pate', 'lardons'], "Etape1.", 'reveil-matin')
+        with self.assertRaises(TypeError):
+            Recipe('', 2, 70, ['pate', 'lardons'], "Etape1.")
 
     def test_getters(self):
         """Test Recipe getters"""
@@ -147,16 +155,18 @@ class TestBookClass(unittest.TestCase):
         self.assertRaises(ValueError, Book._isdate, "0000-00-00")
         self.assertEqual(Book._isdate("2019-12-10"), "2019-12-10")
 
-    def test_only_dictoftype(self):
-        """Test only_dictoftype staticmethod"""
-        #self.assertRaises(ValueError, Book._only_dictoftype, )
-        di = {'starter': '', 'lunch': '', 'dessert': ''}
-        print(type(di))
-        self.assertTrue(Book._only_dictoftype({'starter': '', 'lunch': '', 'dessert': ''}))
-
+#    def test_only_dictoftype(self):
+#        """Test only_dictoftype staticmethod"""
+#        #self.assertRaises(ValueError, Book._only_dictoftype, )
+#        di = {'starter': '', 'lunch': '', 'dessert': ''}
+#        print(type(di))
+#        self.assertTrue(Book._only_dictoftype({'starter': '', 'lunch': '', 'dessert': ''}))
+#
     def test_init(self):
         """Test instantiate Book class object"""
-        tourte = Recipe('Tourte', 2, 70, ['pate', 'lardons'], "Etape1.", 'lunch')
+        with self.assertRaises(ValueError):
+            Recipe('', 2, 70, ['pate', 'lardons'], "Etape1.", 'lunch')
+        self.assertTrue(Recipe('Tourte', 2, 70, ['pate', 'lardons'], "Etape1.", 'lunch'))
 
 
 if __name__ == '__main__':
