@@ -4,7 +4,7 @@ Book Class Definition
 
 from datetime import date, datetime
 
-from recipe import Recipe, DISHTYPES, only_str, only_int, only_strlist, isdish
+from recipe import Recipe, DISHTYPES, only_str, isdish
 
 
 class Book:
@@ -12,7 +12,11 @@ class Book:
     Init name, last_update, creation_date, recipe_list
     """
 
-    def __init__(self, name, last_update=str(date.today()), creation_date=str(date.today()), recipe_list={dishtype:{} for dishtype in DISHTYPES}):
+    def __init__(
+            self, name,
+            last_update=str(date.today()), creation_date=str(date.today()),
+            recipe_list={dishtype: {} for dishtype in DISHTYPES}
+    ):
         self.__name = only_str(name)
         self.__last_update = self._isdate(last_update)
         self.__creation_date = self._isdate(creation_date)
@@ -62,10 +66,12 @@ class Book:
     def add_recipe(self, recipe):
         """Add a recipe to the book, update last_update and return true"""
         if isinstance(recipe, Recipe):
-            self.__recipe_list[recipe.recipe_type].update({recipe.name: recipe})
+            self.__recipe_list[recipe.recipe_type].update(
+                    {recipe.name: recipe}
+                    )
             self.__last_update = str(date.today())
             return True
-        raise(ValueError, "Value must be of class type Recipe")
+        raise ValueError("Value must be of class type Recipe")
 
     def get_recipe_by_name(self, name):
         """Print a recipe with the name `name` and return the instance"""
