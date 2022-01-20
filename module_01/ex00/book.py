@@ -12,7 +12,7 @@ class Book:
     Init name, last_update, creation_date, recipe_list
     """
 
-    def __init__(self, name, creation_date=str(date.today()), recipe_list={dishtype:[] for dishtype in DISHTYPES[0]}, last_update=str(date.today())):
+    def __init__(self, name, last_update=str(date.today()), creation_date=str(date.today()), recipe_list={dishtype:{} for dishtype in DISHTYPES}):
         self.__name = only_str(name)
         self.__last_update = self._isdate(last_update)
         self.__creation_date = self._isdate(creation_date)

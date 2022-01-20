@@ -183,8 +183,11 @@ class TestBookClass(unittest.TestCase):
         self.assertTrue(Book('TheRecipeBook', '2019-12-01', '2019-12-01', recipe_dict))
         rev_recipe_dict = {dishtype:{} for dishtype in DISHTYPES[::-1]}
         self.assertTrue(Book('TheRecipeBook', '2019-12-01', '2018-02-14', rev_recipe_dict))
-        with self.assertRaises(TypeError):
-            Book('TheRecipeBook', '2019-12-01', '2018-02-14')
+        self.assertTrue(Book('TheRecipeBook', '2019-12-01'))
+        self.assertTrue(Book('TheRecipeBook'))
+        self.assertTrue(Book(name='TheRecipeBook', last_update='2019-12-01'))
+        self.assertTrue(Book(name='TheRecipeBook', creation_date='2019-12-01'))
+        self.assertTrue(Book(name='TheRecipeBook', recipe_list=rev_recipe_dict))
         with self.assertRaises(ValueError):
             Book('TheRecipeBook', '2019-12-01', '2018-02-14', {'':{}})
         with self.assertRaises(ValueError):
