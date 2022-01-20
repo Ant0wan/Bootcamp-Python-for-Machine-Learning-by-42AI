@@ -4,7 +4,7 @@ Book Class Definition
 
 from datetime import date, datetime
 
-from recipe import Recipe, DISHTYPES, only_str, only_int, only_strlist
+from recipe import Recipe, DISHTYPES, only_str, only_int, only_strlist, isdish
 
 
 class Book:
@@ -76,13 +76,7 @@ class Book:
                 return self.__recipe_list[dishtype][name]
         return None
 
-   # def get_recipes_by_types(self, recipe_type):
-   #     """Get all recipe names for a given recipe_type """
-   #     only_str(recipe_type)
-   #     if recipe_type in DISHTYPES:
-   #         allnames = []
-   #         for i in self.__recipe_list.get(recipe_type):
-   #             allnames.append(i.name)
-   #         if allnames:
-   #             return allnames
-   #     return None
+    def get_recipes_by_types(self, recipe_type):
+        """Get all recipe names for a given recipe_type """
+        isdish(recipe_type)
+        return list(self.__recipe_list[recipe_type].keys())

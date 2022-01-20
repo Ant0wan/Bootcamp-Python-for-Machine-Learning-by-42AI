@@ -227,7 +227,21 @@ class TestBookClass(unittest.TestCase):
         sys.stdout = sys.__stdout__
         self.assertEqual(captured_output.getvalue(), str(tourte) + '\n')
         self.assertEqual(retval, str(tourte))
+        del mybook
+        del tourte
+        del soba
+
+    def test_recipes_by_types(self):
+        """Get all recipe names for a given recipe_type"""
+        tourte = Recipe('Tourte', 2, 70, ['pate', 'lardons'], "Etape1.", DISHTYPES[0])
+        soba = Recipe('Soba', 5, 60, ['water', 'sarrasin'], "Nouilles de soba", DISHTYPES[0])
+        ubon = Recipe('Ubon Noodles', 3, 120, ['water', 'four'], "Noodles made easy", DISHTYPES[0])
+        mybook = Book('The Last Recipe Book')
+        mybook.add_recipe(soba)
+        mybook.add_recipe(ubon)
+        mybook.add_recipe(tourte)
+        self.assertEqual(mybook.get_recipes_by_types(DISHTYPES[0]), ['Soba', 'Tourte', 'Ubon Noodles'])
 
 
 if __name__ == '__main__':
-    unittest.main(verbosity=1)
+    unittest.main(verbosity=2)
