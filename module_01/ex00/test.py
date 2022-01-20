@@ -164,9 +164,31 @@ class TestBookClass(unittest.TestCase):
 #
     def test_init(self):
         """Test instantiate Book class object"""
+        recipe_dict = {dishtype:[] for dishtype in DISHTYPES}
+        self.assertTrue(Book('TheRecipeBook', '2019-12-01', '2018-02-14', recipe_dict))
+        self.assertTrue(Book('TheRecipeBook', '2019-12-01', '2022-02-14', recipe_dict))
+        self.assertTrue(Book('TheRecipeBook', '2019-12-01', '2019-12-01', recipe_dict))
+        rev_recipe_dict = {dishtype:[] for dishtype in DISHTYPES[::-1]}
+        self.assertTrue(Book('TheRecipeBook', '2019-12-01', '2018-02-14', rev_recipe_dict))
+        with self.assertRaises(TypeError):
+            Book('TheRecipeBook', '2019-12-01', '2018-02-14')
         with self.assertRaises(ValueError):
-            Recipe('', 2, 70, ['pate', 'lardons'], "Etape1.", 'lunch')
-        self.assertTrue(Recipe('Tourte', 2, 70, ['pate', 'lardons'], "Etape1.", 'lunch'))
+            Book('TheRecipeBook', '2019-12-01', '2018-02-14', {'':[]})
+        with self.assertRaises(ValueError):
+            recipe_dict = {dishtype:'' for dishtype in DISHTYPES}
+            Book('TheRecipeBook', '2019-12-01', '2018-02-14', recipe_dict)
+        with self.assertRaises(ValueError):
+            recipe_dict = {dishtype:'' for dishtype in DISHTYPES[::-1]}
+            Book('TheRecipeBook', '2019-12-01', '2018-02-14', recipe_dict)
+        with self.assertRaises(ValueError):
+            recipe_dict = {dishtype:[] for dishtype in DISHTYPES[0]}
+            Book('TheRecipeBook', '2019-12-01', '2018-02-14', recipe_dict)
+        with self.assertRaises(ValueError):
+            recipe_dict = {dishtype:[] for dishtype in DISHTYPES[0]}
+            Book('TheRecipeBook', '2019-13-01', '2018-02-14', recipe_dict)
+        with self.assertRaises(ValueError):
+            recipe_dict = {dishtype:[] for dishtype in DISHTYPES[0]}
+            Book('TheRecipeBook', '2019-13-01', '2018-02-00', recipe_dict)
 
 
 if __name__ == '__main__':
