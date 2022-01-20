@@ -4,7 +4,7 @@ Book Class Definition
 
 import datetime
 
-from recipe import DISHTYPES, only_str, only_int, only_strlist
+from recipe import Recipe, DISHTYPES, only_str, only_int, only_strlist
 
 
 class Book:
@@ -12,7 +12,6 @@ class Book:
     Init name, last_update, creation_date, recipe_list
     """
 
-    # pylint: disable=too-many-arguments
     def __init__(self, name, last_update, creation_date, recipe_list):
         self.__name = only_str(name)
         self.__last_update = self._isdate(last_update)
@@ -61,7 +60,6 @@ class Book:
             return val
         raise ValueError("Incorrect data format, should be YYYY-MM-DD")
 
-# broken method
     @staticmethod
     def _only_dictoftype(lst):
         if isinstance(lst, dict):
@@ -95,8 +93,23 @@ class Book:
         return None
 
     def add_recipe(self, recipe):
-        """Add a recipe to the book and update last_update"""
+        """Add a recipe to the book and update last_update
+        1. check type Recipe
+        2. check is DISHTYPE starter, lunch or dessert
+        3. insert in Book:
+            a. if exists then update
+            b. if does not exist then add
+        """
+
         if isinstance(recipe, Recipe):
-            print(recipe)
-            pass
-        raise ValueError('Value must be of type Recipe')
+            name = recipe.name
+            recipe_type = recipe.recipe_type
+            for each in self.__recipe_list[recipe_type]:
+                print(each)
+
+
+
+            self.__recipe_list[recipe.recipe_type].append(recipe)
+            print(self.__recipe_list[recipe.recipe_type])
+            return self.__recipe_list
+        raise(ValueError, "Value must be of class type Recipe")

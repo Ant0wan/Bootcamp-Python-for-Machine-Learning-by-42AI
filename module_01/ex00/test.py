@@ -4,6 +4,8 @@ Test script for Recipe and Book Classes
 """
 
 import unittest
+import io
+import sys
 
 from recipe import *
 
@@ -199,14 +201,35 @@ class TestBookClass(unittest.TestCase):
             recipe_dict = {dishtype:[] for dishtype in DISHTYPES[0]}
             Book('TheRecipeBook', '2019-13-01', '2018-02-00', recipe_dict)
 
+   # def test_get_recipe_by_name(self):
+   #     tourte = Recipe('Tourte', 2, 70, ['pate', 'lardons'], "Etape1.", DISHTYPES[0])
+   #     mybook = Book('AwesomeRecipeBook', '2019-12-01', '2018-02-14', {dishtype:[] for dishtype in DISHTYPES})
+   #     mybook.add_recipe(tourte)
+   #     captured_output = io.StringIO()
+   #     sys.stdout = captured_output
+   #     mybook.get_recipe_by_name(tourte.name)
+   #     sys.stdout = sys.__stdout__
+   #     self.assertEqual(captured_output.getvalue(), str(tourte))
+
+
 
 if __name__ == '__main__':
-    unittest.main()
+     tourte = Recipe('Tourte', 2, 70, ['pate', 'lardons'], "Etape1.", DISHTYPES[0])
+     mybook = Book('AwesomeRecipeBook', '2019-12-01', '2018-02-14', {dishtype:[] for dishtype in DISHTYPES})
+     mybook.add_recipe(tourte)
+     mybook.add_recipe(tourte)
+     mybook.add_recipe(tourte)
+  #   print(mybook)
+  #   mybook.add_recipe(tourte)
+  #   print(mybook)
+   # unittest.main(verbosity=2)
 
+#    tourte = Recipe('Tourte', 2, 70, ['pate', 'lardons'], "Etape1.", DISHTYPES[0])
+#    bread = Recipe('Bread', 4, 120, [''], "Pain.", DISHTYPES[0])
 #    book = Book('GoodOmens', '2019-12-01', '2018-02-14',
 #                {"starter": [], "lunch": [], "dessert": []})
-##                {"starter": [tourte, bread], "lunch": [], "dessert": []})
-##    book.get_recipe_by_name('Tourte')
+#                {"starter": [tourte, bread], "lunch": [], "dessert": []})
+#    book.get_recipe_by_name('Tourte')
 #    print(book.name )
 #    print(book.get_recipes_by_types('starter'))
 #
