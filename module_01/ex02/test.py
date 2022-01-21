@@ -49,6 +49,9 @@ class TestVectorClass(unittest.TestCase):
         #vector4 = [[0.0], [1.0], [2.0], [3.0]]
         #vector5 = [[0.0], [1.0], [2.0], [3.0]]
         #self.assertEqual(Vector._check_vector([[0.0], [1.0], [2.0], [3.0]]), [[0.0], [1.0], [2.0], [3.0]])
+        # From subject
+        valid_vec = [[0.0], [1.0], [2.0], [3.0]]
+        self.assertEqual(Vector._check_vector(valid_vec), valid_vec)
 
 
    # def test_init(self):
