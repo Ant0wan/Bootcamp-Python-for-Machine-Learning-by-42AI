@@ -12,6 +12,7 @@ class TestVectorClass(unittest.TestCase):
     """Test Class for functions and constant from vector module"""
 
     def test_check_vector_1D(self):
+        """Test check_vector with vector of dimension 1"""
         invalid_vec = ['0.0']
         self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
         invalid_vec = ['0']
@@ -40,6 +41,7 @@ class TestVectorClass(unittest.TestCase):
         self.assertEqual(Vector._check_vector(valid_vec), valid_vec)
 
     def test_check_vector_2D(self):
+        """Test check_vector with vector of dimension 2"""
         invalid_vec = [[]]
         self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
         invalid_vec = [[], [], [], []]
@@ -76,6 +78,7 @@ class TestVectorClass(unittest.TestCase):
         self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
 
     def test_check_vector_invalidD(self):
+        """Test check_vector with vector of invalid dimension"""
         invalid_vec = [[[], []], [[], []]]
         self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
         invalid_vec = [[[1.0], [1.0]], [[0.0], [0.0]]]
