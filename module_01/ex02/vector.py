@@ -8,7 +8,7 @@ class Vector:
 
     def __init__(self, values):
         self.__values = self._define_vector(values)
-        self.__shape = self.define_shape(values)
+        self.__shape = self.define_shape(self.__values)
 
     @staticmethod
     def _define_vector(vec):

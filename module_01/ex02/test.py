@@ -115,6 +115,8 @@ class TestVectorClass(unittest.TestCase):
 
     def test_shape(self):
         """Test Vector shape getter"""
+        v1 = Vector(4)
+        self.assertEqual(v1.shape, (4, 1))
         valid_vec = [[0.0], [1.0], [2.0], [3.0]]
         v1 = Vector(valid_vec)
         self.assertEqual(v1.shape, (4, 1))
