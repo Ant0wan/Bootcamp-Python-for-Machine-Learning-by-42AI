@@ -20,6 +20,8 @@ class Vector:
             elif all(isinstance(column, list) for column in vec):
                 column_len = len(vec[0])
                 for column in vec:
+                    if not column:
+                        raise ValueError("Vector cannot be empty")
                     if column_len != len(column):
                         raise ValueError("Value is not a correct vector")
                     if not all(isinstance(val, float) for val in column):
