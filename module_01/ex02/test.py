@@ -89,9 +89,22 @@ class TestVectorClass(unittest.TestCase):
     def test_init(self):
         """Test vector constructor"""
         with self.assertRaises(ValueError):
+            invalid_vec = []
+            Vector(invalid_vec)
+        with self.assertRaises(ValueError):
             invalid_vec = [[[], []], [[], []]]
             Vector(invalid_vec)
         self.assertTrue(Vector([0.0, 1.0, 2.0, 3.0]))
+
+    def test_values(self):
+        """Test values method"""
+        valid_vec = [0.0, 1.0, 2.0, 3.0]
+        v1 = Vector(valid_vec)
+        self.assertEqual(v1.values, valid_vec)
+        valid_vec = [[0.0, 0.1], [1.0, 1.1], [2.0, 2.1], [3.0, 3.1]]
+        v1 = Vector(valid_vec)
+        self.assertEqual(v1.values, valid_vec)
+
 
 
 if __name__ == '__main__':
