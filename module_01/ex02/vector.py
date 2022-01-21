@@ -7,14 +7,19 @@ class Vector:
     """Vector Class"""
 
     def __init__(self, values):
-        self.__values = self._check_vector(values)
+        self.__values = self._define_vector(values)
         self.__shape = self.define_shape(values)
 
     @staticmethod
-    def _check_vector(vec):
+    def _define_vector(vec):
         """Check only 1 and 2 dimensions vectors"""
         if not vec:
             raise ValueError("Vector cannot be empty")
+        if isinstance(vec, int):
+            values = []
+            for column in range(0, vec + 1):
+                values.extend([float(column)])
+            return values
         if isinstance(vec, list):
             if all(isinstance(val, float) for val in vec):
                 return vec
