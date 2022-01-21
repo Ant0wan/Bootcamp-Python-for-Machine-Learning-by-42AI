@@ -7,6 +7,7 @@ import unittest
 
 from vector import Vector
 
+
 class TestVectorClass(unittest.TestCase):
     """Test Class for functions and constant from vector module"""
 
@@ -82,11 +83,12 @@ class TestVectorClass(unittest.TestCase):
         invalid_vec = [[[1.0, 1.0], [1.0, 0.0]], [[0.0, 4.5], [0.0, 4.5]]]
         self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
 
-
-
-   # def test_init(self):
-   #     """Test vector constructor"""
-   #     self.
+    def test_init(self):
+        """Test vector constructor"""
+        with self.assertRaises(ValueError):
+            invalid_vec = [[[], []], [[], []]]
+            Vector(invalid_vec)
+        self.assertTrue(Vector([0.0, 1.0, 2.0, 3.0]))
 
 
 if __name__ == '__main__':

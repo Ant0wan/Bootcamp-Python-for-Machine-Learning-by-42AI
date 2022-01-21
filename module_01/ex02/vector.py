@@ -6,8 +6,9 @@ Vectors
 class Vector:
     """Vector Class"""
 
-    def __init__(self, vector=[]):
-        self.__vector = _check_vector(vector)
+    def __init__(self, values):
+        self.__values = self._check_vector(values)
+        self.__shape = self.define_shape(values)
 
     @staticmethod
     def _check_vector(vec):
@@ -29,5 +30,19 @@ class Vector:
                 return vec
         raise ValueError("Vector must be list of floats or list of lists of floats")
 
-#    @property
-#    def get(self):
+    @staticmethod
+    def define_shape(vec):
+        """Store dimension of the vector"""
+        if isinstance(vec, list):
+            if all(isinstance(val, float) for val in vec):
+                return (1, len(vec))
+            elif all(isinstance(column, list) for column in vec):
+                return (len(vec[0]), len(vec))
+
+    @property
+    def values(self):
+        return self.__values
+
+    @property
+    def shape(self):
+        return self.__shape
