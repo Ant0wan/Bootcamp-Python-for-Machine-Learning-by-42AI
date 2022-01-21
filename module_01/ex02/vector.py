@@ -10,13 +10,18 @@ class Vector:
         self.__values = self._define_vector(values)
         self.__shape = self.define_shape(self.__values)
 
-
     @staticmethod
     def _vector_from_size(size):
+        """Create vector made of size column with values from 0 to size"""
         vector = []
         for column in range(0, size):
             vector.extend([float(column)])
         return vector
+
+    @staticmethod
+    def _vector_from_tuple(pair):
+        """Create vector from tuple from [0] to [1]"""
+        pass
 
     @staticmethod
     def _define_vector(vec):
@@ -26,8 +31,11 @@ class Vector:
         elif isinstance(vec, int):
             return Vector._vector_from_size(vec)
         elif isinstance(vec, tuple) and len(vec) == 2:
-            if vec[0] < vec[1]:
-                values = []
+            values = []
+            for column in range(vec[0], vec[1]):
+                values.extend([float(column)])
+            print(values)
+            return values
         elif isinstance(vec, list):
             if all(isinstance(val, float) for val in vec):
                 return vec
