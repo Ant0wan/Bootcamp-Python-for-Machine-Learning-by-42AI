@@ -97,13 +97,31 @@ class TestVectorClass(unittest.TestCase):
         self.assertTrue(Vector([0.0, 1.0, 2.0, 3.0]))
 
     def test_values(self):
-        """Test values method"""
+        """Test Vector values getter"""
         valid_vec = [0.0, 1.0, 2.0, 3.0]
         v1 = Vector(valid_vec)
         self.assertEqual(v1.values, valid_vec)
         valid_vec = [[0.0, 0.1], [1.0, 1.1], [2.0, 2.1], [3.0, 3.1]]
         v1 = Vector(valid_vec)
         self.assertEqual(v1.values, valid_vec)
+
+    def test_shape(self):
+        """Test Vector shape getter"""
+        valid_vec = [[0.0], [1.0], [2.0], [3.0]]
+        v1 = Vector(valid_vec)
+        self.assertEqual(v1.shape, (4, 1))
+        valid_vec = [0.0, 1.0, 2.0, 3.0]
+        v1 = Vector(valid_vec)
+        self.assertEqual(v1.shape, (4, 1))
+        valid_vec = [[0.0, 0.1], [1.0, 1.1], [2.0, 2.1], [3.0, 3.1]]
+        v1 = Vector(valid_vec)
+        self.assertEqual(v1.shape, (4, 2))
+        valid_vec = [[0.0, 2.5, 0.0, 0.0, 1.0, 5.7, 2.0, 7.9, 3.0, 7.7]]
+        v1 = Vector(valid_vec)
+        self.assertEqual(v1.shape, (1, 10))
+        valid_vec = [0.0, 2.5, 0.0, 0.0, 1.0, 5.7, 2.0, 7.9, 3.0, 7.7]
+        v1 = Vector(valid_vec)
+        self.assertEqual(v1.shape, (10, 1))
 
 
 

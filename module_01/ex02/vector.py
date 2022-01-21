@@ -35,9 +35,9 @@ class Vector:
         """Store dimension of the vector"""
         if isinstance(vec, list):
             if all(isinstance(val, float) for val in vec):
-                return (1, len(vec))
+                return (len(vec), 1)
             elif all(isinstance(column, list) for column in vec):
-                return (len(vec[0]), len(vec))
+                return (len(vec), len(vec[0]))
 
     @property
     def values(self):
