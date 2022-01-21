@@ -11,11 +11,44 @@ class TestVectorClass(unittest.TestCase):
     """Test Class for functions and constant from vector module"""
 
     def test_check_vector(self):
-        self.assertEqual(Vector._check_vector([1.2, 3.4]), [1.2, 3.4])
-        self.assertEqual(Vector._check_vector([0.0, 1.0, 2.0, 3.0]), [0.0, 1.0, 2.0, 3.0])
-        self.assertRaises(ValueError, Vector._check_vector, ['1.2', '3.4'])
-        self.assertRaises(ValueError, Vector._check_vector, ['', ''])
-        self.assertRaises(ValueError, Vector._check_vector, [])
+        # Dimension 1
+        invalid_vec = ['0.0']
+        self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
+        invalid_vec = ['0']
+        self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
+        invalid_vec = ()
+        self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
+        invalid_vec = [()]
+        self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
+        invalid_vec = [0]
+        self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
+        invalid_vec = [0, 0, 0, 0, 0, 0, 0]
+        self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
+        invalid_vec = ['1.2', '3.4']
+        self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
+        invalid_vec = ['', '']
+        self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
+        invalid_vec = []
+        self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
+        valid_vec = [0.0]
+        self.assertEqual(Vector._check_vector(valid_vec), valid_vec)
+        valid_vec = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        self.assertEqual(Vector._check_vector(valid_vec), valid_vec)
+        valid_vec = [1.2, 3.4]
+        self.assertEqual(Vector._check_vector(valid_vec), valid_vec)
+        valid_vec = [0.0, 1.0, 2.0, 3.0]
+        self.assertEqual(Vector._check_vector(valid_vec), valid_vec)
+        # Dimension 2
+        #vector1 = [[]]
+        #vector1 = [[], [], [], []]
+        #vector1 = [[0]]
+        #vector1 = [[0.0]]
+        #vector1 = [[1.2]]
+        #vector1 = [[0.0], [1.0], [2.0], [3.0]]
+        #vector2 = [[0.0, 2.5], [1.0, 5.7], [2.0, 7.9], [3.0, 7.7]]
+        #vector4 = [[0.0], [1.0], [2.0], [3.0]]
+        #vector5 = [[0.0], [1.0], [2.0], [3.0]]
+        #self.assertEqual(Vector._check_vector([[0.0], [1.0], [2.0], [3.0]]), [[0.0], [1.0], [2.0], [3.0]])
 
 
    # def test_init(self):
