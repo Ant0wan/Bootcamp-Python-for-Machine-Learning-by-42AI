@@ -10,17 +10,25 @@ class Vector:
         self.__values = self._define_vector(values)
         self.__shape = self.define_shape(self.__values)
 
+
+    @staticmethod
+    def _vector_from_size(size):
+        vector = []
+        for column in range(0, size):
+            vector.extend([float(column)])
+        return vector
+
     @staticmethod
     def _define_vector(vec):
         """Check only 1 and 2 dimensions vectors"""
         if not vec:
             raise ValueError("Vector cannot be empty")
-        if isinstance(vec, int):
-            values = []
-            for column in range(0, vec):
-                values.extend([float(column)])
-            return values
-        if isinstance(vec, list):
+        elif isinstance(vec, int):
+            return Vector._vector_from_size(vec)
+        elif isinstance(vec, tuple) and len(vec) == 2:
+            if vec[0] < vec[1]:
+                values = []
+        elif isinstance(vec, list):
             if all(isinstance(val, float) for val in vec):
                 return vec
             elif all(isinstance(column, list) for column in vec):
