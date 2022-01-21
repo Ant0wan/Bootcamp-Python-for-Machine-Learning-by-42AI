@@ -17,7 +17,7 @@ class Vector:
             raise ValueError("Vector cannot be empty")
         if isinstance(vec, int):
             values = []
-            for column in range(0, vec + 1):
+            for column in range(0, vec):
                 values.extend([float(column)])
             return values
         if isinstance(vec, list):
