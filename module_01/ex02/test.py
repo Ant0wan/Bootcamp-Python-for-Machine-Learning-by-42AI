@@ -10,8 +10,7 @@ from vector import Vector
 class TestVectorClass(unittest.TestCase):
     """Test Class for functions and constant from vector module"""
 
-    def test_check_vector(self):
-        # Dimension 1
+    def test_check_vector_1D(self):
         invalid_vec = ['0.0']
         self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
         invalid_vec = ['0']
@@ -38,7 +37,8 @@ class TestVectorClass(unittest.TestCase):
         self.assertEqual(Vector._check_vector(valid_vec), valid_vec)
         valid_vec = [0.0, 1.0, 2.0, 3.0]
         self.assertEqual(Vector._check_vector(valid_vec), valid_vec)
-        # Dimension 2
+
+    def test_check_vector_2D(self):
         invalid_vec = [[]]
         self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
         invalid_vec = [[], [], [], []]
@@ -73,7 +73,8 @@ class TestVectorClass(unittest.TestCase):
         self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
         invalid_vec = [[1.0], []]
         self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
-        # More dimensions
+
+    def test_check_vector_invalidD(self):
         invalid_vec = [[[], []], [[], []]]
         self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
         invalid_vec = [[[1.0], [1.0]], [[0.0], [0.0]]]
