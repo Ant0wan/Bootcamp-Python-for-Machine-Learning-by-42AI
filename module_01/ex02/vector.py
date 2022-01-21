@@ -17,10 +17,14 @@ class Vector:
         if isinstance(vec, list):
             if all(isinstance(val, float) for val in vec):
                 return vec
-            elif all(isinstance(row, list) for row in vec):
-                for row in vec:
-                    if all(isinstance(val, float) for val in row):
-                        return vec
+            elif all(isinstance(column, list) for column in vec):
+                column_len = len(vec[0])
+                for column in vec:
+                    if column_len != len(column):
+                        raise ValueError("Value is not a correct vector")
+                    if not all(isinstance(val, float) for val in column):
+                        raise ValueError("Vector must be list of floats")
+                return vec
         raise ValueError("Vector must be list of floats or list of lists of floats")
 
 #    @property

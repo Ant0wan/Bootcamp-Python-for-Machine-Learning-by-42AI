@@ -12,32 +12,32 @@ class TestVectorClass(unittest.TestCase):
 
     def test_check_vector(self):
         # Dimension 1
-        invalid_vec = ['0.0']
-        self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
-        invalid_vec = ['0']
-        self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
-        invalid_vec = ()
-        self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
-        invalid_vec = [()]
-        self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
-        invalid_vec = [0]
-        self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
-        invalid_vec = [0, 0, 0, 0, 0, 0, 0]
-        self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
-        invalid_vec = ['1.2', '3.4']
-        self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
-        invalid_vec = ['', '']
-        self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
-        invalid_vec = []
-        self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
-        valid_vec = [0.0]
-        self.assertEqual(Vector._check_vector(valid_vec), valid_vec)
-        valid_vec = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-        self.assertEqual(Vector._check_vector(valid_vec), valid_vec)
-        valid_vec = [1.2, 3.4]
-        self.assertEqual(Vector._check_vector(valid_vec), valid_vec)
-        valid_vec = [0.0, 1.0, 2.0, 3.0]
-        self.assertEqual(Vector._check_vector(valid_vec), valid_vec)
+#        invalid_vec = ['0.0']
+#        self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
+#        invalid_vec = ['0']
+#        self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
+#        invalid_vec = ()
+#        self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
+#        invalid_vec = [()]
+#        self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
+#        invalid_vec = [0]
+#        self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
+#        invalid_vec = [0, 0, 0, 0, 0, 0, 0]
+#        self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
+#        invalid_vec = ['1.2', '3.4']
+#        self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
+#        invalid_vec = ['', '']
+#        self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
+#        invalid_vec = []
+#        self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
+#        valid_vec = [0.0]
+#        self.assertEqual(Vector._check_vector(valid_vec), valid_vec)
+#        valid_vec = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+#        self.assertEqual(Vector._check_vector(valid_vec), valid_vec)
+#        valid_vec = [1.2, 3.4]
+#        self.assertEqual(Vector._check_vector(valid_vec), valid_vec)
+#        valid_vec = [0.0, 1.0, 2.0, 3.0]
+#        self.assertEqual(Vector._check_vector(valid_vec), valid_vec)
         # Dimension 2
         #vector1 = [[]]
         #vector1 = [[], [], [], []]
@@ -52,7 +52,18 @@ class TestVectorClass(unittest.TestCase):
         # From subject
         valid_vec = [[0.0], [1.0], [2.0], [3.0]]
         self.assertEqual(Vector._check_vector(valid_vec), valid_vec)
-
+        valid_vec = [[0.0, 0.1], [1.0, 1.1], [2.0, 2.1], [3.0, 3.1]]
+        self.assertEqual(Vector._check_vector(valid_vec), valid_vec)
+        invalid_vec = [[0.0, 0.1], [1.0, 1.1], [2.0], [3.0, 3.1]]
+        self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
+      #  invalid_vec = [[[0.0]], [[1.0]], [[2.0]], [[3.0]]]
+      #  self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
+      #  invalid_vec = ([0.0], [1.0], [2.0], [3.0])
+      #  self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
+      #  invalid_vec = [[0.0], [1.0], [2.0], [0]]
+      #  self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
+      #  invalid_vec = [[[0.0], [1.0]], [[2.0], [3.0]]]
+      #  self.assertRaises(ValueError, Vector._check_vector, invalid_vec)
 
    # def test_init(self):
    #     """Test vector constructor"""
