@@ -20,16 +20,9 @@ class Vector:
             for column_index in range(0, self.__shape[0]):
                 for row_index in range(0, self.__shape[1]):
                     sum_values[column_index][row_index] += self.__values[column_index][row_index]
-            sum_vector = sum_values
+            sum_vector = Vector(sum_values)
             return sum_vector
         raise ValueError("Can only add Vector types with same dimensions")
-
-    #    if not vector:
-    #        raise ValueError("Vector cannot be empty")
-    #    if vector.shape == self.__shape:
-    #        print("vectors: ", self, ' ', vector)
-
-    #    return zip(self.__values, vector.values)
 
     @staticmethod
     def _vector_from_size(size):
