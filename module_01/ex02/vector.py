@@ -15,7 +15,7 @@ class Vector:
         """Create vector made of size column with values from 0 to size"""
         vector = []
         for column in range(0, size):
-            vector.extend([float(column)])
+            vector.append([float(column)])
         return vector
 
     @staticmethod
@@ -33,7 +33,7 @@ class Vector:
         elif isinstance(vec, tuple) and len(vec) == 2:
             values = []
             for column in range(vec[0], vec[1]):
-                values.extend([float(column)])
+                values.append([float(column)])
             print(values)
             return values
         elif isinstance(vec, list):
