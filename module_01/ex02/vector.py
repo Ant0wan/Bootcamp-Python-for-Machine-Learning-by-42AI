@@ -77,7 +77,6 @@ class Vector:
     @staticmethod
     def define_shape(vec):
         """Store dimension of the vector (row, column)"""
-        #### ERROR in this function ###
         if isinstance(vec, list):
             if all(isinstance(val, float) for val in vec):
                 return (1, len(vec))
