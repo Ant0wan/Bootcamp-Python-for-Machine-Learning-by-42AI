@@ -188,6 +188,41 @@ class TestVectorClass(unittest.TestCase):
         v_result = v1 + v1
         self.assertEqual(v_result.values, v_expected.values)
 
+    def test_add(self):
+        """Test __add__ method"""
+        with self.assertRaises(ValueError):
+            v0 = Vector([[0.0], [1.0], [2.0], [3.0]])
+            v1 = [[0.0], [1.0], [2.0], [3.0]]
+            v0 += v1
+        with self.assertRaises(TypeError):
+            v1 = Vector([[0.0], [1.0], [2.0], [3.0]])
+            v0 = [[0.0], [1.0], [2.0], [3.0]]
+            v0 += v1
+        with self.assertRaises(ValueError):
+            v0 = Vector([0.0, 2.5, 0.0, 0.0, 1.0, 5.7, 2.0, 7.9, 3.0, 7.7])
+            v1 = [0.0, 2.5, 0.0, 0.0, 1.0, 5.7, 2.0, 7.9, 3.0, 7.7]
+            v0 += v1
+        with self.assertRaises(TypeError):
+            v1 = Vector([0.0, 2.5, 0.0, 0.0, 1.0, 5.7, 2.0, 7.9, 3.0, 7.7])
+            v0 = [0.0, 2.5, 0.0, 0.0, 1.0, 5.7, 2.0, 7.9, 3.0, 7.7]
+            v0 += v1
+        with self.assertRaises(ValueError):
+            v0 = Vector([0.0, 2.5, 0.0, 0.0, 1.0, 5.7, 2.0, 7.9, 3.0, 7.7])
+            v1 = [[0.0], [1.0], [2.0], [3.0]]
+            v0 += v1
+        v1 = Vector([[0.0], [1.0], [2.0], [3.0]])
+        v_expected = Vector([[0.0], [2.0], [4.0], [6.0]])
+        v1 += v1
+        self.assertEqual(v1.values, v_expected.values)
+        v1 = Vector([[0.0, 1.0], [2.0, 3.0], [4.0, 5.0]])
+        v_expected = Vector([[0.0, 2.0], [4.0, 6.0], [8.0, 10.0]])
+        v1 += v1
+        self.assertEqual(v1.values, v_expected.values)
+        v1 = Vector([0.0, 1.0, 2.0, 3.0])
+        v_expected = Vector([0.0, 2.0, 4.0, 6.0])
+        v1 += v1
+        self.assertEqual(v1.values, v_expected.values)
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

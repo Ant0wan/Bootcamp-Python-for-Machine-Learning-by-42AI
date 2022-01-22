@@ -28,8 +28,8 @@ class Vector:
             return sum_vector
         raise ValueError("Can only add Vector types with same dimensions")
 
-#    def __radd__(self, other):
-#        return Vector.__add__(self, other)
+    def __radd__(self, other):
+        return Vector.__add__(other)
 
     @staticmethod
     def _vector_from_size(size):
