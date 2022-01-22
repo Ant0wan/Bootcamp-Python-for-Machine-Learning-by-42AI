@@ -10,6 +10,27 @@ class Vector:
         self.__values = self._define_vector(values)
         self.__shape = self.define_shape(self.__values)
 
+    def __str__(self):
+        return str(self.__values)
+
+    def __add__(self, vector):
+        """Add two vectors together"""
+        if isinstance(vector, Vector) and self.__shape == vector.shape:
+            sum_values = vector.values
+            for column_index in range(0, self.__shape[0]):
+                for row_index in range(0, self.__shape[1]):
+                    sum_values[column_index][row_index] += self.__values[column_index][row_index]
+            sum_vector = sum_values
+            return sum_vector
+        raise ValueError("Can only add Vector types with same dimensions")
+
+    #    if not vector:
+    #        raise ValueError("Vector cannot be empty")
+    #    if vector.shape == self.__shape:
+    #        print("vectors: ", self, ' ', vector)
+
+    #    return zip(self.__values, vector.values)
+
     @staticmethod
     def _vector_from_size(size):
         """Create vector made of size column with values from 0 to size"""

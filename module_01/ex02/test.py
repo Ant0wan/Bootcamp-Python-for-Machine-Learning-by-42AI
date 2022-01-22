@@ -156,4 +156,16 @@ class TestVectorClass(unittest.TestCase):
 
 
 if __name__ == '__main__':
+    print("\n\n\n")
+    v1 = Vector([[0.0], [1.0], [2.0], [3.0]])
+    v2 = Vector([[0.0], [1.0], [2.0], [3.0]])
+    v = v1 + v2
+    print(list(v))
+    print("\n\n\n")
+    v1 = Vector([[0.0, 1.0], [2.0, 3.0], [4.0, 5.0]])
+    v2 = Vector([[0.0, 1.0], [2.0, 3.0], [4.0, 5.0]])
+    v = v1 + v2
+    print(list(v))
+
+    print("\n\n\n")
     unittest.main(verbosity=2)
