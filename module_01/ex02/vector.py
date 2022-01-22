@@ -13,10 +13,10 @@ class Vector:
     def __str__(self):
         return str(self.__values)
 
-    def __add__(self, vector):
+    def __add__(self, other):
         """Add two vectors together"""
-        if isinstance(vector, Vector) and self.__shape == vector.shape:
-            sum_values = vector.values
+        if isinstance(other, Vector) and self.__shape == other.shape:
+            sum_values = other.values
             if all(isinstance(val, list) for val in self.__values):
                 for column_index in range(0, self.__shape[0]):
                     for row_index in range(0, self.__shape[1]):
@@ -27,6 +27,9 @@ class Vector:
             sum_vector = Vector(sum_values)
             return sum_vector
         raise ValueError("Can only add Vector types with same dimensions")
+
+#    def __radd__(self, other):
+#        return Vector.__add__(self, other)
 
     @staticmethod
     def _vector_from_size(size):
