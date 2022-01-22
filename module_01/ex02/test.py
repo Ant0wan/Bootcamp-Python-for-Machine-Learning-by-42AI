@@ -188,7 +188,7 @@ class TestVectorClass(unittest.TestCase):
         v_result = v1 + v1
         self.assertEqual(v_result.values, v_expected.values)
 
-    def test_add(self):
+    def test_radd(self):
         """Test __add__ method"""
         with self.assertRaises(ValueError):
             v0 = Vector([[0.0], [1.0], [2.0], [3.0]])
@@ -222,6 +222,13 @@ class TestVectorClass(unittest.TestCase):
         v_expected = Vector([0.0, 2.0, 4.0, 6.0])
         v1 += v1
         self.assertEqual(v1.values, v_expected.values)
+
+    def test_sub(self):
+        """Test __sub__ method"""
+        v1 = Vector([0.0, 1.0, 2.0, 3.0])
+        v_expected = Vector([0.0, 0.0, 0.0, 0.0])
+        v_result = v1 - v1
+        self.assertEqual(v_result.values, v_expected.values)
 
 
 if __name__ == '__main__':
