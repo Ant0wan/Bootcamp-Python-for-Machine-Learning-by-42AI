@@ -183,11 +183,10 @@ class TestVectorClass(unittest.TestCase):
         v_expected = Vector([[0.0, 2.0], [4.0, 6.0], [8.0, 10.0]])
         v_result = v1 + v1
         self.assertEqual(v_result.values, v_expected.values)
-    #    v1 = Vector([0.0, 1.0, 2.0, 3.0])
-    #    v_expected = Vector([0.0, 2.0, 4.0, 6.0])
-    #    print(v1.shape)
-    #    v_result = v1 + v1
-    #    self.assertEqual(v_result.values, v_expected.values)
+        v1 = Vector([0.0, 1.0, 2.0, 3.0])
+        v_expected = Vector([0.0, 2.0, 4.0, 6.0])
+        v_result = v1 + v1
+        self.assertEqual(v_result.values, v_expected.values)
 
 
 if __name__ == '__main__':
