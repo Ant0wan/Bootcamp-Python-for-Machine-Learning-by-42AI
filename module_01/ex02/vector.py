@@ -21,10 +21,10 @@ class Vector:
     @staticmethod
     def _vector_from_tuple(pair):
         """Create vector from tuple from [0] to [1]"""
-         values = []
-         for column in range(pair[0], pair[1]):
-             values.append([float(column)])
-         return values
+        values = []
+        for column in range(pair[0], pair[1]):
+            values.append([float(column)])
+        return values
 
     @staticmethod
     def _define_vector(vec):
