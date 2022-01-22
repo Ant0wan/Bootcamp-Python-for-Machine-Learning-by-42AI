@@ -19,9 +19,9 @@ class TestVectorClass(unittest.TestCase):
         invalid_vec = 0.0
         self.assertRaises(ValueError, Vector._define_vector, invalid_vec)
 
-#    def test_vector_from_tuple(self):
-#        valid_vec = [[0.0], [1.0], [2.0], [3.0]]
-#        self.assertEqual(Vector._define_vector((0, 4)), valid_vec)
+    def test_vector_from_tuple(self):
+        valid_vec = [[0.0], [1.0], [2.0], [3.0]]
+        self.assertEqual(Vector._define_vector((0, 4)), valid_vec)
 
     def test_define_vector_1D(self):
         """Test check_vector with vector of dimension 1"""
