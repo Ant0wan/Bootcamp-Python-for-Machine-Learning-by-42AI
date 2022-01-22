@@ -153,19 +153,21 @@ class TestVectorClass(unittest.TestCase):
         v1 = Vector(valid_vec)
         self.assertEqual(v1.shape, (10, 1))
 
+    def test_add(self):
+        """Test __add__ method"""
+        v1 = Vector([[0.0], [1.0], [2.0], [3.0]])
+        v_expected = Vector([[0.0], [2.0], [4.0], [6.0]])
+        v_result = v1 + v1
+        self.assertEqual(v_result.values, v_expected.values)
+        v1 = Vector([[0.0, 1.0], [2.0, 3.0], [4.0, 5.0]])
+        v_expected = Vector([[0.0, 2.0], [4.0, 6.0], [8.0, 10.0]])
+        v_result = v1 + v1
+        self.assertEqual(v_result.values, v_expected.values)
+    #    v1 = Vector([0.0, 1.0, 2.0, 3.0])
+    #    v_expected = Vector([0.0, 2.0, 4.0, 6.0])
+    #    v_result = v1 + v1
+    #    self.assertEqual(v_result.values, v_expected.values)
 
 
 if __name__ == '__main__':
-    print("\n\n\n")
-    v1 = Vector([[0.0], [1.0], [2.0], [3.0]])
-    v2 = Vector([[0.0], [1.0], [2.0], [3.0]])
-    v = v1 + v2
-    print(v)
-    print("\n\n\n")
-    v1 = Vector([[0.0, 1.0], [2.0, 3.0], [4.0, 5.0]])
-    v2 = Vector([[0.0, 1.0], [2.0, 3.0], [4.0, 5.0]])
-    v = v1 + v2
-    print(v)
-
-    print("\n\n\n")
     unittest.main(verbosity=2)
