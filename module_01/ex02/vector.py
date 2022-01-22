@@ -17,10 +17,15 @@ class Vector:
         """Add two vectors together"""
         if isinstance(vector, Vector) and self.__shape == vector.shape:
             sum_values = vector.values
-            for column_index in range(0, self.__shape[0]):
+            if self.__shape[0] > 1:
+                for column_index in range(0, self.__shape[0]):
+                    for row_index in range(0, self.__shape[1]):
+                        sum_values[column_index][row_index] += self.__values[column_index][row_index]
+            else:
                 for row_index in range(0, self.__shape[1]):
-                    sum_values[column_index][row_index] += self.__values[column_index][row_index]
+                    sum_values[row_index] += self.__values[row_index]
             sum_vector = Vector(sum_values)
+            print(f"\n\n\n{sum_vector.values} {sum_vector.shape}\n\n")
             return sum_vector
         raise ValueError("Can only add Vector types with same dimensions")
 
@@ -72,10 +77,11 @@ class Vector:
 
     @staticmethod
     def define_shape(vec):
-        """Store dimension of the vector"""
+        """Store dimension of the vector (row, column)"""
+        #### ERROR in this function ###
         if isinstance(vec, list):
             if all(isinstance(val, float) for val in vec):
-                return (len(vec), 1)
+                return (1, len(vec))
             elif all(isinstance(column, list) for column in vec):
                 return (len(vec), len(vec[0]))
 

@@ -142,7 +142,7 @@ class TestVectorClass(unittest.TestCase):
         self.assertEqual(v1.shape, (4, 1))
         valid_vec = [0.0, 1.0, 2.0, 3.0]
         v1 = Vector(valid_vec)
-        self.assertEqual(v1.shape, (4, 1))
+        self.assertEqual(v1.shape, (1, 4))
         valid_vec = [[0.0, 0.1], [1.0, 1.1], [2.0, 2.1], [3.0, 3.1]]
         v1 = Vector(valid_vec)
         self.assertEqual(v1.shape, (4, 2))
@@ -151,7 +151,7 @@ class TestVectorClass(unittest.TestCase):
         self.assertEqual(v1.shape, (1, 10))
         valid_vec = [0.0, 2.5, 0.0, 0.0, 1.0, 5.7, 2.0, 7.9, 3.0, 7.7]
         v1 = Vector(valid_vec)
-        self.assertEqual(v1.shape, (10, 1))
+        self.assertEqual(v1.shape, (1, 10))
 
     def test_add(self):
         """Test __add__ method"""
@@ -171,6 +171,10 @@ class TestVectorClass(unittest.TestCase):
             v1 = Vector([0.0, 2.5, 0.0, 0.0, 1.0, 5.7, 2.0, 7.9, 3.0, 7.7])
             v0 = [0.0, 2.5, 0.0, 0.0, 1.0, 5.7, 2.0, 7.9, 3.0, 7.7]
             v_result = v0 + v1
+        with self.assertRaises(ValueError):
+            v0 = Vector([0.0, 2.5, 0.0, 0.0, 1.0, 5.7, 2.0, 7.9, 3.0, 7.7])
+            v1 = [[0.0], [1.0], [2.0], [3.0]]
+            v_result = v0 + v1
         v1 = Vector([[0.0], [1.0], [2.0], [3.0]])
         v_expected = Vector([[0.0], [2.0], [4.0], [6.0]])
         v_result = v1 + v1
@@ -181,6 +185,7 @@ class TestVectorClass(unittest.TestCase):
         self.assertEqual(v_result.values, v_expected.values)
     #    v1 = Vector([0.0, 1.0, 2.0, 3.0])
     #    v_expected = Vector([0.0, 2.0, 4.0, 6.0])
+    #    print(v1.shape)
     #    v_result = v1 + v1
     #    self.assertEqual(v_result.values, v_expected.values)
 
