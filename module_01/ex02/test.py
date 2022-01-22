@@ -20,6 +20,10 @@ class TestVectorClass(unittest.TestCase):
         self.assertRaises(ValueError, Vector._define_vector, invalid_vec)
 
     def test_vector_from_tuple(self):
+        invalid_vec = (4,)
+        self.assertRaises(ValueError, Vector._define_vector, invalid_vec)
+        invalid_vec = (4, 8, 12)
+        self.assertRaises(ValueError, Vector._define_vector, invalid_vec)
         valid_vec = [[0.0], [1.0], [2.0], [3.0]]
         self.assertEqual(Vector._define_vector((0, 4)), valid_vec)
 

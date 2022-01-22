@@ -30,11 +30,10 @@ class Vector:
             raise ValueError("Vector cannot be empty")
         elif isinstance(vec, int):
             return Vector._vector_from_size(vec)
-        elif isinstance(vec, tuple) and len(vec) == 2:
+        elif isinstance(vec, tuple) and all(isinstance(val, int) for val in vec) and len(vec) == 2:
             values = []
             for column in range(vec[0], vec[1]):
                 values.append([float(column)])
-            print(values)
             return values
         elif isinstance(vec, list):
             if all(isinstance(val, float) for val in vec):
