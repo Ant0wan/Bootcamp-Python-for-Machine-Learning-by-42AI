@@ -14,7 +14,7 @@ class Vector:
         return str(self.__values)
 
     def __add__(self, other):
-        """Add two vectors together"""
+        """Add two vectors of same dimension"""
         if isinstance(other, Vector) and self.__shape == other.shape:
             sum_values = other.values
             if all(isinstance(val, list) for val in self.__values):
@@ -29,7 +29,16 @@ class Vector:
         raise ValueError("Can only add Vector types with same dimensions")
 
     def __radd__(self, other):
+        """Add two vectors of same dimension"""
         return Vector.__add__(other)
+
+    def __sub__(self, other):
+        """Substract two vectors of same dimension"""
+        pass
+
+    def __rsub__(self, other):
+        """Substract two vectors of same dimension"""
+        return Vector.__sub__(other)
 
     @staticmethod
     def _vector_from_size(size):
