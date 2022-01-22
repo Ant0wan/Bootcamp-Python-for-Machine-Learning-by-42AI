@@ -22,8 +22,14 @@ class Vector:
     def _vector_from_tuple(pair):
         """Create vector from tuple from [0] to [1]"""
         values = []
-        for column in range(pair[0], pair[1]):
-            values.append([float(column)])
+        if pair[0] == pair[1]:
+            raise ValueError("Vector cannot be empty")
+        elif pair[1] > pair[0]:
+            for column in range(pair[0], pair[1]):
+                values.append([float(column)])
+        else:
+            for column in range(pair[0], pair[1], -1):
+                values.append([float(column - 1)])
         return values
 
     @staticmethod

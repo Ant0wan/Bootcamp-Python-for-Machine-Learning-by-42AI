@@ -26,6 +26,18 @@ class TestVectorClass(unittest.TestCase):
         self.assertRaises(ValueError, Vector._define_vector, invalid_vec)
         valid_vec = [[0.0], [1.0], [2.0], [3.0]]
         self.assertEqual(Vector._define_vector((0, 4)), valid_vec)
+        valid_vec = [[0.0], [1.0], [2.0], [3.0]]
+        self.assertEqual(Vector._define_vector((0, 4)), valid_vec)
+        valid_vec = [[3.0]]
+        self.assertEqual(Vector._define_vector((3, 4)), valid_vec)
+        valid_vec = (4, 4)
+        self.assertRaises(ValueError, Vector._define_vector, invalid_vec)
+        valid_vec = [[3.0], [2.0], [1.0], [0.0]]
+        self.assertEqual(Vector._define_vector((4, 0)), valid_vec)
+        valid_vec = [[14.0], [13.0], [12.0], [11.0], [10.0]]
+        self.assertEqual(Vector._define_vector((15, 10)), valid_vec)
+        valid_vec = [[10.0], [11.0], [12.0], [13.0], [14.0]]
+        self.assertEqual(Vector._define_vector((10, 15)), valid_vec)
 
     def test_define_vector_1D(self):
         """Test check_vector with vector of dimension 1"""
