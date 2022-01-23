@@ -352,7 +352,7 @@ class TestVectorClass(unittest.TestCase):
         self.assertEqual(v_result.values, v_expected.values)
 
     def test_rtruediv(self):
-        """Test __truediv__ method"""
+        """Test __rtruediv__ method"""
         with self.assertRaises(ValueError):
             v1 = Vector([0.0, 1.0, 2.0, 3.0])
             v1 /= 'Hello'
@@ -415,6 +415,23 @@ class TestVectorClass(unittest.TestCase):
         v1 = Vector([[0.0, 1.0], [2.0, 3.0], [4.0, 5.0]])
         v_expected = Vector([[0.0, -2.0], [-4.0, -6.0], [-8.0, -10.0]])
         v_result = v1 * -2.0
+        self.assertEqual(v_result.values, v_expected.values)
+
+    def test_rmul(self):
+        """Test __rmul__ method"""
+        with self.assertRaises(ValueError):
+            v1 = Vector([0.0, 1.0, 2.0, 3.0])
+            v1 *= 'Hello'
+        with self.assertRaises(ValueError):
+            v1 = Vector([0.0, 1.0, 2.0, 3.0])
+            v1 *= []
+        v_result = Vector([0.0, 1.0, 2.0, 3.0])
+        v_result *= 0
+        v_expected = Vector([0.0, 0.0, 0.0, 0.0])
+        self.assertEqual(v_result.values, v_expected.values)
+        v_result = Vector([[0.0, 1.0], [2.0, 3.0], [4.0, 5.0]])
+        v_expected = Vector([[0.0, -2.0], [-4.0, -6.0], [-8.0, -10.0]])
+        v_result *= -2.0
         self.assertEqual(v_result.values, v_expected.values)
 
 
