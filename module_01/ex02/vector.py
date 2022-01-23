@@ -35,14 +35,14 @@ class Vector:
     def __sub__(self, other):
         """Substract two vectors of same dimension"""
         if isinstance(other, Vector) and self.__shape == other.shape:
-            sum_values = other.values
+            sum_values = self.__values
             if all(isinstance(val, list) for val in self.__values):
                 for column_index in range(0, self.__shape[0]):
                     for row_index in range(0, self.__shape[1]):
-                        sum_values[column_index][row_index] -= self.__values[column_index][row_index]
+                        sum_values[column_index][row_index] -= other.values[column_index][row_index]
             else:
                 for row_index in range(0, self.__shape[1]):
-                    sum_values[row_index] -= self.__values[row_index]
+                    sum_values[row_index] = sum_values[row_index] - other.values[row_index]
             sum_vector = Vector(sum_values)
             return sum_vector
         raise ValueError("Can only add Vector types with same dimensions")

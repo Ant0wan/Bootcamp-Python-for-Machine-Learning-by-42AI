@@ -225,6 +225,39 @@ class TestVectorClass(unittest.TestCase):
 
     def test_sub(self):
         """Test __sub__ method"""
+        with self.assertRaises(ValueError):
+            v0 = Vector([[0.0], [1.0], [2.0], [3.0]])
+            v1 = [[0.0], [1.0], [2.0], [3.0]]
+            v_result = v0 - v1
+        with self.assertRaises(TypeError):
+            v1 = Vector([[0.0], [1.0], [2.0], [3.0]])
+            v0 = [[0.0], [1.0], [2.0], [3.0]]
+            v_result = v0 - v1
+        with self.assertRaises(ValueError):
+            v0 = Vector([0.0, 2.5, 0.0, 0.0, 1.0, 5.7, 2.0, 7.9, 3.0, 7.7])
+            v1 = [0.0, 2.5, 0.0, 0.0, 1.0, 5.7, 2.0, 7.9, 3.0, 7.7]
+            v_result = v0 - v1
+        with self.assertRaises(TypeError):
+            v1 = Vector([0.0, 2.5, 0.0, 0.0, 1.0, 5.7, 2.0, 7.9, 3.0, 7.7])
+            v0 = [0.0, 2.5, 0.0, 0.0, 1.0, 5.7, 2.0, 7.9, 3.0, 7.7]
+            v_result = v0 - v1
+        with self.assertRaises(ValueError):
+            v0 = Vector([0.0, 2.5, 0.0, 0.0, 1.0, 5.7, 2.0, 7.9, 3.0, 7.7])
+            v1 = [[0.0], [1.0], [2.0], [3.0]]
+            v_result = v0 - v1
+        v1 = Vector([0.0, 1.0, 2.0, 3.0])
+        v_expected = Vector([0.0, 0.0, 0.0, 0.0])
+        v_result = v1 - v1
+        self.assertEqual(v_result.values, v_expected.values)
+        v1 = Vector([0.0, 1.0, 2.0, 3.0])
+        v2 = Vector([0.0, 2.0, 4.0, 6.0])
+        v_expected = Vector([0.0, -1.0, -2.0, -3.0])
+        v_result = v1 - v2
+        self.assertEqual(v_result.values, v_expected.values)
+        v1 = Vector([[0.0, 1.0], [2.0, 3.0], [4.0, 5.0]])
+        v_expected = Vector([[0.0, 0.0], [0.0, 0.0], [0.0, 0.0]])
+        v_result = v1 - v1
+        self.assertEqual(v_result.values, v_expected.values)
         v1 = Vector([0.0, 1.0, 2.0, 3.0])
         v_expected = Vector([0.0, 0.0, 0.0, 0.0])
         v_result = v1 - v1
