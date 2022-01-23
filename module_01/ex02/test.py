@@ -484,6 +484,25 @@ class TestVectorClass(unittest.TestCase):
         b = Vector([[3.0, 1.0],[4.0, 2.0],[3.0, 3.0]])
         self.assertEqual(a.dot(b), [[27.0, 21.0], [41.0, 21.0]])
 
+    def test_T(self):
+        """Test T Vector class method"""
+        a = Vector([[1.0]])
+        self.assertEqual(a.T().values, [[1.0]])
+        a = Vector([-1.0])
+        self.assertEqual(a.T().values, [[-1.0]])
+        a = Vector([4.0])
+        self.assertEqual(a.T().values, [[4.0]])
+        a = Vector([0.0, 1.0, 2.0, 3.0])
+        b = Vector([[0.0], [1.0], [2.0], [3.0]])
+        self.assertEqual(a.T().values, b.values)
+        a = Vector([[0.0, 1.0, 2.0, 3.0]])
+        b = Vector([[0.0], [1.0], [2.0], [3.0]])
+        self.assertEqual(a.T().values, b.values)
+        a = Vector([[0.0, 3.0, 5.0], [5.0, 5.0, 2.0]])
+        self.assertEqual(a.T().values, [[0.0, 5.0], [3.0, 5.0], [5.0, 2.0]])
+        a = Vector([[3.0], [4.0], [3.0]])
+        self.assertEqual(a.T().values, [[3.0, 4.0, 3.0]])
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
