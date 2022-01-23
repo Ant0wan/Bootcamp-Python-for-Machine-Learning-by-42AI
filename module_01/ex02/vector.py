@@ -155,10 +155,12 @@ class Vector:
 
     @property
     def values(self):
+        """'values' property"""
         return self.__values
 
     @property
     def shape(self):
+        """'shape' property"""
         return self.__shape
 
     @staticmethod
@@ -192,8 +194,7 @@ class Vector:
               5.0 5.0 2.0       4.0 2.0     a[1][0]*b[0][0] + a[1][1]*b[1][0] + a[1][2]*b[2][0]   a[1][0]*b[0][1] + a[1][1]*b[1][1] + a[1][2]*b[2][1]
                                 3.0 3.0
 
-        """
-        """Results:
+         Results:
 
             27
             42
