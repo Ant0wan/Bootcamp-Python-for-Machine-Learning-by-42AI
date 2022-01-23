@@ -446,16 +446,17 @@ class TestVectorClass(unittest.TestCase):
 
     def test_str(self):
         """Test __str__ Vector class method"""
-        self.assertEqual(str(Vector([0.0, 1.0, 2.0, 3.0, 4.0, 5.0])), '[0.0 1.0 2.0 3.0 4.0 5.0]')
+        self.assertEqual(str(Vector([0.0, 1.0, 2.0, 3.0, 4.0, 5.0])),
+                         '[0.0 1.0 2.0 3.0 4.0 5.0]')
         self.assertEqual(str(Vector([[0.0, 1.0], [2.0, 3.0], [4.0, 5.0]])),
-                                    '[[ 0.0 1.0]\n [ 2.0 3.0]\n [ 4.0 5.0]]')
+                         '[[ 0.0 1.0]\n [ 2.0 3.0]\n [ 4.0 5.0]]')
 
     def test_repr(self):
         """Test __repr__ Vector class method"""
-        vector_r = Vector([[ 0.0, 1.0, 2.0, 3.0, 4.0],
-                           [ 5.0, 6.0, 7.0, 8.0, 9.0],
+        vector_r = Vector([[0.0, 1.0, 2.0, 3.0, 4.0],
+                           [5.0, 6.0, 7.0, 8.0, 9.0],
                            [10.0, 11.0, 12.0, 13.0, 14.0]])
-        self.assertEqual(repr(vector_r),'array([[ 0.0 1.0 2.0 3.0 4.0]\n\
+        self.assertEqual(repr(vector_r), 'array([[ 0.0 1.0 2.0 3.0 4.0]\n\
        [ 5.0 6.0 7.0 8.0 9.0]\n\
        [ 10.0 11.0 12.0 13.0 14.0]])')
         vector_r = Vector([0.0, 1.0, 2.0, 3.0, 4.0, 5.0])
@@ -499,7 +500,7 @@ class TestVectorClass(unittest.TestCase):
         vec_test = Vector([[0.0, 3.0, 5.0], [5.0, 5.0, 2.0]])
         vec_res = Vector([[3.0], [4.0], [3.0]])
         self.assertEqual(vec_test.dot(vec_res), [[27.0], [41.0]])
-        vec_res = Vector([[3.0, 1.0],[4.0, 2.0],[3.0, 3.0]])
+        vec_res = Vector([[3.0, 1.0], [4.0, 2.0], [3.0, 3.0]])
         self.assertEqual(vec_test.dot(vec_res), [[27.0, 21.0], [41.0, 21.0]])
 
     # pylint: disable=invalid-name
@@ -518,7 +519,8 @@ class TestVectorClass(unittest.TestCase):
         vec_res = Vector([[0.0], [1.0], [2.0], [3.0]])
         self.assertEqual(vec_test.T().values, vec_res.values)
         vec_test = Vector([[0.0, 3.0, 5.0], [5.0, 5.0, 2.0]])
-        self.assertEqual(vec_test.T().values, [[0.0, 5.0], [3.0, 5.0], [5.0, 2.0]])
+        self.assertEqual(vec_test.T().values,
+                         [[0.0, 5.0], [3.0, 5.0], [5.0, 2.0]])
         vec_test = Vector([[3.0], [4.0], [3.0]])
         self.assertEqual(vec_test.T().values, [[3.0, 4.0, 3.0]])
 
