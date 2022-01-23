@@ -434,6 +434,12 @@ class TestVectorClass(unittest.TestCase):
         v_result *= -2.0
         self.assertEqual(v_result.values, v_expected.values)
 
+    def test_str(self):
+        """Test stringify method"""
+        print(str(Vector([[0.0, 1.0], [2.0, 3.0], [4.0, 5.0]])))
+#        self.assertEqual(str(Vector([[0.0, 1.0], [2.0, 3.0], [4.0, 5.0]])), '[[0.0, 1.0], [2.0, 3.0], [4.0, 5.0]]')
+
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

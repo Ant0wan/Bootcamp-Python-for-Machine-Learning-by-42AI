@@ -11,7 +11,26 @@ class Vector:
         self.__shape = self._define_shape(self.__values)
 
     def __str__(self):
-        return str(self.__values)
+        """
+            [[ 0  1  2  3  4]
+             [ 5  6  7  8  9]
+             [10 11 12 13 14]]
+        """
+        array = '['
+        if all(isinstance(val, list) for val in self.__values):
+            for column_index in range(0, self.__shape[0]):
+                array += '['
+                for row_index in range(0, self.__shape[1]):
+                    array += f' {self.__values[column_index][row_index]}'
+                if column_index == self.__shape[0] - 1:
+                    array += ']'
+                else:
+                    array += ']\n'
+        else:
+            for row_index in range(0, self.__shape[1]):
+                array += f' {self.__values[column_index][row_index]}'
+        array += ']\n'
+        return array
 
     def __add__(self, other):
         """Add two vectors of same dimension"""
