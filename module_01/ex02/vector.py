@@ -194,9 +194,14 @@ class Vector:
                                 3.0 3.0
 
         """
-        """
-             27 21
-             42 21
+        """Results:
+
+            27
+            42
+
+            27 21
+            42 21
+
         """
         if not isinstance(other, Vector):
             raise TypeError('argurment must be of type Vector')
@@ -206,11 +211,5 @@ class Vector:
                 for a_row_index in range(self.__shape[0]):
                     for a_column_index in range(self.shape[1]):
                         scalar_product[a_row_index][b_column_index] += self.__values[a_row_index][a_column_index] * other.values[a_column_index][b_column_index]
-
-
-
-           # for column_index in range(self.__shape[0]):
-           #     for row_index in range(self.shape[1]):
-           #         scalar_product[column_index][] = self.values[row_index] * other.values[column_index]
             return scalar_product
         raise ValueError(f"shapes ({self.__shape[0]},{self.__shape[1]}) and ({other.shape[0]},{other.shape[1]}) not aligned: {self.__shape[1]} (dim 1) != {other.shape[0]} (dim 0)")
