@@ -218,6 +218,7 @@ class Vector:
             return scalar_product
         raise ValueError(f"shapes ({self.__shape[0]},{self.__shape[1]}) and ({other.shape[0]},{other.shape[1]}) not aligned: {self.__shape[1]} (dim 1) != {other.shape[0]} (dim 0)")
 
+    # pylint: disable=invalid-name
     def T(self):
         """Transpose vector"""
         transpose = self._reshape(self._arange(self.__shape[0] * self.__shape[1]), self.__shape[1], self.__shape[0])
