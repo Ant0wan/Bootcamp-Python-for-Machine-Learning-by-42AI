@@ -75,27 +75,27 @@ class Vector:
         return Vector.__mul__(multiplier)
 
     @staticmethod
-    def _iter_with(self, other, func):
+    def _iter_with(vector, other, func):
         """Apply func operator on all elements of a vector"""
-        if isinstance(other, Vector) and self.__shape == other.shape:
-            sum_values = self.__values
-            if all(isinstance(val, list) for val in self.__values):
-                for column_index in range(0, self.__shape[0]):
-                    for row_index in range(0, self.__shape[1]):
+        if isinstance(other, Vector) and vector.shape == other.shape:
+            sum_values = vector.values
+            if all(isinstance(val, list) for val in vector.values):
+                for column_index in range(0, vector.shape[0]):
+                    for row_index in range(0, vector.shape[1]):
                         sum_values[column_index][row_index] = func(sum_values[column_index][row_index], other.values[column_index][row_index])
             else:
-                for row_index in range(0, self.__shape[1]):
+                for row_index in range(0, vector.shape[1]):
                     sum_values[row_index] = func(sum_values[row_index], other.values[row_index])
             sum_vector = Vector(sum_values)
             return sum_vector
         elif isinstance(other, int) or isinstance(other, float):
-            sum_values = self.__values
-            if all(isinstance(val, list) for val in self.__values):
-                for column_index in range(0, self.__shape[0]):
-                    for row_index in range(0, self.__shape[1]):
+            sum_values = vector.values
+            if all(isinstance(val, list) for val in vector.values):
+                for column_index in range(0, vector.shape[0]):
+                    for row_index in range(0, vector.shape[1]):
                         sum_values[column_index][row_index] = func(sum_values[column_index][row_index], other)
             else:
-                for row_index in range(0, self.__shape[1]):
+                for row_index in range(0, vector.shape[1]):
                     sum_values[row_index] = func(sum_values[row_index], other)
             sum_vector = Vector(sum_values)
             return sum_vector
@@ -203,6 +203,7 @@ class Vector:
             42 21
 
         """
+        # pylint: disable=self-cls-assignment
         if not isinstance(other, Vector):
             raise TypeError('argurment must be of type Vector')
         if not isinstance(self.__values[0], list):
@@ -218,7 +219,7 @@ class Vector:
             return scalar_product
         raise ValueError(f"shapes ({self.__shape[0]},{self.__shape[1]}) and ({other.shape[0]},{other.shape[1]}) not aligned: {self.__shape[1]} (dim 1) != {other.shape[0]} (dim 0)")
 
-    # pylint: disable=invalid-name
+    # pylint: disable=invalid-name,self-cls-assignment
     def T(self):
         """Transpose vector"""
         transpose = self._reshape(self._arange(self.__shape[0] * self.__shape[1]), self.__shape[1], self.__shape[0])
