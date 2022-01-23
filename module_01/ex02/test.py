@@ -315,6 +315,21 @@ class TestVectorClass(unittest.TestCase):
 
     def test_truediv(self):
         """Test __truediv__ method"""
+        with self.assertRaises(ValueError):
+            v1 = Vector([0.0, 1.0, 2.0, 3.0])
+            v1 / 'Hello'
+        with self.assertRaises(ValueError):
+            v1 = Vector([0.0, 1.0, 2.0, 3.0])
+            v1 / ('Hello',)
+        with self.assertRaises(ValueError):
+            v1 = Vector([0.0, 1.0, 2.0, 3.0])
+            v1 / []
+        with self.assertRaises(ZeroDivisionError):
+            v1 = Vector([0.0, 1.0, 2.0, 3.0])
+            v1 / 0
+        with self.assertRaises(ZeroDivisionError):
+            v1 = Vector([0.0, 1.0, 2.0, 3.0])
+            v1 / 0.0
         v1 = Vector([0.0, 1.0, 2.0, 3.0])
         v_expected = Vector([0.0, 0.5, 1.0, 1.5])
         v_result = v1 / 2
@@ -322,6 +337,56 @@ class TestVectorClass(unittest.TestCase):
         v1 = Vector([0.0, 1.0, 2.0, 3.0])
         v_expected = Vector([0.0, 0.5, 1.0, 1.5])
         v_result = v1 / 2.0
+        self.assertEqual(v_result.values, v_expected.values)
+        v1 = Vector([0.0, 1.0, 2.0, 3.0])
+        v_expected = Vector([-0.0, -0.5, -1.0, -1.5])
+        v_result = v1 / -2.0
+        self.assertEqual(v_result.values, v_expected.values)
+        v1 = Vector([[0.0, 1.0], [2.0, 3.0], [4.0, 5.0]])
+        v_expected = Vector([[0.0, 0.5], [1.0, 1.5], [2.0, 2.5]])
+        v_result = v1 / 2.0
+        self.assertEqual(v_result.values, v_expected.values)
+        v1 = Vector([[0.0, 1.0], [2.0, 3.0], [4.0, 5.0]])
+        v_expected = Vector([[-0.0, -0.5], [-1.0, -1.5], [-2.0, -2.5]])
+        v_result = v1 / -2
+        self.assertEqual(v_result.values, v_expected.values)
+
+    def test_rtruediv(self):
+        """Test __truediv__ method"""
+        with self.assertRaises(ValueError):
+            v1 = Vector([0.0, 1.0, 2.0, 3.0])
+            v1 /= 'Hello'
+        with self.assertRaises(ValueError):
+            v1 = Vector([0.0, 1.0, 2.0, 3.0])
+            v1 /= ('Hello',)
+        with self.assertRaises(ValueError):
+            v1 = Vector([0.0, 1.0, 2.0, 3.0])
+            v1 /= []
+        with self.assertRaises(ZeroDivisionError):
+            v1 = Vector([0.0, 1.0, 2.0, 3.0])
+            v1 /= 0
+        with self.assertRaises(ZeroDivisionError):
+            v1 = Vector([0.0, 1.0, 2.0, 3.0])
+            v1 /= 0.0
+        v_result = Vector([0.0, 1.0, 2.0, 3.0])
+        v_expected = Vector([0.0, 0.5, 1.0, 1.5])
+        v_result /= 2
+        self.assertEqual(v_result.values, v_expected.values)
+        v_result = Vector([0.0, 1.0, 2.0, 3.0])
+        v_expected = Vector([0.0, 0.5, 1.0, 1.5])
+        v_result /= 2.0
+        self.assertEqual(v_result.values, v_expected.values)
+        v_result = Vector([0.0, 1.0, 2.0, 3.0])
+        v_expected = Vector([-0.0, -0.5, -1.0, -1.5])
+        v_result /= -2.0
+        self.assertEqual(v_result.values, v_expected.values)
+        v_result = Vector([[0.0, 1.0], [2.0, 3.0], [4.0, 5.0]])
+        v_expected = Vector([[0.0, 0.5], [1.0, 1.5], [2.0, 2.5]])
+        v_result /= 2.0
+        self.assertEqual(v_result.values, v_expected.values)
+        v_result = Vector([[0.0, 1.0], [2.0, 3.0], [4.0, 5.0]])
+        v_expected = Vector([[-0.0, -0.5], [-1.0, -1.5], [-2.0, -2.5]])
+        v_result /= -2
         self.assertEqual(v_result.values, v_expected.values)
 
 
