@@ -154,7 +154,7 @@ class TestVectorClass(unittest.TestCase):
         self.assertEqual(v1.shape, (1, 10))
 
     def test_add(self):
-        """Test __add__ method"""
+        """Test __add__ Vector class method"""
         with self.assertRaises(ValueError):
             v0 = Vector([[0.0], [1.0], [2.0], [3.0]])
             v1 = [[0.0], [1.0], [2.0], [3.0]]
@@ -189,7 +189,7 @@ class TestVectorClass(unittest.TestCase):
         self.assertEqual(v_result.values, v_expected.values)
 
     def test_radd(self):
-        """Test __radd__ method"""
+        """Test __radd__ Vector class method"""
         with self.assertRaises(ValueError):
             v0 = Vector([[0.0], [1.0], [2.0], [3.0]])
             v1 = [[0.0], [1.0], [2.0], [3.0]]
@@ -224,7 +224,7 @@ class TestVectorClass(unittest.TestCase):
         self.assertEqual(v1.values, v_expected.values)
 
     def test_sub(self):
-        """Test __sub__ method"""
+        """Test __sub__ Vector class method"""
         with self.assertRaises(ValueError):
             v0 = Vector([[0.0], [1.0], [2.0], [3.0]])
             v1 = [[0.0], [1.0], [2.0], [3.0]]
@@ -264,7 +264,7 @@ class TestVectorClass(unittest.TestCase):
         self.assertEqual(v_result.values, v_expected.values)
 
     def test_rsub(self):
-        """Test __rsub__ method"""
+        """Test __rsub__ Vector class method"""
         with self.assertRaises(ValueError):
             v0 = Vector([[0.0], [1.0], [2.0], [3.0]])
             v1 = [[0.0], [1.0], [2.0], [3.0]]
@@ -314,7 +314,7 @@ class TestVectorClass(unittest.TestCase):
         self.assertEqual(v1.values, v_expected.values)
 
     def test_truediv(self):
-        """Test __truediv__ method"""
+        """Test __truediv__ Vector class method"""
         with self.assertRaises(ValueError):
             v1 = Vector([0.0, 1.0, 2.0, 3.0])
             v1 / 'Hello'
@@ -352,7 +352,7 @@ class TestVectorClass(unittest.TestCase):
         self.assertEqual(v_result.values, v_expected.values)
 
     def test_rtruediv(self):
-        """Test __rtruediv__ method"""
+        """Test __rtruediv__ Vector class method"""
         with self.assertRaises(ValueError):
             v1 = Vector([0.0, 1.0, 2.0, 3.0])
             v1 /= 'Hello'
@@ -390,7 +390,7 @@ class TestVectorClass(unittest.TestCase):
         self.assertEqual(v_result.values, v_expected.values)
 
     def test_mul(self):
-        """Test __mul__ method"""
+        """Test __mul__ Vector class method"""
         with self.assertRaises(ValueError):
             v1 = Vector([0.0, 1.0, 2.0, 3.0])
             v1 * 'Hello'
@@ -418,7 +418,7 @@ class TestVectorClass(unittest.TestCase):
         self.assertEqual(v_result.values, v_expected.values)
 
     def test_rmul(self):
-        """Test __rmul__ method"""
+        """Test __rmul__ Vector class method"""
         with self.assertRaises(ValueError):
             v1 = Vector([0.0, 1.0, 2.0, 3.0])
             v1 *= 'Hello'
@@ -435,16 +435,19 @@ class TestVectorClass(unittest.TestCase):
         self.assertEqual(v_result.values, v_expected.values)
 
     def test_str(self):
-        """Test stringify method"""
+        """Test __str__ Vector class method"""
         self.assertEqual(str(Vector([0.0, 1.0, 2.0, 3.0, 4.0, 5.0])), '[0.0 1.0 2.0 3.0 4.0 5.0]')
         self.assertEqual(str(Vector([[0.0, 1.0], [2.0, 3.0], [4.0, 5.0]])), '[[ 0.0 1.0]\n [ 2.0 3.0]\n [ 4.0 5.0]]')
 
     def test_repr(self):
-        """Test stringify method"""
+        """Test __repr__ Vector class method"""
         vector_r = Vector([[ 0.0, 1.0, 2.0, 3.0, 4.0], [ 5.0, 6.0, 7.0, 8.0, 9.0], [10.0, 11.0, 12.0, 13.0, 14.0]])
         self.assertEqual(repr(vector_r), 'array([[ 0.0 1.0 2.0 3.0 4.0]\n       [ 5.0 6.0 7.0 8.0 9.0]\n       [ 10.0 11.0 12.0 13.0 14.0]])')
         vector_r = Vector([0.0, 1.0, 2.0, 3.0, 4.0, 5.0])
         self.assertEqual(repr(vector_r), 'array([0.0 1.0 2.0 3.0 4.0 5.0])')
+
+    def test_dot(self):
+        """Test dot Vector class method"
 
 
 if __name__ == '__main__':
