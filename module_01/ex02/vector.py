@@ -182,12 +182,26 @@ class Vector:
         raise ValueError(f'cannot reshape array of size {len(initial_array)} into shape ({row},{column})')
 
     def dot(self, other):
+        """Matrix product
+
+         a.   0.0 3.0 5.0   b.  3.0         a[0][0]*b[0][0] + a[0][1]*b[1][0] + a[0][2]*b[2][0]
+              5.0 5.0 2.0       4.0         a[1][0]*b[0][0] + a[1][1]*b[1][0] + a[1][2]*b[2][0]
+                                3.0
+
+         a.   0.0 3.0 5.0   b.  3.0 1.0     a[0][0]*b[0][0] + a[0][1]*b[1][0] + a[0][2]*b[2][0]   a[0][0]*b[0][1] + a[0][1]*b[1][1] + a[0][2]*b[2][1]
+              5.0 5.0 2.0       4.0 2.0     a[1][0]*b[0][0] + a[1][1]*b[1][0] + a[1][2]*b[2][0]   a[1][0]*b[0][1] + a[1][1]*b[1][1] + a[1][2]*b[2][1]
+                                3.0 3.0
+        """
         if not isinstance(other, Vector):
             raise TypeError('argurment must be of type Vector')
         if self.__shape[1] == other.shape[0]:
             scalar_product = self._reshape(self._arange(self.__shape[0] * other.shape[1]), self.__shape[0], other.shape[1])
+            for 
+
+
+
            # for column_index in range(self.__shape[0]):
            #     for row_index in range(self.shape[1]):
            #         scalar_product[column_index][] = self.values[row_index] * other.values[column_index]
             return scalar_product
-        raise TypeError(f"ValueError: shapes ({self.__shape[0]},{self.__shape[1]}) and ({other.shape[0]},{other.shape[1]}) not aligned: {self.__shape[1]} (dim 1) != {other.shape[0]} (dim 0)")
+        raise ValueError(f"shapes ({self.__shape[0]},{self.__shape[1]}) and ({other.shape[0]},{other.shape[1]}) not aligned: {self.__shape[1]} (dim 1) != {other.shape[0]} (dim 0)")
