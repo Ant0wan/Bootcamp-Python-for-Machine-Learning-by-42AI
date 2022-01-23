@@ -217,3 +217,13 @@ class Vector:
                         scalar_product[a_row_index][b_column_index] += self.__values[a_row_index][a_column_index] * other.values[a_column_index][b_column_index]
             return scalar_product
         raise ValueError(f"shapes ({self.__shape[0]},{self.__shape[1]}) and ({other.shape[0]},{other.shape[1]}) not aligned: {self.__shape[1]} (dim 1) != {other.shape[0]} (dim 0)")
+
+    def T(self):
+        """Transpose vector"""
+        transpose = self._reshape(self._arange(self.__shape[0] * self.__shape[1]), self.__shape[1], self.__shape[0])
+        if not isinstance(self.__values[0], list):
+            self = Vector([self.__values])
+        for col_index in range(self.__shape[0]):
+            for row_index in range(self.__shape[1]):
+                transpose[row_index][col_index] = self.__values[col_index][row_index]
+        return Vector(transpose)
