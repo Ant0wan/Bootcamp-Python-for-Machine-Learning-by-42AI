@@ -11,7 +11,7 @@ class Vector:
         self.__shape = self._define_shape(self.__values)
 
     def __str__(self):
-        """
+        """Example:
             [[ 0  1  2  3  4]
              [ 5  6  7  8  9]
              [10 11 12 13 14]]
@@ -28,7 +28,9 @@ class Vector:
                     array += ']\n'
         else:
             for row_index in range(0, self.__shape[1]):
-                array += f' {self.__values[column_index][row_index]}'
+                array += f'{self.__values[row_index]}'
+                if row_index < self.__shape[1] - 1:
+                    array += ' '
         array += ']\n'
         return array
 

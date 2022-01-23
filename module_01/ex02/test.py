@@ -437,6 +437,7 @@ class TestVectorClass(unittest.TestCase):
     def test_str(self):
         """Test stringify method"""
         print(str(Vector([[0.0, 1.0], [2.0, 3.0], [4.0, 5.0]])))
+        print(str(Vector([0.0, 1.0, 2.0, 3.0, 4.0, 5.0])))
 #        self.assertEqual(str(Vector([[0.0, 1.0], [2.0, 3.0], [4.0, 5.0]])), '[[0.0, 1.0], [2.0, 3.0], [4.0, 5.0]]')
 
 
