@@ -159,3 +159,37 @@ class Vector:
     @property
     def shape(self):
         return self.__shape
+
+    @staticmethod
+    def _arange(size):
+        array = []
+        for each in range( size):
+            array.append(each)
+        return array
+
+    @staticmethod
+    def _reshape(initial_array, row, column):
+        if len(initial_array) == row * column:
+            array = []
+            array_index = 0
+            for ri in range(row):
+                new_row = []
+                for ci in range(column):
+                    new_row.append(initial_array[array_index])
+                    array_index += 1
+                array.append(new_row)
+            return array
+        raise ValueError(f'cannot reshape array of size {len(initial_array)} into shape ({row},{column})')
+
+
+
+  #  def dot(self, other):
+  #      # Check scalar product is possible
+  #      if self.__shape[1] == other.shape[0]:
+  #          scalar_product = Vector(1)
+  #          #scalar_product = Vector((self.__shape[0], other.shape[1])) # use append
+  #          for column_index in range(self.__shape[0]):
+  #              for row_index in range(self.__shape[1]):
+  #                  scalar_product[column_index][] = self.values[row_index] * other.values[column_index]
+  #      raise TypeError("Not bl;abla like error of numpy vector.dot")
+  #      return scalar_product
