@@ -164,8 +164,8 @@ class Vector:
 
     @staticmethod
     def _arange(size):
-        """Generate list of size elements"""
-        return [value for value in range(size)]
+        """Generate list of size elements != numpy.arange"""
+        return [0.0] * size
 
     @staticmethod
     def _reshape(initial_array, row, column):
@@ -194,13 +194,18 @@ class Vector:
                                 3.0 3.0
 
         """
+        """
+             27 21
+             42 21
+        """
         if not isinstance(other, Vector):
             raise TypeError('argurment must be of type Vector')
         if self.__shape[1] == other.shape[0]:
             scalar_product = self._reshape(self._arange(self.__shape[0] * other.shape[1]), self.__shape[0], other.shape[1])
-            for a_row_index in range(self.__shape[0]):
-                for a_column_index in range(self.shape[1]): # for each item of row of a[0][a_column_index]
-                    scalar_product[a_row_index][0] += self.__values[a_row_index][a_column_index] * other.values[a_column_index][0]
+            for b_column_index in range(other.shape[1]):
+                for a_row_index in range(self.__shape[0]):
+                    for a_column_index in range(self.shape[1]):
+                        scalar_product[a_row_index][b_column_index] += self.__values[a_row_index][a_column_index] * other.values[a_column_index][b_column_index]
 
 
 
