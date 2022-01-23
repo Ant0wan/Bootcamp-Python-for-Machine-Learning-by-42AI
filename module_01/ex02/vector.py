@@ -105,10 +105,7 @@ class Vector:
     @staticmethod
     def _vector_from_size(size):
         """Create vector made of size column with values from 0 to size"""
-        vector = []
-        for column in range(0, size):
-            vector.append([float(column)])
-        return vector
+        return [[float(value)] for value in range(size)]
 
     @staticmethod
     def _vector_from_tuple(pair):
@@ -167,13 +164,12 @@ class Vector:
 
     @staticmethod
     def _arange(size):
-        array = []
-        for each in range( size):
-            array.append(each)
-        return array
+        """Generate list of size elements"""
+        return [value for value in range(size)]
 
     @staticmethod
     def _reshape(initial_array, row, column):
+        """Change dimension of a list"""
         if len(initial_array) == row * column:
             array = []
             array_index = 0
