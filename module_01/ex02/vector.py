@@ -88,7 +88,7 @@ class Vector:
                     sum_values[row_index] = func(sum_values[row_index], other.values[row_index])
             sum_vector = Vector(sum_values)
             return sum_vector
-        elif isinstance(other, int) or isinstance(other, float):
+        if isinstance(other, int) or isinstance(other, float):
             sum_values = vector.values
             if all(isinstance(val, list) for val in vector.values):
                 for column_index in range(0, vector.shape[0]):
@@ -113,12 +113,11 @@ class Vector:
         values = []
         if pair[0] == pair[1]:
             raise ValueError("Vector cannot be empty")
-        elif pair[1] > pair[0]:
+        if pair[1] > pair[0]:
             for column in range(pair[0], pair[1]):
                 values.append([float(column)])
-        else:
-            for column in range(pair[0], pair[1], -1):
-                values.append([float(column - 1)])
+        for column in range(pair[0], pair[1], -1):
+            values.append([float(column - 1)])
         return values
 
     @staticmethod
@@ -126,14 +125,14 @@ class Vector:
         """Check only 1 and 2 dimensions vectors"""
         if not vec:
             raise ValueError("Vector cannot be empty")
-        elif isinstance(vec, int):
+        if isinstance(vec, int):
             return Vector._vector_from_size(vec)
-        elif isinstance(vec, tuple) and all(isinstance(val, int) for val in vec) and len(vec) == 2:
+        if isinstance(vec, tuple) and all(isinstance(val, int) for val in vec) and len(vec) == 2:
             return Vector._vector_from_tuple(vec)
-        elif isinstance(vec, list):
+        if isinstance(vec, list):
             if all(isinstance(val, float) for val in vec):
                 return vec
-            elif all(isinstance(column, list) for column in vec):
+            if all(isinstance(column, list) for column in vec):
                 column_len = len(vec[0])
                 for column in vec:
                     if not column:
@@ -151,7 +150,7 @@ class Vector:
         if isinstance(vec, list):
             if all(isinstance(val, float) for val in vec):
                 return (1, len(vec))
-            elif all(isinstance(column, list) for column in vec):
+            if all(isinstance(column, list) for column in vec):
                 return (len(vec), len(vec[0]))
 
     @property
