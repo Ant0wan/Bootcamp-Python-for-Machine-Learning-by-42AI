@@ -390,5 +390,6 @@ class TestVectorClass(unittest.TestCase):
         self.assertEqual(v_result.values, v_expected.values)
 
 
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
