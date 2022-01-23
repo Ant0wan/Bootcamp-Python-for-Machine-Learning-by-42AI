@@ -25,7 +25,7 @@ class Vector:
                 if column_index == self.__shape[0] - 1:
                     array += ']'
                 else:
-                    array += ']\n'
+                    array += ']\n '
         else:
             for row_index in range(0, self.__shape[1]):
                 array += f'{self.__values[row_index]}'
