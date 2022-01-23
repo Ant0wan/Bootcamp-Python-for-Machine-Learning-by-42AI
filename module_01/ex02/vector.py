@@ -31,7 +31,7 @@ class Vector:
                 array += f'{self.__values[row_index]}'
                 if row_index < self.__shape[1] - 1:
                     array += ' '
-        array += ']\n'
+        array += ']'
         return array
 
     def __add__(self, other):
