@@ -447,7 +447,30 @@ class TestVectorClass(unittest.TestCase):
         self.assertEqual(repr(vector_r), 'array([0.0 1.0 2.0 3.0 4.0 5.0])')
 
     def test_dot(self):
-        """Test dot Vector class method"
+        """Test dot Vector class method"""
+        with self.assertRaises(ValueError):
+            a = Vector([[0.0, 3.0, 5.0], [5.0, 5.0, 2.0]])
+            b = Vector([[3.0], [4.0], [3.0], [5.0]])
+            a.dot(b)
+        with self.assertRaises(ValueError):
+            a = Vector([[0.0, 3.0, 6.0]])
+            b = Vector([[0.0]])
+            a.dot(b)
+        with self.assertRaises(TypeError):
+            a = [[0.0, 3.0, 5.0], [5.0, 5.0, 2.0]]
+            b = Vector([[3.0], [4.0], [3.0]])
+            b.dot(a)
+        a = Vector([0.0, 1.0, 2.0, 3.0])
+        b = Vector([[0.0], [1.0], [2.0], [3.0]])
+        self.assertEqual(a.dot(b), [[14.0]])
+        a = Vector([[0.0]])
+        b = Vector([[0.0]])
+        self.assertEqual(a.dot(b), [[0.0]])
+        a = Vector([[0.0, 3.0, 5.0], [5.0, 5.0, 2.0]])
+        b = Vector([[3.0], [4.0], [3.0]])
+        self.assertEqual(a.dot(b), [[27.0], [41.0]])
+        b = Vector([[3.0, 1.0],[4.0, 2.0],[3.0, 3.0]])
+        self.assertEqual(a.dot(b), [[27.0, 21.0], [41.0, 21.0]])
 
 
 if __name__ == '__main__':
