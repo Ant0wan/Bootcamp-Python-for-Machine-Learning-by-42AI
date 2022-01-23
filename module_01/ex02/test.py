@@ -189,7 +189,7 @@ class TestVectorClass(unittest.TestCase):
         self.assertEqual(v_result.values, v_expected.values)
 
     def test_radd(self):
-        """Test __add__ method"""
+        """Test __radd__ method"""
         with self.assertRaises(ValueError):
             v0 = Vector([[0.0], [1.0], [2.0], [3.0]])
             v1 = [[0.0], [1.0], [2.0], [3.0]]
@@ -262,6 +262,56 @@ class TestVectorClass(unittest.TestCase):
         v_expected = Vector([0.0, 0.0, 0.0, 0.0])
         v_result = v1 - v1
         self.assertEqual(v_result.values, v_expected.values)
+
+    def test_rsub(self):
+        """Test __rsub__ method"""
+        with self.assertRaises(ValueError):
+            v0 = Vector([[0.0], [1.0], [2.0], [3.0]])
+            v1 = [[0.0], [1.0], [2.0], [3.0]]
+            v0 -= v1
+        with self.assertRaises(TypeError):
+            v1 = Vector([[0.0], [1.0], [2.0], [3.0]])
+            v0 = [[0.0], [1.0], [2.0], [3.0]]
+            v0 -= v1
+        with self.assertRaises(ValueError):
+            v0 = Vector([0.0, 2.5, 0.0, 0.0, 1.0, 5.7, 2.0, 7.9, 3.0, 7.7])
+            v1 = [0.0, 2.5, 0.0, 0.0, 1.0, 5.7, 2.0, 7.9, 3.0, 7.7]
+            v0 -= v1
+        with self.assertRaises(TypeError):
+            v1 = Vector([0.0, 2.5, 0.0, 0.0, 1.0, 5.7, 2.0, 7.9, 3.0, 7.7])
+            v0 = [0.0, 2.5, 0.0, 0.0, 1.0, 5.7, 2.0, 7.9, 3.0, 7.7]
+            v0 -= v1
+        with self.assertRaises(ValueError):
+            v0 = Vector([0.0, 2.5, 0.0, 0.0, 1.0, 5.7, 2.0, 7.9, 3.0, 7.7])
+            v1 = [[0.0], [1.0], [2.0], [3.0]]
+            v0 -= v1
+        v1 = Vector([[0.0], [1.0], [2.0], [3.0]])
+        v_expected = Vector([[0.0], [0.0], [0.0], [0.0]])
+        v1 -= v1
+        self.assertEqual(v1.values, v_expected.values)
+        v1 = Vector([[0.0, 1.0], [2.0, 3.0], [4.0, 5.0]])
+        v_expected = Vector([[0.0, 0.0], [0.0, 0.0], [0.0, 0.0]])
+        v1 -= v1
+        self.assertEqual(v1.values, v_expected.values)
+        v1 = Vector([0.0, 1.0, 2.0, 3.0])
+        v_expected = Vector([0.0, 0.0, 0.0, 0.0])
+        v1 -= v1
+        self.assertEqual(v1.values, v_expected.values)
+        v1 = Vector([[0.0], [1.0], [2.0], [3.0]])
+        v2 = Vector([[0.0], [-1.0], [-2.0], [-3.0]])
+        v_expected = Vector([[0.0], [2.0], [4.0], [6.0]])
+        v1 -= v2
+        self.assertEqual(v1.values, v_expected.values)
+        v1 = Vector([[0.0, 1.0], [2.0, 3.0], [4.0, 5.0]])
+        v2 = Vector([[0.0, 2.0], [4.0, 6.0], [8.0, 10.0]])
+        v_expected = Vector([[0.0, -1.0], [-2.0, -3.0], [-4.0, -5.0]])
+        v1 -= v2
+        self.assertEqual(v1.values, v_expected.values)
+        v1 = Vector([0.0, 1.0, -2.0, 3.0])
+        v2 = Vector([-100.0, 1.0, -2.0, 999.0])
+        v_expected = Vector([100.0, 0.0, 0.0, -996.0])
+        v1 -= v2
+        self.assertEqual(v1.values, v_expected.values)
 
 
 if __name__ == '__main__':
