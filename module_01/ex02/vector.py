@@ -10,7 +10,7 @@ class Vector:
         self.__values = self._define_vector(values)
         self.__shape = self._define_shape(self.__values)
 
-    def __str__(self):
+    def __str__(self, spacing=' '):
         """Example:
             [[ 0  1  2  3  4]
              [ 5  6  7  8  9]
@@ -25,7 +25,7 @@ class Vector:
                 if column_index == self.__shape[0] - 1:
                     array += ']'
                 else:
-                    array += ']\n '
+                    array += ']\n' + spacing
         else:
             for row_index in range(0, self.__shape[1]):
                 array += f'{self.__values[row_index]}'
@@ -33,6 +33,9 @@ class Vector:
                     array += ' '
         array += ']'
         return array
+
+    def __repr__(self):
+        return 'array(' + self.__str__('       ') + ')'
 
     def __add__(self, other):
         """Add two vectors of same dimension"""
