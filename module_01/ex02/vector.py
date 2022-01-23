@@ -13,22 +13,6 @@ class Vector:
     def __str__(self):
         return str(self.__values)
 
-    @staticmethod
-    def _iter_with(self, other, func):
-        """Apply func operator on all elements of a vector"""
-        if isinstance(other, Vector) and self.__shape == other.shape:
-            sum_values = self.__values
-            if all(isinstance(val, list) for val in self.__values):
-                for column_index in range(0, self.__shape[0]):
-                    for row_index in range(0, self.__shape[1]):
-                        sum_values[column_index][row_index] = func(sum_values[column_index][row_index], other.values[column_index][row_index])
-            else:
-                for row_index in range(0, self.__shape[1]):
-                    sum_values[row_index] = func(sum_values[row_index], other.values[row_index])
-            sum_vector = Vector(sum_values)
-            return sum_vector
-        raise ValueError("Can only add Vector types with same dimensions")
-
     def __add__(self, other):
         """Add two vectors of same dimension"""
         return self._iter_with(self, other, float.__add__)
@@ -50,6 +34,23 @@ class Vector:
 #
 #    @staticmethod
 #    def _iter_values_with(self, other, function)
+
+    @staticmethod
+    def _iter_with(self, other, func):
+        """Apply func operator on all elements of a vector"""
+        if isinstance(other, Vector) and self.__shape == other.shape:
+            sum_values = self.__values
+            if all(isinstance(val, list) for val in self.__values):
+                for column_index in range(0, self.__shape[0]):
+                    for row_index in range(0, self.__shape[1]):
+                        sum_values[column_index][row_index] = func(sum_values[column_index][row_index], other.values[column_index][row_index])
+            else:
+                for row_index in range(0, self.__shape[1]):
+                    sum_values[row_index] = func(sum_values[row_index], other.values[row_index])
+            sum_vector = Vector(sum_values)
+            return sum_vector
+        raise ValueError("Can only add Vector types with same dimensions")
+
 
     @staticmethod
     def _vector_from_size(size):
