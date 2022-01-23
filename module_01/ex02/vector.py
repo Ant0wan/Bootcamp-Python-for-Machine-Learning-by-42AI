@@ -198,7 +198,9 @@ class Vector:
             raise TypeError('argurment must be of type Vector')
         if self.__shape[1] == other.shape[0]:
             scalar_product = self._reshape(self._arange(self.__shape[0] * other.shape[1]), self.__shape[0], other.shape[1])
-            for 
+            for a_row_index in range(self.__shape[0]):
+                for a_column_index in range(self.shape[1]): # for each item of row of a[0][a_column_index]
+                    scalar_product[a_row_index][0] += self.__values[a_row_index][a_column_index] * other.values[a_column_index][0]
 
 
 
