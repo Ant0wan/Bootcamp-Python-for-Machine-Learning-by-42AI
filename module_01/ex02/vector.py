@@ -8,7 +8,7 @@ class Vector:
 
     def __init__(self, values):
         self.__values = self._define_vector(values)
-        self.__shape = self.define_shape(self.__values)
+        self.__shape = self._define_shape(self.__values)
 
     def __str__(self):
         return str(self.__values)
@@ -120,7 +120,7 @@ class Vector:
         raise ValueError("Vector must be list of floats or list of lists of floats")
 
     @staticmethod
-    def define_shape(vec):
+    def _define_shape(vec):
         """Store dimension of the vector (row, column)"""
         if isinstance(vec, list):
             if all(isinstance(val, float) for val in vec):
