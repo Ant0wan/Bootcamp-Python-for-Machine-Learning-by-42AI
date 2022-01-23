@@ -313,6 +313,17 @@ class TestVectorClass(unittest.TestCase):
         v1 -= v2
         self.assertEqual(v1.values, v_expected.values)
 
+    def test_truediv(self):
+        """Test __truediv__ method"""
+        v1 = Vector([0.0, 1.0, 2.0, 3.0])
+        v_expected = Vector([0.0, 0.5, 1.0, 1.5])
+        v_result = v1 / 2
+        self.assertEqual(v_result.values, v_expected.values)
+        v1 = Vector([0.0, 1.0, 2.0, 3.0])
+        v_expected = Vector([0.0, 0.5, 1.0, 1.5])
+        v_result = v1 / 2.0
+        self.assertEqual(v_result.values, v_expected.values)
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
