@@ -39,11 +39,11 @@ class Vector:
 
     def __mul__(self, multiplier):
         """Multiply all vector member by multiplier"""
-        return self._iter_with(self, divisor, float.__mul__)
+        return self._iter_with(self, multiplier, float.__mul__)
 
-    def __rmul__(self, other):
+    def __rmul__(self, multiplier):
         """Multiply all vector member by multiplier"""
-        return Vector.__mul__(other)
+        return Vector.__mul__(multiplier)
 
     @staticmethod
     def _iter_with(self, other, func):
