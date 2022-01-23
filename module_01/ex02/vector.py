@@ -185,10 +185,9 @@ class Vector:
         if not isinstance(other, Vector):
             raise TypeError('argurment must be of type Vector')
         if self.__shape[1] == other.shape[0]:
-            scalar_product = Vector(self.__shape[0] * other.shape[1])
-            #scalar_product = Vector((self.__shape[0], other.shape[1])) # use append
-            for column_index in range(self.__shape[0]):
-                for row_index in range(self.__shape[1]):
-                    scalar_product[column_index][] = self.values[row_index] * other.values[column_index]
+            scalar_product = self._reshape(self._arange(self.__shape[0] * other.shape[1]), self.__shape[0], other.shape[1])
+           # for column_index in range(self.__shape[0]):
+           #     for row_index in range(self.shape[1]):
+           #         scalar_product[column_index][] = self.values[row_index] * other.values[column_index]
+            return scalar_product
         raise TypeError(f"ValueError: shapes ({self.__shape[0]},{self.__shape[1]}) and ({other.shape[0]},{other.shape[1]}) not aligned: {self.__shape[1]} (dim 1) != {other.shape[0]} (dim 0)")
-        return scalar_product
