@@ -88,7 +88,8 @@ class Vector:
                                 )
             else:
                 for row_index in range(0, vector.shape[1]):
-                    sum_values[row_index] = func(sum_values[row_index], other.values[row_index])
+                    sum_values[row_index] = func(sum_values[row_index],
+                                                 other.values[row_index])
             sum_vector = Vector(sum_values)
             return sum_vector
         if isinstance(other, (int, float)):
@@ -106,7 +107,6 @@ class Vector:
             sum_vector = Vector(sum_values)
             return sum_vector
         raise ValueError("Can only add Vector types with same dimensions")
-
 
     @staticmethod
     def _vector_from_size(size):
@@ -133,7 +133,9 @@ class Vector:
             raise ValueError("Vector cannot be empty")
         if isinstance(vec, int):
             return Vector._vector_from_size(vec)
-        if isinstance(vec, tuple) and all(isinstance(val, int) for val in vec) and len(vec) == 2:
+        if (isinstance(vec, tuple)
+                and all(isinstance(val, int) for val in vec)
+                and len(vec) == 2):
             return Vector._vector_from_tuple(vec)
         if isinstance(vec, list):
             if all(isinstance(val, float) for val in vec):
@@ -148,7 +150,8 @@ class Vector:
                     if not all(isinstance(val, float) for val in column):
                         raise ValueError("Vector must be list of floats")
                 return vec
-        raise ValueError("Vector must be list of floats or list of lists of floats")
+        raise ValueError("Vector must be list of floats \
+or list of lists of floats")
 
     @staticmethod
     def _define_shape(vec):
@@ -192,26 +195,7 @@ class Vector:
 {len(initial_array)} into shape ({row},{column})')
 
     def dot(self, other):
-        # pylint: disable=line-too-long
-        """Matrix product
-
-         a.   0.0 3.0 5.0   b.  3.0         a[0][0]*b[0][0] + a[0][1]*b[1][0] + a[0][2]*b[2][0]
-              5.0 5.0 2.0       4.0         a[1][0]*b[0][0] + a[1][1]*b[1][0] + a[1][2]*b[2][0]
-                                3.0
-
-         a.   0.0 3.0 5.0   b.  3.0 1.0     a[0][0]*b[0][0] + a[0][1]*b[1][0] + a[0][2]*b[2][0]   a[0][0]*b[0][1] + a[0][1]*b[1][1] + a[0][2]*b[2][1]
-              5.0 5.0 2.0       4.0 2.0     a[1][0]*b[0][0] + a[1][1]*b[1][0] + a[1][2]*b[2][0]   a[1][0]*b[0][1] + a[1][1]*b[1][1] + a[1][2]*b[2][1]
-                                3.0 3.0
-
-         Results:
-
-            27
-            42
-
-            27 21
-            42 21
-
-        """
+        """Matrix product"""
         # pylint: disable=self-cls-assignment
         if not isinstance(other, Vector):
             raise TypeError('argument must be of type Vector')
@@ -246,5 +230,6 @@ class Vector:
             self = Vector([self.__values])
         for col_index in range(self.__shape[0]):
             for row_index in range(self.__shape[1]):
-                transpose[row_index][col_index] = self.__values[col_index][row_index]
+                transpose[row_index][col_index] = \
+                        self.__values[col_index][row_index]
         return Vector(transpose)
