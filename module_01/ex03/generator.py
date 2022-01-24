@@ -13,4 +13,15 @@ def generator(text, sep=" ", option=None):
          unique  -- returns a list where each word appears only once
          ordered -- alphabetically sorts the words
     """
-    pass
+    if not isinstance(text, str) or option not in [None, "shuffle", "unique", "ordered"]:
+        yield "ERROR"
+    else:
+        lst = text.split(sep)
+        if option == "shuffle":
+            lst = set(lst)
+        elif option == 'ordered':
+            lst = sorted(lst)
+        elif option == 'unique':
+            lst = list(dict.fromkeys(lst))
+        for word in lst:
+            yield word
