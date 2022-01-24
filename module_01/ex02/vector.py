@@ -48,7 +48,7 @@ class Vector:
 
     def __radd__(self, other):
         """Add two vectors of same dimension"""
-        return Vector.__add__(other)
+        return self.__add__(other)
 
     def __sub__(self, other):
         """Substract two vectors of same dimension"""
@@ -56,7 +56,7 @@ class Vector:
 
     def __rsub__(self, other):
         """Substract two vectors of same dimension"""
-        return Vector.__sub__(other)
+        return self.__sub__(other)
 
     def __truediv__(self, divisor):
         """Divide all vector member by divisor"""
@@ -64,7 +64,7 @@ class Vector:
 
     def __rtruediv__(self, divisor):
         """Divide all vector member by divisor"""
-        return Vector.__truediv__(divisor)
+        return self.__rtruediv__(other)
 
     def __mul__(self, multiplier):
         """Multiply all vector member by multiplier"""
@@ -72,7 +72,7 @@ class Vector:
 
     def __rmul__(self, multiplier):
         """Multiply all vector member by multiplier"""
-        return Vector.__mul__(multiplier)
+        return self.__rmul__(other)
 
     @staticmethod
     def _iter_with(vector, other, func):
@@ -82,7 +82,10 @@ class Vector:
             if all(isinstance(val, list) for val in vector.values):
                 for column_index in range(0, vector.shape[0]):
                     for row_index in range(0, vector.shape[1]):
-                        sum_values[column_index][row_index] = func(sum_values[column_index][row_index], other.values[column_index][row_index])
+                        sum_values[column_index][row_index] = func(
+                                sum_values[column_index][row_index],
+                                other.values[column_index][row_index]
+                                )
             else:
                 for row_index in range(0, vector.shape[1]):
                     sum_values[row_index] = func(sum_values[row_index], other.values[row_index])
@@ -93,7 +96,10 @@ class Vector:
             if all(isinstance(val, list) for val in vector.values):
                 for column_index in range(0, vector.shape[0]):
                     for row_index in range(0, vector.shape[1]):
-                        sum_values[column_index][row_index] = func(sum_values[column_index][row_index], other)
+                        sum_values[column_index][row_index] = func(
+                                sum_values[column_index][row_index],
+                                other
+                                )
             else:
                 for row_index in range(0, vector.shape[1]):
                     sum_values[row_index] = func(sum_values[row_index], other)
@@ -181,9 +187,11 @@ class Vector:
                     array_index += 1
                 array.append(new_row)
             return array
-        raise ValueError(f'cannot reshape array of size {len(initial_array)} into shape ({row},{column})')
+        raise ValueError(f'cannot reshape array of size \
+{len(initial_array)} into shape ({row},{column})')
 
     def dot(self, other):
+        # pylint: disable=line-too-long
         """Matrix product
 
          a.   0.0 3.0 5.0   b.  3.0         a[0][0]*b[0][0] + a[0][1]*b[1][0] + a[0][2]*b[2][0]
@@ -205,24 +213,34 @@ class Vector:
         """
         # pylint: disable=self-cls-assignment
         if not isinstance(other, Vector):
-            raise TypeError('argurment must be of type Vector')
+            raise TypeError('argument must be of type Vector')
         if not isinstance(self.__values[0], list):
             self = Vector([self.__values])
         if not isinstance(other.values[0], list):
             other = Vector([other.values])
         if self.__shape[1] == other.shape[0]:
-            scalar_product = self._reshape(self._arange(self.__shape[0] * other.shape[1]), self.__shape[0], other.shape[1])
+            scalar_product = self._reshape(
+                            self._arange(self.__shape[0] * other.shape[1]),
+                            self.__shape[0],
+                            other.shape[1]
+                            )
             for b_column_index in range(other.shape[1]):
                 for a_row_index in range(self.__shape[0]):
                     for a_column_index in range(self.shape[1]):
-                        scalar_product[a_row_index][b_column_index] += self.__values[a_row_index][a_column_index] * other.values[a_column_index][b_column_index]
+                        scalar_product[a_row_index][b_column_index] += \
+                                self.__values[a_row_index][a_column_index] \
+                                * other.values[a_column_index][b_column_index]
             return scalar_product
-        raise ValueError(f"shapes ({self.__shape[0]},{self.__shape[1]}) and ({other.shape[0]},{other.shape[1]}) not aligned: {self.__shape[1]} (dim 1) != {other.shape[0]} (dim 0)")
+        raise ValueError(f"shapes ({self.__shape[0]},{self.__shape[1]}) and \
+({other.shape[0]},{other.shape[1]}) not aligned: {self.__shape[1]} (dim 1) \
+!= {other.shape[0]} (dim 0)")
 
     # pylint: disable=invalid-name,self-cls-assignment
     def T(self):
         """Transpose vector"""
-        transpose = self._reshape(self._arange(self.__shape[0] * self.__shape[1]), self.__shape[1], self.__shape[0])
+        transpose = self._reshape(
+                self._arange(self.__shape[0] * self.__shape[1]),
+                self.__shape[1], self.__shape[0])
         if not isinstance(self.__values[0], list):
             self = Vector([self.__values])
         for col_index in range(self.__shape[0]):
