@@ -2,6 +2,7 @@
 Generator
 """
 
+
 def generator(text, sep=" ", option=None):
     """Yields the resulting substrings split by sep
 
@@ -13,7 +14,8 @@ def generator(text, sep=" ", option=None):
          unique  -- returns a list where each word appears only once
          ordered -- alphabetically sorts the words
     """
-    if not isinstance(text, str) or option not in [None, "shuffle", "unique", "ordered"]:
+    if (not isinstance(text, str)
+            or option not in [None, "shuffle", "unique", "ordered"]):
         yield "ERROR"
     else:
         lst = text.split(sep)
