@@ -91,7 +91,7 @@ class Vector:
                     sum_values[row_index] = func(sum_values[row_index], other.values[row_index])
             sum_vector = Vector(sum_values)
             return sum_vector
-        if isinstance(other, int) or isinstance(other, float):
+        if isinstance(other, (int, float)):
             sum_values = vector.values
             if all(isinstance(val, list) for val in vector.values):
                 for column_index in range(0, vector.shape[0]):
@@ -158,6 +158,7 @@ class Vector:
                 return (1, len(vec))
             if all(isinstance(column, list) for column in vec):
                 return (len(vec), len(vec[0]))
+        raise ValueError("value must be of Vector type")
 
     @property
     def values(self):
@@ -180,9 +181,9 @@ class Vector:
         if len(initial_array) == row * column:
             array = []
             array_index = 0
-            for ri in range(row):
+            for _ in range(row):
                 new_row = []
-                for ci in range(column):
+                for _ in range(column):
                     new_row.append(initial_array[array_index])
                     array_index += 1
                 array.append(new_row)
