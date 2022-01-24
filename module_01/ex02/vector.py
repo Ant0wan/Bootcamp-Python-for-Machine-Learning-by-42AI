@@ -64,7 +64,7 @@ class Vector:
 
     def __rtruediv__(self, divisor):
         """Divide all vector member by divisor"""
-        return self.__rtruediv__(other)
+        return self.__rtruediv__(divisor)
 
     def __mul__(self, multiplier):
         """Multiply all vector member by multiplier"""
@@ -72,7 +72,7 @@ class Vector:
 
     def __rmul__(self, multiplier):
         """Multiply all vector member by multiplier"""
-        return self.__rmul__(other)
+        return self.__rmul__(multiplier)
 
     @staticmethod
     def _iter_with(vector, other, func):
