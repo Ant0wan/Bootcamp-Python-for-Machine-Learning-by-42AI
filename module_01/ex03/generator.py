@@ -2,6 +2,8 @@
 Generator
 """
 
+from random import sample
+
 
 def generator(text, sep=" ", option=None):
     """Yields the resulting substrings split by sep
@@ -20,7 +22,7 @@ def generator(text, sep=" ", option=None):
     else:
         lst = text.split(sep)
         if option == "shuffle":
-            lst = set(lst)
+            lst = sample(lst, len(lst))
         elif option == 'ordered':
             lst = sorted(lst)
         elif option == 'unique':
