@@ -16,5 +16,7 @@ class Evaluator:
         return -1
 
     @staticmethod
-    def enumerate_evaluate(self):
-        pass
+    def enumerate_evaluate(words, coefs):
+        if len(words) == len(coefs):
+            return [(len(word) * coefs[i]) for i, word in enumerate(words)]
+        return -1
