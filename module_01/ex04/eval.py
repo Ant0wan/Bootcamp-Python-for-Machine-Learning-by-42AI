@@ -11,7 +11,9 @@ class Evaluator:
 
     @staticmethod
     def zip_evaluate(words, coefs):
-        return sum([(len(word) * coef) for (word, coef) in zip(words, coefs)])
+        if len(words) == len(coefs):
+            return sum([(len(word) * coef) for (word, coef) in zip(words, coefs)])
+        raise ValueError("Objects have different lengths")
 
     @staticmethod
     def enumerate_evaluate(self):
