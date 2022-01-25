@@ -11,12 +11,16 @@ class Evaluator:
 
     @staticmethod
     def zip_evaluate(words, coefs):
+        """Using zip()"""
         if len(words) == len(coefs):
-            return sum([(len(word) * coef) for (word, coef) in zip(words, coefs)])
+            return sum([(
+                len(word) * coef) for (word, coef) in zip(words, coefs)])
         return -1
 
     @staticmethod
     def enumerate_evaluate(words, coefs):
+        """Using enumerate()"""
         if len(words) == len(coefs):
-            return [(len(word) * coefs[i]) for i, word in enumerate(words)]
+            return sum([(
+                len(word) * coefs[i]) for i, word in enumerate(words)])
         return -1
