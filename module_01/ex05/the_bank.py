@@ -67,6 +67,8 @@ class Bank:
         @amount: float(amount) amount to transfer
         @return True if success, False if an error occured
         """
+        if not isinstance(amount, float):
+            raise ValueError("Amount must be float")
         origin_acc = self._getaccount(self, origin)
         if not self._isrightobject(self, origin_acc):
             raise ValueError("Origin account is not valid")
@@ -75,7 +77,11 @@ class Bank:
             raise ValueError("Destination account is not valid")
         self.fix_account(origin_acc)
         self.fix_account(dest_acc)
-        pass
+        if self._storesenough(origin_acc, amount):
+            origin_acc.transfer(amount * -1)
+            dest_acc.transfer(amount)
+            return True
+        return False
 
     def fix_account(self, account):
         """
