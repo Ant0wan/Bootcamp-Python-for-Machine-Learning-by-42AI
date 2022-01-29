@@ -25,6 +25,7 @@ class Bank:
          - not corrupted
          - and stores enough money to complete the transfer
             . invalid is amount < 0
+        A member can only own one bank account.
     """
 
     def __init__(self):
@@ -36,9 +37,8 @@ class Bank:
     @staticmethod
     def _isrightobject(self, account):
         """Check account passed as arg is an existing bank account (the right object)"""
-        found_accounts = list(filter(lambda x: x.name == account.name, self.account))
-        matching_account = list(filter(lambda i: i.ID_COUNT == account.ID_COUNT, found_accounts))
-        if len(matching_account) != 1:
+        found_account = next(filter(lambda x: x.name == account.name, self.account))
+        if found_account.ID_COUNT != account.ID_COUNT:
             return False
         return True
 
@@ -76,9 +76,9 @@ class Bank:
     def _getaccount(self, acc):
         """Get account etheir by name or by id"""
         if isinstance(acc, str):
-            return list(filter(lambda x: x.name == acc, self.account))
+            return next(filter(lambda x: x.name == acc, self.account))
         if isinstance(acc, int):
-            return list(filter(lambda x: x.ID_COUNT == acc, self.account))
+            return next(filter(lambda x: x.ID_COUNT == acc, self.account))
         raise ValueError("Not a valid account identifier")
 
     def transfer(self, origin, dest, amount):
@@ -88,6 +88,17 @@ class Bank:
         @amount: float(amount) amount to transfer
         @return True if success, False if an error occured
         """
+        origin_acc = self._getaccount(self, origin)
+        if not self._isrightobject(self, origin_acc):
+            raise ValueError("Origin account is not valid")
+        dest_acc = self._getaccount(self, dest)
+        if not self._isrightobject(self, dest_acc):
+            raise ValueError("Destination account is not valid")
+        if self._iscorrupted(origin_acc):
+            raise ValueError("Origin account is corrupted")
+        if self._iscorrupted(dest_acc):
+            raise ValueError("Destination account is corrupted")
+
         pass
 
     def fix_account(self, account):
