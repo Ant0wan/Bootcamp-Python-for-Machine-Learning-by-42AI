@@ -43,27 +43,6 @@ class Bank:
         return True
 
     @staticmethod
-    def _iscorrupted(account):
-        """Check whether an Account class object is corrupted
-          Corrupted if:
-            . an even number of attributes
-            . an attribute starting with b
-            . no attribute starting with zip or addr
-            . no attribute name, id and value
-        """
-        if (
-                not len(account.__dict__.keys()) % 2
-                or len(list(filter(lambda attr: attr.startswith('b'), account.__dict__.keys())))
-                or not len(list(filter(lambda attr: attr.startswith('zip'), account.__dict__.keys())))
-                or not len(list(filter(lambda attr: attr.startswith('addr'), account.__dict__.keys())))
-                or name in account.__dict__.keys()
-                or id in account.__dict__.keys()
-                or value in account.__dict__.keys()
-            ):
-            return True
-        return False
-
-    @staticmethod
     def _storesenough(account, amount):
         """Check an account stores enough money to complete the transfer
             . invalid is amount < 0
@@ -94,11 +73,8 @@ class Bank:
         dest_acc = self._getaccount(self, dest)
         if not self._isrightobject(self, dest_acc):
             raise ValueError("Destination account is not valid")
-        if self._iscorrupted(origin_acc):
-            raise ValueError("Origin account is corrupted")
-        if self._iscorrupted(dest_acc):
-            raise ValueError("Destination account is corrupted")
-
+        self.fix_account(origin_acc)
+        self.fix_account(dest_acc)
         pass
 
     def fix_account(self, account):
@@ -106,5 +82,30 @@ class Bank:
         fix the corrupted account
         @account: int(id) or str(name) of the account
         @return True if success, False if an error occured
+
+        Check whether an Account class object is corrupted
+          Corrupted if:
+            . an even number of attributes
+            . an attribute starting with b
+            . no attribute starting with zip or addr
+            . no attribute name, id and value
         """
-        pass
+        if not isinstance(account, Account):
+            acc = self._getaccount(self, account)
+        else:
+            acc = account
+        if len(list(filter(lambda attr: attr.startswith('b'), account.__dict__.keys()))):
+            acc.__dict__['b'] = ''
+        if not len(list(filter(lambda attr: attr.startswith('zip'), account.__dict__.keys()))):
+            acc.__dict__['zip'] = ''
+        if not len(list(filter(lambda attr: attr.startswith('addr'), account.__dict__.keys()))):
+            acc.__dict__['addr'] = ''
+        if 'name' not in account.__dict__.keys():
+            acc.__dict__['name'] = ''
+        if 'id' not in account.__dict__.keys():
+            acc.__dict__['id'] = Account.ID_COUNT
+            Account.ID_COUNT += 1
+        if 'value' not in account.__dict__.keys():
+            acc.__dict__['value'] = 0
+        if not len(account.__dict__.keys()) % 2:
+            acc.__dict__[''] = ''
