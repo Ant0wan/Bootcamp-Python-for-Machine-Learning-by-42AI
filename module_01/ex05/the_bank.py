@@ -34,10 +34,10 @@ class Bank:
         self.account.append(account)
 
     @staticmethod
-    def _isrightobject(account):
+    def _isrightobject(self, account):
         """Check account passed as arg is an existing bank account (the right object)"""
-        found_accounts = list(filter(lambda x: x.name == account.name, bank.account))
-        matching_account = filter(lambda i: i.ID_COUNT == account.ID_COUNT, found_accounts)
+        found_accounts = list(filter(lambda x: x.name == account.name, self.account))
+        matching_account = list(filter(lambda i: i.ID_COUNT == account.ID_COUNT, found_accounts))
         if len(matching_account) != 1:
             return False
         return True
