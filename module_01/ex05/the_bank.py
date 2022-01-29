@@ -23,11 +23,6 @@ class Bank:
         Checks Account:
          - the right object
          - not corrupted
-            define if a bank account is corrupted
-            . an even number of attributes
-            . an attribute starting with b
-            . no attribute starting with zip or addr
-            . no attribute name, id and value
          - and stores enough money to complete the transfer
             . invalid is amount < 0
 
@@ -41,7 +36,11 @@ class Bank:
         self.account.append(account)
 
     @staticmethod
-    def _corrupted(account):
+    def _isrightobject(account):
+        pass
+
+    @staticmethod
+    def _iscorrupted(account):
         """Check whether an Account class object is corrupted
           Corrupted if:
             . an even number of attributes
@@ -60,6 +59,15 @@ class Bank:
             ):
             return True
         return False
+
+    @staticmethod
+    def _storesenough(account, amount):
+        """Check an account stores enough money to complete the transfer
+            . invalid is amount < 0
+        """
+        if 0 <= account.value < amount:
+            return False
+        return True
 
     def transfer(self, origin, dest, amount):
         """
