@@ -72,6 +72,15 @@ class Bank:
             return False
         return True
 
+    @staticmethod
+    def _getaccount(self, acc):
+        """Get account etheir by name or by id"""
+        if isinstance(acc, str):
+            return list(filter(lambda x: x.name == acc, self.account))
+        if isinstance(acc, int):
+            return list(filter(lambda x: x.ID_COUNT == acc, self.account))
+        raise ValueError("Not a valid account identifier")
+
     def transfer(self, origin, dest, amount):
         """
         @origin: int(id) or str(name) of the first account
