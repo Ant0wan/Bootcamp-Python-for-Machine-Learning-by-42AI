@@ -25,8 +25,6 @@ class Bank:
          - not corrupted
          - and stores enough money to complete the transfer
             . invalid is amount < 0
-
-        -> dir built-in function
     """
 
     def __init__(self):
@@ -37,7 +35,12 @@ class Bank:
 
     @staticmethod
     def _isrightobject(account):
-        pass
+        """Check account passed as arg is an existing bank account (the right object)"""
+        found_accounts = list(filter(lambda x: x.name == account.name, bank.account))
+        matching_account = filter(lambda i: i.ID_COUNT == account.ID_COUNT, found_accounts)
+        if len(matching_account) != 1:
+            return False
+        return True
 
     @staticmethod
     def _iscorrupted(account):
