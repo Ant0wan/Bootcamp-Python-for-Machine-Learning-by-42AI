@@ -2,19 +2,22 @@
 Bank Account
 """
 
-
+# pylint: disable=too-few-public-methods
 class Account:
     """Account class"""
 
     ID_COUNT = 1
 
     def __init__(self, name, **kwargs):
+        # pylint: disable=invalid-name
         self.id = self.ID_COUNT
         self.name = name
         self.__dict__.update(kwargs)
         Account.ID_COUNT += 1
 
+    # pylint: disable=no-member
     def transfer(self, amount):
+        """Add amount to object.value"""
         self.value += amount
 
 
@@ -32,12 +35,13 @@ class Bank:
         self.account = []
 
     def add(self, account):
+        """Add a bank account"""
         self.account.append(account)
 
     @staticmethod
-    def _isrightobject(self, account):
+    def _isrightobject(bank, account):
         """Check account passed as arg is an existing bank account (the right object)"""
-        found_account = next(filter(lambda x: x.name == account.name, self.account))
+        found_account = next(filter(lambda x: x.name == account.name, bank.account))
         if found_account.ID_COUNT != account.ID_COUNT:
             return False
         return True
@@ -52,12 +56,12 @@ class Bank:
         return True
 
     @staticmethod
-    def _getaccount(self, acc):
+    def _getaccount(bank, acc):
         """Get account etheir by name or by id"""
         if isinstance(acc, str):
-            return next(filter(lambda x: x.name == acc, self.account))
+            return next(filter(lambda x: x.name == acc, bank.account))
         if isinstance(acc, int):
-            return next(filter(lambda x: x.ID_COUNT == acc, self.account))
+            return next(filter(lambda x: x.ID_COUNT == acc, bank.account))
         raise ValueError("Not a valid account identifier")
 
     def transfer(self, origin, dest, amount):
@@ -100,11 +104,11 @@ class Bank:
             acc = self._getaccount(self, account)
         else:
             acc = account
-        if len(list(filter(lambda attr: attr.startswith('b'), account.__dict__.keys()))):
+        if len(list(filter(lambda attr: attr.startswith('b'), account.__dict__.keys()))) == 0:
             acc.__dict__['b'] = ''
-        if not len(list(filter(lambda attr: attr.startswith('zip'), account.__dict__.keys()))):
+        if not len(list(filter(lambda attr: attr.startswith('zip'), account.__dict__.keys()))) == 0:
             acc.__dict__['zip'] = ''
-        if not len(list(filter(lambda attr: attr.startswith('addr'), account.__dict__.keys()))):
+        if len(list(filter(lambda attr: attr.startswith('addr'), account.__dict__.keys()))) == 0:
             acc.__dict__['addr'] = ''
         if 'name' not in account.__dict__.keys():
             acc.__dict__['name'] = ''
