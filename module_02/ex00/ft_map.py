@@ -1,5 +1,3 @@
 """
 map function
 """
-
-
