@@ -2,6 +2,7 @@
 Bank Account
 """
 
+
 # pylint: disable=too-few-public-methods
 class Account:
     """Account class"""
@@ -40,8 +41,11 @@ class Bank:
 
     @staticmethod
     def _isrightobject(bank, account):
-        """Check account passed as arg is an existing bank account (the right object)"""
-        found_account = next(filter(lambda x: x.name == account.name, bank.account))
+        """Check account passed as arg is an existing
+        bank account (the right object)
+        """
+        found_account = next(filter(
+            lambda x: x.name == account.name, bank.account))
         if found_account.ID_COUNT != account.ID_COUNT:
             return False
         return True
@@ -104,11 +108,17 @@ class Bank:
             acc = self._getaccount(self, account)
         else:
             acc = account
-        if len(list(filter(lambda attr: attr.startswith('b'), account.__dict__.keys()))) == 0:
+        if len(list(filter(
+                lambda attr: attr.startswith('b'),
+                account.__dict__.keys()))) == 0:
             acc.__dict__['b'] = ''
-        if not len(list(filter(lambda attr: attr.startswith('zip'), account.__dict__.keys()))) == 0:
+        if not len(list(filter(
+                lambda attr: attr.startswith('zip'),
+                account.__dict__.keys()))) == 0:
             acc.__dict__['zip'] = ''
-        if len(list(filter(lambda attr: attr.startswith('addr'), account.__dict__.keys()))) == 0:
+        if len(list(filter(
+                lambda attr: attr.startswith('addr'),
+                account.__dict__.keys()))) == 0:
             acc.__dict__['addr'] = ''
         if 'name' not in account.__dict__.keys():
             acc.__dict__['name'] = ''
