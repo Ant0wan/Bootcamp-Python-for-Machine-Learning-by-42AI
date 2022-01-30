@@ -4,18 +4,27 @@ ex01
 
 
 def what_are_the_vars(*args, **kwargs):
-    """
-    ...
-    """
-    #... Your code ...
-    pass
+    """Returns an instance of class ObjectC"""
+    instance = ObjectC()
+    for index, arg in enumerate(args):
+        setattr(instance, f"var_{index}", arg)
+    for key, value in kwargs.items():
+        try:
+            if getattr(instance, key):
+                return None
+        except AttributeError:
+            setattr(instance, key, value)
+    return instance
 
 
+# pylint: disable=missing-class-docstring,useless-object-inheritance
+# pylint: disable=too-few-public-methods
 class ObjectC(object):
     def __init__(self):
         pass
 
 
+# pylint: disable=missing-function-docstring,redefined-outer-name
 def doom_printer(obj):
     if obj is None:
         print("ERROR")
