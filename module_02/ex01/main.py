@@ -25,6 +25,7 @@ class ObjectC(object):
 
 
 # pylint: disable=missing-function-docstring,redefined-outer-name
+# pylint: disable=consider-using-f-string
 def doom_printer(obj):
     if obj is None:
         print("ERROR")
