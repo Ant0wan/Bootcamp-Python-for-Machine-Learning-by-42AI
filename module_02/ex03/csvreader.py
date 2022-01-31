@@ -14,8 +14,8 @@ class CsvReader:
         self.filename = filename
         self.sep = sep
         self.header = header
-        self.skip_top = skip_top
-        self.skip_bottom = skip_bottom
+        self.top = skip_top
+        self.bottom = skip_bottom
         self.file = None
         self.data = None
 
@@ -24,21 +24,21 @@ class CsvReader:
         lines = self.file.read().split('\n')
         if self.header:
             self.header = lines[0].split(self.sep)
-            if self.skip_bottom > 0:
+            if self.bottom > 0:
                 self.data = [line.split(
-                    self.sep) for line in lines[1 + self.skip_top:-self.skip_bottom - 1]]
+                    self.sep) for line in lines[1 + self.top:-self.bottom - 1]]
             else:
                 self.data = [line.split(self.sep)
-                             for line in lines[1 + self.skip_top:-1]]
+                             for line in lines[1 + self.top:-1]]
             len_ = len(self.header)
         else:
             self.header = None
-            if self.skip_bottom > 0:
+            if self.bottom > 0:
                 self.data = [line.split(self.sep)
-                             for line in lines[self.skip_top:-self.skip_bottom - 1]]
+                             for line in lines[self.top:-self.bottom - 1]]
             else:
                 self.data = [line.split(self.sep)
-                             for line in lines[self.skip_top:-1]]
+                             for line in lines[self.top:-1]]
             len_ = len(self.data[0])
         for line in self.data:
             if len(line) != len_ or any(not field for field in line):
