@@ -22,16 +22,20 @@ class CsvReader:
         if self.header:
             self.header = lines[0].split(self.sep)
             if self.skip_bottom > 0:
-                self.data = [line.split(self.sep) for line in lines[1 + self.skip_top:-self.skip_bottom]]
+                self.data = [line.split(
+                    self.sep) for line in lines[1 + self.skip_top:-self.skip_bottom]]
             else:
-                self.data = [line.split(self.sep) for line in lines[1 + self.skip_top::]]
+                self.data = [line.split(self.sep)
+                             for line in lines[1 + self.skip_top::]]
             self.len = len(self.header)
         else:
             self.header = None
             if self.skip_bottom > 0:
-                self.data = [line.split(self.sep) for line in lines[self.skip_top:-self.skip_bottom]]
+                self.data = [line.split(self.sep)
+                             for line in lines[self.skip_top:-self.skip_bottom]]
             else:
-                self.data = [line.split(self.sep) for line in lines[self.skip_top:-1]]
+                self.data = [line.split(self.sep)
+                             for line in lines[self.skip_top:-1]]
                 print(self.data)
             self.len = len(self.data[0])
         if any(len(line) != self.len for line in self.data):
