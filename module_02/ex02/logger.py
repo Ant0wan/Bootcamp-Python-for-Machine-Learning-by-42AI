@@ -14,20 +14,26 @@ def log(func):
         """Inner function to return for closure"""
         user = os.environ.get('USER')
         func_name = func.__name__.replace('_', ' ').title()
+
         start_time = time.time()
         func_result = func(*args, **kwargs)
         end_time = time.time()
         execution_time = end_time - start_time
-        display_time = lambda x: f"{x*1000:.3f} ms" if x < 0.001 else f"{x:.3f} s"
-        log_msg = f"({user})Running: {func_name:18} [ exec-time = {display_time(execution_time)} ]\n"
-        with open('machine.log', "a+") as f:
-            f.write(log_msg)
+
+        if execution_time < 0.001:
+            fmtime = f"{execution_time * 1000:.3f} ms"
+        else:
+            fmtime = f"{execution_time:.3f} s"
+        log_msg = f"({user})Running: {func_name:18} [ exec-time = {fmtime} ]\n"
+        with open('machine.log', "a+") as file:
+            file.write(log_msg)
         return func_result
 
     return inner
 
 
-# pylint: disable=missing-class-docstring
+# pylint: disable=missing-class-docstring,missing-function-docstring
+# pylint: disable=no-else-return,no-self-use
 class CoffeeMachine:
 
     water_level = 100
