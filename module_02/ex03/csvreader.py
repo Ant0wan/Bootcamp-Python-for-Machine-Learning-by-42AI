@@ -6,7 +6,11 @@ ex03
 class CsvReader:
     """CsvReader Class context manager"""
 
-    def __init__(self, filename=None, sep=',', header=False, skip_top=0, skip_bottom=0):
+    # pylint: disable=too-many-instance-attributes,too-many-arguments
+    def __init__(
+            self, filename=None, sep=',', header=False,
+            skip_top=0, skip_bottom=0
+    ):
         self.filename = filename
         self.sep = sep
         self.header = header
@@ -14,7 +18,6 @@ class CsvReader:
         self.skip_bottom = skip_bottom
         self.file = None
         self.data = None
-        self.len = None
 
     def __enter__(self):
         self.file = open(self.filename, 'rt')
@@ -23,24 +26,24 @@ class CsvReader:
             self.header = lines[0].split(self.sep)
             if self.skip_bottom > 0:
                 self.data = [line.split(
-                    self.sep) for line in lines[1 + self.skip_top:-self.skip_bottom]]
+                    self.sep) for line in lines[1 + self.skip_top:-self.skip_bottom - 1]]
             else:
                 self.data = [line.split(self.sep)
-                             for line in lines[1 + self.skip_top::]]
-            self.len = len(self.header)
+                             for line in lines[1 + self.skip_top:-1]]
+            len_ = len(self.header)
         else:
             self.header = None
             if self.skip_bottom > 0:
                 self.data = [line.split(self.sep)
-                             for line in lines[self.skip_top:-self.skip_bottom]]
+                             for line in lines[self.skip_top:-self.skip_bottom - 1]]
             else:
                 self.data = [line.split(self.sep)
                              for line in lines[self.skip_top:-1]]
-                print(self.data)
-            self.len = len(self.data[0])
-        if any(len(line) != self.len for line in self.data):
-            raise AssertionError("Invalid csv file")
-        return self.file
+            len_ = len(self.data[0])
+        for line in self.data:
+            if len(line) != len_ or any(not field for field in line):
+                return None
+        return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         if self.file:
