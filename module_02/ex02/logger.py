@@ -25,7 +25,8 @@ def log(func):
         else:
             fmtime = f"{execution_time:.3f} s"
         log_msg = f"({user})Running: {func_name:18} [ exec-time = {fmtime} ]\n"
-        with open('machine.log', "a+") as file:
+
+        with open('machine.log', "at") as file:
             file.write(log_msg)
         return func_result
 
