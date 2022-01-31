@@ -20,7 +20,7 @@ class CsvReader:
         self.data = None
 
     def __enter__(self):
-        self.file = open(self.filename, 'rt')
+        self.file = open(self.filename, 'rt', encoding='utf-8')
         lines = self.file.read().split('\n')
         if self.header:
             self.header = lines[0].split(self.sep)
