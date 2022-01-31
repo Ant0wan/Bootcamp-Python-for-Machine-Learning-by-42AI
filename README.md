@@ -11,9 +11,9 @@
 
 <br/>
 
-This project was a Python and a machine learning bootcamp [a 42 project] created by [42 AI](http://www.42ai.fr).
+This project was a Python bootcamp [a 42 project] created by [42 AI](http://www.42ai.fr).
 
-It taught essential **Python3** knowledge for **Machine Learning**, **Data Science** and **Statistics**.
+It taught essential **Python3** knowledge for further **Machine Learning**, **Data Science** and **Statistics** learning.
 
 It started with Python3 basics and then common machine learning libraries.
 
