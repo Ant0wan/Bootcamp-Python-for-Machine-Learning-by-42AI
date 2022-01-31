@@ -18,7 +18,8 @@ def log(func):
         func_result = func(*args, **kwargs)
         end_time = time.time()
         execution_time = end_time - start_time
-        log_msg = f"({user})Running: {func_name:18} [ exec-time = {execution_time} ]\n"
+        display_time = lambda x: f"{x*1000:.3f} ms" if x < 0.001 else f"{x:.3f} s"
+        log_msg = f"({user})Running: {func_name:18} [ exec-time = {display_time(execution_time)} ]\n"
         with open('machine.log', "a+") as f:
             f.write(log_msg)
         return func_result
