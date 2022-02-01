@@ -13,7 +13,6 @@ setup(
         python_requires='>=3.7',
         license='GPLv3',
         url='None',
-        installer='pip',
         classifiers=[
             "Development Status :: 3 - Alpha",
             "Intended Audience :: Developers",
