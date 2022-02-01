@@ -11,6 +11,9 @@ setup(
         author="Antoine Barthelemy",
         author_email="abarthel@student.42.fr",
         python_requires='>=3.7',
+        license='GPLv3',
+        url='None',
+        installer='pip',
         classifiers=[
             "Development Status :: 3 - Alpha",
             "Intended Audience :: Developers",
