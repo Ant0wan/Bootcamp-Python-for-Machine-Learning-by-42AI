@@ -6,7 +6,7 @@ ex00
 import numpy
 
 
-class NumpyCreator:
+class NumPyCreator:
     """NumPyCreator"""
 
     @staticmethod
