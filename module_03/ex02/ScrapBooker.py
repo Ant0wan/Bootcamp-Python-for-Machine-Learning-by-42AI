@@ -8,10 +8,11 @@ class ScrapBooker:
     """Slicing method on numpy arrays"""
 
     @staticmethod
-    def crop(array, dim, position=(0,0)):
+    def crop(array, dim, position=(0, 0)):
         """
-        Crops the image as a rectangle via dim arguments (being the new height
-        and width of the image) from the coordinates given by position arguments.
+        Crops the image as a rectangle via dim arguments
+        (being the new height and width of the image) from
+        the coordinates given by position arguments.
         Args:
         -----
           array: numpy.ndarray
@@ -25,17 +26,19 @@ class ScrapBooker:
         ------
           This function should not raise any Exception.
         """
-        return array[position[0]:position[0] + dim[0],position[1]:position[1] + dim[1]]
+        return array[position[0]:position[0] + dim[0],
+                     position[1]:position[1] + dim[1]]
 
     @staticmethod
     def thin(array, n, axis):
         """
-        Deletes every n-th line pixels along the specified axis (0: vertical, 1: horizontal)
+        Deletes every n-th line pixels along the specified axis
+        (0: vertical, 1: horizontal)
         Args:
         -----
           array: numpy.ndarray.
-          n: non null positive integer lower than the number of row/column of the array
-             (depending of axis value).
+          n: non null positive integer lower than the number of
+          row/column of the array (depending of axis value).
           axis: positive non null integer.
         Return:
         -------
@@ -69,8 +72,9 @@ class ScrapBooker:
     @staticmethod
     def mosaic(array, dim):
         """
-        Makes a grid with multiple copies of the array. The dim argument specifies
-        the number of repetition along each dimensions.
+        Makes a grid with multiple copies of the array.
+        The dim argument specifies the number of repetition
+        along each dimensions.
         Args:
         -----
           array: numpy.ndarray.
