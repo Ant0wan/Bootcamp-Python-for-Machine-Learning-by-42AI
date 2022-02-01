@@ -25,7 +25,7 @@ class ScrapBooker:
         ------
           This function should not raise any Exception.
         """
-        pass
+        return array[position[0]:position[0] + dim[0],position[1]:position[1] + dim[1]]
 
     @staticmethod
     def thin(array, n, axis):
