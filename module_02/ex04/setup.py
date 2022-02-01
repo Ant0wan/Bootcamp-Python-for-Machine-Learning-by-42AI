@@ -1,3 +1,5 @@
+# pylint: disable=missing-module-docstring
+
 from setuptools import setup
 
 setup(
@@ -5,7 +7,7 @@ setup(
         version='1.0.0',
         description='Howto create a package in python.',
         py_module=['loading', 'logger'],
-        package_dir={'':'src'},
+        package_dir={'': 'src'},
         author="Antoine Barthelemy",
         author_email="abarthel@student.42.fr",
         python_requires='>=3.7',
