@@ -6,7 +6,7 @@ setup(
         name='my-minipack',
         version='1.0.0',
         description='Howto create a package in python.',
-        py_module=['loading', 'logger'],
+        py_modules=['loading', 'logger'],
         package_dir={'': 'src'},
         author="Antoine Barthelemy",
         author_email="abarthel@student.42.fr",
