@@ -24,13 +24,13 @@ It aims to foster the learning and the sharing of knowledge concerning artificia
 
 ## Summary
 
-- Module00: Basic setup, variables, types, functions, ...
+- Module00: Basic setup, variables, types, functions.
 
-- Module01: Objects, cast, inheritance, built-in functions, generator, construtors, iterator, ...
+- Module01: Objects, cast, inheritance, built-in functions, generator, construtors, iterator.
 
-- Module02: Decorators, multiprocessing, lambda, build package, ...
+- Module02: Decorators, multiprocessing, lambda, build package.
 
-- Module03: NumPy array, slicing, stacking, dimensions, broadcasting, normalization, etc...
+- Module03: NumPy array, slicing, stacking, dimensions, broadcasting, normalization.
 
 - Module04: Pandas library.
 
