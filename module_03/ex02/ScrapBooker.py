@@ -30,7 +30,7 @@ class ScrapBooker:
         """
         try:
             return array[position[0]:position[0] + dim[0],
-                     position[1]:position[1] + dim[1]]
+                    position[1]:position[1] + dim[1]]
         except (ValueError, TypeError, IndexError):
             return None
 
@@ -54,7 +54,7 @@ class ScrapBooker:
           This function should not raise any Exception.
         """
         try:
-            print('ok')
+            return numpy.delete(array, slice(n-1, None, n), axis)
         except (ValueError, TypeError, IndexError):
             return None
 
