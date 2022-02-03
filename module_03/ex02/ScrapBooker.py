@@ -50,4 +50,7 @@ class ScrapBooker:
         The dim argument specifies the number of repetition
         along each dimensions.
         """
-        pass
+        try:
+            return numpy.tile(array, (dim[0], dim[1]))
+        except (ValueError, TypeError, IndexError):
+            return None
