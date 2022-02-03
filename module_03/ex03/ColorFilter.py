@@ -17,7 +17,7 @@ class ColorFilter:
     @staticmethod
     def to_blue(array):
         """Applies a blue filter to the image received as a numpy array."""
-        pass
+        return array * [0, 0, 1]
 
     @staticmethod
     def to_green(array):
@@ -27,7 +27,7 @@ class ColorFilter:
     @staticmethod
     def to_red(array):
         """Applies a red filter to the image received as a numpy array."""
-        pass
+        return array * [1, 0, 0]
 
     @staticmethod
     def to_celluloid(array):
