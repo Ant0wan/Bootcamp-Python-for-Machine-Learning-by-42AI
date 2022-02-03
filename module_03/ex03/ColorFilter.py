@@ -37,12 +37,22 @@ class ColorFilter:
         Be careful! You are not asked to apply black contour on the object,
         you only have to work on the shades of your images.
         """
-        pass
+        new = numpy.array(array)
+        hold = numpy.linspace(0.0, 1.0, num=4, endpoint=False)[::-1]
+        for i in hold:
+            indexes = array >= i
+            array[indexes] = -1
+            new[indexes] = i
+        return new
 
     @staticmethod
-    def to_grayscale(array, filter, **kwargs):
+    def to_grayscale(array, filter, weights=None):
         """Applies a grayscale filter to the image received as a numpy array.
         For filter = ’mean’/’m’: performs the mean of RBG channels.
         For filter = ’weight’/’w’: performs a weighted mean of RBG channels
         """
-        pass
+        if filter == 'mean' or filter == 'm':
+            mean = numpy.sum(array, axis=2) / 3
+            return numpy.broadcast_to(mean[..., None], array.shape)
+        if filter == 'weighted' or filter == 'w':
+            return numpy.dot(array[...,:3], weights)
