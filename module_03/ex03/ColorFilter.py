@@ -28,7 +28,7 @@ class ColorFilter:
     @staticmethod
     def to_red(array):
         """Applies a red filter to the image received as a numpy array."""
-        return array - self.to_blue(array) - self.to_green(array)
+        return array - ColorFilter.to_green(array) - ColorFilter.to_blue(array)
 
     @staticmethod
     def to_celluloid(array):
@@ -37,13 +37,7 @@ class ColorFilter:
         Be careful! You are not asked to apply black contour on the object,
         you only have to work on the shades of your images.
         """
-        new = numpy.array(array)
-        hold = numpy.linspace(0.0, 1.0, num=4, endpoint=False)[::-1]
-        for i in hold:
-            indexes = array >= i
-            array[indexes] = -1
-            new[indexes] = i
-        return new
+        return numpy.round(array)
 
     @staticmethod
     def to_grayscale(array, filter, weights=None):
