@@ -3,6 +3,8 @@
 ex02
 """
 
+import numpy
+
 
 class ScrapBooker:
     """Slicing method on numpy arrays"""
@@ -26,8 +28,11 @@ class ScrapBooker:
         ------
           This function should not raise any Exception.
         """
-        return array[position[0]:position[0] + dim[0],
+        try:
+            return array[position[0]:position[0] + dim[0],
                      position[1]:position[1] + dim[1]]
+        except (ValueError, TypeError, IndexError):
+            return None
 
     @staticmethod
     def thin(array, n, axis):
@@ -48,7 +53,10 @@ class ScrapBooker:
         ------
           This function should not raise any Exception.
         """
-        pass
+        try:
+            print('ok')
+        except (ValueError, TypeError, IndexError):
+            return None
 
     @staticmethod
     def juxtapose(array, n, axis):
@@ -67,7 +75,10 @@ class ScrapBooker:
         -------
           This function should not raise any Exception.
         """
-        pass
+        try:
+            return numpy.tile(array, (n, 1) if axis else n)
+        except (ValueError, TypeError, IndexError):
+            return None
 
     @staticmethod
     def mosaic(array, dim):
