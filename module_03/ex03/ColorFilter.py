@@ -40,13 +40,12 @@ class ColorFilter:
         return numpy.round(array)
 
     @staticmethod
-    def to_grayscale(array, filter, weights=None):
+    def to_grayscale(array, filter_, weights=None):
         """Applies a grayscale filter to the image received as a numpy array.
         For filter = ’mean’/’m’: performs the mean of RBG channels.
         For filter = ’weight’/’w’: performs a weighted mean of RBG channels
         """
-        if filter == 'mean' or filter == 'm':
-            mean = numpy.sum(array, axis=2) / 3
-            return numpy.broadcast_to(mean[..., None], array.shape)
-        if filter == 'weighted' or filter == 'w':
+        if filter_ in ('weighted', 'w'):
             return numpy.dot(array[...,:3], weights)
+        mean = numpy.sum(array, axis=2) / 3
+        return numpy.broadcast_to(mean[..., None], array.shape)
