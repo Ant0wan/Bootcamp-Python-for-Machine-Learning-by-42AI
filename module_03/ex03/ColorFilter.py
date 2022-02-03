@@ -17,7 +17,7 @@ class ColorFilter:
     @staticmethod
     def to_blue(array):
         """Applies a blue filter to the image received as a numpy array."""
-        array[:,:,(0,1)] = 0
+        array[:, :, (0, 1)] = 0
         return array
 
     @staticmethod
@@ -46,6 +46,6 @@ class ColorFilter:
         For filter = ’weight’/’w’: performs a weighted mean of RBG channels
         """
         if filter_ in ('weighted', 'w'):
-            return numpy.dot(array[...,:3], weights)
+            return numpy.dot(array[..., :3], weights)
         mean = numpy.sum(array, axis=2) / 3
         return numpy.broadcast_to(mean[..., None], array.shape)
