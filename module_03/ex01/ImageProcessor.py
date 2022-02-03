@@ -24,6 +24,6 @@ class ImageProcessor:
     @staticmethod
     def display(array):
         """Display image from array"""
-        pyplot.imshow(array)
+        pyplot.imshow(array, cmap=pyplot.get_cmap('gray'), vmin=0, vmax=1)
         pyplot.axis("off")
         pyplot.show()
