@@ -18,7 +18,7 @@ class ScrapBooker:
         """
         try:
             return array[position[0]:position[0] + dim[0],
-                    position[1]:position[1] + dim[1]]
+                         position[1]:position[1] + dim[1]]
         except (ValueError, TypeError, IndexError):
             return None
 
