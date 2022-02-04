@@ -42,3 +42,30 @@ class KmeansClustering:
         """
         #... your code ...
         pass
+
+
+class CLI:
+    def __init__(self, args):
+        """
+        Base init method for all command line programs
+        """
+
+        if not args:
+            raise ValueError('A non-empty list for args is required')
+
+        self.args = args
+        self.parser = None
+
+    @classmethod
+    def cli_executor(cls, args=None):
+        if args is None:
+            args = sys.argv
+
+
+
+def main(args=None):
+    PlaybookCLI.cli_executor(args)
+
+
+if __name__ == '__main__':
+    main()
