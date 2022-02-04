@@ -31,13 +31,19 @@ class ColorFilter:
         return array - ColorFilter.to_green(array) - ColorFilter.to_blue(array)
 
     @staticmethod
-    def to_celluloid(array):
+    def to_celluloid(array, tresholds=4):
         """Applies a celluloid filter to the image received as a numpy array.
         Celluloid filter must display at least four thresholds of shades.
         Be careful! You are not asked to apply black contour on the object,
         you only have to work on the shades of your images.
         """
-        return numpy.round(array)
+        celluloid = numpy.array(array)
+        thresh = numpy.linspace(0.0, 1.0, num=tresholds)
+        for value in thresh:
+            mask = array <= value
+            array[mask] = None
+            celluloid[mask] = value
+        return celluloid
 
     @staticmethod
     def to_grayscale(array, filter_, weights=None):
