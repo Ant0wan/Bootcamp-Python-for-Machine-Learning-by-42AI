@@ -23,7 +23,7 @@ def ft_progress(lst):
         prct = (i + 1) / total
         pbar = ProgressBar(i * 25 / total, 25 - i * 25 // total)
         print(f"ETA: {eta:4.2f}s [{prct:4.0%}][{'=':=>{pbar.size}}\
-{'>':{pbar.edge_position}}] {(i + 1)}/{total} | elapsed time elapsed\
+{'>':{pbar.edge_position}}] {(i + 1)}/{total} | elapsed time \
 {elapsed:4.2f}s", end='\r')
         yield i
 
