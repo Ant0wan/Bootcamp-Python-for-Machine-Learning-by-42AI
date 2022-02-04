@@ -38,8 +38,7 @@ class ColorFilter:
         you only have to work on the shades of your images.
         """
         celluloid = numpy.array(array)
-        thresh = numpy.linspace(0.0, 1.0, num=tresholds)
-        for value in thresh:
+        for value in numpy.linspace(0.0, 1.0, num=tresholds):
             mask = array <= value
             array[mask] = None
             celluloid[mask] = value
