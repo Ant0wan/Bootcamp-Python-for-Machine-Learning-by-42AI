@@ -50,9 +50,10 @@ class KmeansClustering:
 
 def main(*args):
     parser = argparse.ArgumentParser(description='kmeans')
-    parser.add_argument('-f', '-filepath', '--filepath', nargs=1, type=argparse.FileType('r'), default=sys.stdin, required=True)
-#    parser.add_argument('ncentroid', type=int)
-#    parser.add_argument('max_iter', type=int)
+    #parser.add_argument('-f', '-filepath', '--filepath', nargs=1, type=argparse.FileType('r'), default=sys.stdin, required=True)
+    parser.add_argument('-f', '-filepath', '--filepath', nargs=1, type=argparse.FileType('r'), default=sys.stdin)
+    parser.add_argument('-n', '-ncentroid', '--ncentroid', nargs=1, type=int, required=True)
+    parser.add_argument('-n', '-max_iter', '--max_iter', nargs=1, type=int, required=True)
     args = parser.parse_args()
     print(args)
 #    print(args.ncentroid)
