@@ -1,7 +1,11 @@
 # pylint: disable=invalid-name
 """
 ex04
+input: python Kmeans.py filepath='../ressources/solar_system_census.csv' ncentroid=4 max_iter=30
 """
+
+import argparse
+import sys
 
 
 class KmeansClustering:
@@ -44,27 +48,16 @@ class KmeansClustering:
         pass
 
 
-class CLI:
-    def __init__(self, args):
-        """
-        Base init method for all command line programs
-        """
+def main(*args):
+    parser = argparse.ArgumentParser(description='kmeans')
+    parser.add_argument('-f', '-filepath', '--filepath', nargs=1, type=argparse.FileType('r'), default=sys.stdin, required=True)
+#    parser.add_argument('ncentroid', type=int)
+#    parser.add_argument('max_iter', type=int)
+    args = parser.parse_args()
+    print(args)
+#    print(args.ncentroid)
+#    print(args.max_iter)
 
-        if not args:
-            raise ValueError('A non-empty list for args is required')
-
-        self.args = args
-        self.parser = None
-
-    @classmethod
-    def cli_executor(cls, args=None):
-        if args is None:
-            args = sys.argv
-
-
-
-def main(args=None):
-    PlaybookCLI.cli_executor(args)
 
 
 if __name__ == '__main__':
