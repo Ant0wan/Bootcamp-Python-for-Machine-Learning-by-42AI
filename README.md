@@ -33,5 +33,3 @@ It aims to foster the learning and the sharing of knowledge concerning artificia
 - Module03: NumPy array, slicing, stacking, dimensions, broadcasting, normalization.
 
 - Module04: Pandas library.
-
-- Rush: Scraping.
