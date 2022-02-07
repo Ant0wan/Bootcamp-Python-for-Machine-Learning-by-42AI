@@ -20,6 +20,8 @@ jobs:
         pip install pylint
         pip install numpy
         pip install matplotlib
+        pip install sklearn
+        pip install pandas
     - name: Analysing the code with pylint
       run: |
         for pyfile in $(find . -name "*.py"); do
