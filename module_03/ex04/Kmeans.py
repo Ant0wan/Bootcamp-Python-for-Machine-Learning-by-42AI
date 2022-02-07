@@ -67,16 +67,20 @@ def main(*args):
     # Plot list
     fig = pyplot.figure()
     ax = fig.add_subplot(projection='3d')
+
     markers = iter(('o', 'v', 's', 'D', '+'))
-    for i in range(args.ncentroid):
-        mask = km.labels_ == i
-        print(sum(mask)) # count number of element in centroid
+
+    for centroid in range(args.ncentroid):
+        mask = km.labels_ == centroid
+        print(sum(mask), 'elements in centroid', centroid)
         ax.scatter(points[headers[0]][mask], points[headers[1]][mask], points[headers[2]][mask], marker=next(markers))
 
     ax.scatter(km.cluster_centers_[:,0], km.cluster_centers_[:,1], km.cluster_centers_[:,2], c='r', marker='X')
+
     ax.set_xlabel(headers[0])
     ax.set_ylabel(headers[1])
     ax.set_zlabel(headers[2])
+
     pyplot.show()
 
 
