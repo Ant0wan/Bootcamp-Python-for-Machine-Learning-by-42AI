@@ -41,20 +41,20 @@ def main(*args):
 
     parser.add_argument('--version', action='version', version='%(prog)s 0.1')
     #parser.add_argument('-f', '-filepath', '--filepath', nargs=1, type=argparse.FileType('r'), required=True)
-    parser.add_argument('-f', '-filepath', '--filepath', nargs=1, type=str, required=True)
-    parser.add_argument('-n', '-ncentroid', '--ncentroid', nargs=1, type=int)
-    parser.add_argument('-m', '-max_iter', '--max_iter', nargs=1, type=int)
+    parser.add_argument('-f', '-filepath', '--filepath', type=str, required=True)
+    parser.add_argument('-n', '-ncentroid', '--ncentroid', type=int)
+    parser.add_argument('-m', '-max_iter', '--max_iter', type=int)
 
     args = parser.parse_args()
 
-    raw = pandas.read_csv(args.filepath[0])
+    raw = pandas.read_csv(args.filepath)
     mask = raw.columns.str.match("Unnamed")
     points = raw.loc[:,~mask]
 
     headers = list(points.columns)
 
     #km = KMeans(n_clusters=args.ncentroid)
-    km = KMeans(init='random', n_clusters=5, n_init=20)
+    km = KMeans(init='random', n_clusters=args.ncentroid, n_init=args.max_iter)
 
     predicted = km.fit_predict(points[headers])
 
