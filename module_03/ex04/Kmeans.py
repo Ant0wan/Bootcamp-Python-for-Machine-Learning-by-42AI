@@ -1,7 +1,10 @@
 # pylint: disable=invalid-name
 """
 ex04
-input: python Kmeans.py filepath='../ressources/solar_system_census.csv' ncentroid=4 max_iter=30
+input: python Kmeans.py \
+        filepath='../ressources/solar_system_census.csv' \
+        ncentroid=4 \
+        max_iter=30
 """
 
 import argparse
@@ -15,16 +18,17 @@ class KmeansClustering:
     """KmeansClustering Class"""
 
     def __init__(self, max_iter=20, ncentroid=5):
-        self.ncentroid = ncentroid # number of centroids
-        self.max_iter = max_iter # number of max iterations to update the centroids
-        self.centroids = [] # values of the centroids
+        self.ncentroid = ncentroid
+        self.max_iter = max_iter
+        self.centroids = []
         self.headers = []
         self.kmeans = None
 
     def fit(self, X: pandas.core.frame.DataFrame):
         """
         Run the K-means clustering algorithm.
-        For the location of the initial centroids, random pick ncentroids from the dataset.
+        For the location of the initial centroids,
+        random pick ncentroids from the dataset.
         """
         self.kmeans = KMeans(n_clusters=self.ncentroid, n_init=self.max_iter)
         self.headers = list(X.columns)
@@ -55,8 +59,9 @@ def plot(points, km, ncentroid):
         ax.scatter(points[km.headers[0]][mask], points[km.headers[1]][mask],
                    points[km.headers[2]][mask], marker=next(markers))
 
-    ax.scatter(km.kmeans.cluster_centers_[:,0], km.kmeans.cluster_centers_[:,1],
-               km.kmeans.cluster_centers_[:,2], c='r', marker='X')
+    ax.scatter(km.kmeans.cluster_centers_[:, 0],
+               km.kmeans.cluster_centers_[:, 1],
+               km.kmeans.cluster_centers_[:, 2], c='r', marker='X')
 
     ax.set_xlabel(km.headers[0])
     ax.set_ylabel(km.headers[1])
@@ -68,10 +73,12 @@ def plot(points, km, ncentroid):
 def main():
     """Main function"""
     parser = argparse.ArgumentParser(prog='kmeans',
-                                     description='Implementation of a basic Kmeans algorithm.')
+                                     description='Implementation\
+of a basic Kmeans algorithm.')
 
     parser.add_argument('--version', action='version', version='%(prog)s 0.1')
-    parser.add_argument('-f', '-filepath', '--filepath', type=str, required=True)
+    parser.add_argument('-f', '-filepath', '--filepath', type=str,
+                        required=True)
     parser.add_argument('-n', '-ncentroid', '--ncentroid', type=int)
     parser.add_argument('-m', '-max_iter', '--max_iter', type=int)
 
@@ -81,7 +88,7 @@ def main():
     raw = pandas.read_csv(args.filepath)
     mask = raw.columns.str.match("Unnamed")
     # pylint: disable=no-member
-    points = raw.loc[:,~mask]
+    points = raw.loc[:, ~mask]
 
     # Kmeans clustering
     km = KmeansClustering(args.max_iter, args.ncentroid)
