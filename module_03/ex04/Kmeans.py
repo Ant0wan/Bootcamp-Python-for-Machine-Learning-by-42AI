@@ -40,13 +40,14 @@ def main(*args):
     parser = argparse.ArgumentParser(prog='kmeans', description='Implementation of a basic Kmeans algorithm.')
 
     parser.add_argument('--version', action='version', version='%(prog)s 0.1')
-    parser.add_argument('-f', '-filepath', '--filepath', nargs=1, type=argparse.FileType('r'), required=True)
+    #parser.add_argument('-f', '-filepath', '--filepath', nargs=1, type=argparse.FileType('r'), required=True)
+    parser.add_argument('-f', '-filepath', '--filepath', nargs=1, type=str, required=True)
     parser.add_argument('-n', '-ncentroid', '--ncentroid', nargs=1, type=int)
     parser.add_argument('-m', '-max_iter', '--max_iter', nargs=1, type=int)
 
     args = parser.parse_args()
 
-    raw = pandas.read_csv('solar_system_census.csv')
+    raw = pandas.read_csv(args.filepath[0])
     mask = raw.columns.str.match("Unnamed")
     points = raw.loc[:,~mask]
 
