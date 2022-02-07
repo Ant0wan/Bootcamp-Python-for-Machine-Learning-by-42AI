@@ -2,7 +2,6 @@
 """
 ex04
 input: python Kmeans.py filepath='../ressources/solar_system_census.csv' ncentroid=4 max_iter=30
-tuto: https://www.youtube.com/watch?v=EItlUEPCIzM
 """
 
 from matplotlib import pyplot
@@ -10,6 +9,7 @@ from mpl_toolkits.mplot3d import Axes3D
 from sklearn.cluster import KMeans
 
 import argparse
+import itertools
 import pandas
 import numpy
 import sys
@@ -58,8 +58,6 @@ def main(*args):
     # kmeans fit
     km = KMeans(n_clusters=args.ncentroid, n_init=args.max_iter)
     km.fit(points[headers])
-    #print(km.labels_)
-#    print(km.cluster_centers_)
     # Predict
 #    predicted = km.predict(points)
 #    # Update data with cluster number
@@ -69,8 +67,13 @@ def main(*args):
     # Plot list
     fig = pyplot.figure()
     ax = fig.add_subplot(projection='3d')
-    ax.scatter(points[headers[0]], points[headers[1]], points[headers[2]], c=km.predict(points), marker='D')
-    ax.scatter(km.cluster_centers_[:,0], km.cluster_centers_[:,1], km.cluster_centers_[:,2], c='r', marker='+')
+    markers = iter(('o', 'v', 's', 'D', '+'))
+    for i in range(args.ncentroid):
+        mask = km.labels_ == i
+        print(sum(mask)) # count number of element in centroid
+        ax.scatter(points[headers[0]][mask], points[headers[1]][mask], points[headers[2]][mask], marker=next(markers))
+
+    ax.scatter(km.cluster_centers_[:,0], km.cluster_centers_[:,1], km.cluster_centers_[:,2], c='r', marker='X')
     ax.set_xlabel(headers[0])
     ax.set_ylabel(headers[1])
     ax.set_zlabel(headers[2])
