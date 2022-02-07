@@ -26,6 +26,7 @@ class KmeansClustering:
         Run the K-means clustering algorithm.
         For the location of the initial centroids, random pick ncentroids from the dataset.
         """
+        #km = KMeans(init='random', n_clusters=self.ncentroid, n_init=self.max_iter)
         pass
 
     def predict(self, X):
@@ -52,7 +53,7 @@ def main(*args):
     headers = list(points.columns)
 
     #km = KMeans(n_clusters=args.ncentroid)
-    km = KMeans(n_clusters=4)
+    km = KMeans(init='random', n_clusters=5, n_init=20)
 
     predicted = km.fit_predict(points[headers])
 
