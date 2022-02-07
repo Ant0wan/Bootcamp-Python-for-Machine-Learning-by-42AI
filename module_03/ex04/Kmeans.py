@@ -47,35 +47,34 @@ def main(*args):
 
     args = parser.parse_args()
 
+    # Get data and clean it from csv
     raw = pandas.read_csv(args.filepath)
     mask = raw.columns.str.match("Unnamed")
     points = raw.loc[:,~mask]
 
+    # Get header list
     headers = list(points.columns)
 
-    #km = KMeans(n_clusters=args.ncentroid)
-    km = KMeans(init='random', n_clusters=args.ncentroid, n_init=args.max_iter)
+    # kmeans fit
+    km = KMeans(n_clusters=args.ncentroid, n_init=args.max_iter)
+    km.fit(points[headers])
+    #print(km.labels_)
+#    print(km.cluster_centers_)
+    # Predict
+#    predicted = km.predict(points)
+#    # Update data with cluster number
+#    points['cluster'] = predicted
+    #print(km.labels_)
 
-    predicted = km.fit_predict(points[headers])
-
-    points['cluster'] = predicted
-    print(points)
-
-
-    #kmean = KmeansClustering(args.max_iter, args.ncentroid)
-    #kmean.fit()
-
-
-# Display dataset
- #   fig = pyplot.figure()
- #   ax = fig.add_subplot(111, projection='3d')
-
- #   x = points['height'].values
- #   y = points['weight'].values
- #   z = points['bone_density'].values
-
- #   ax.scatter(x, y, z, c='r', marker='o')
- #   pyplot.show()
+    # Plot list
+    fig = pyplot.figure()
+    ax = fig.add_subplot(projection='3d')
+    ax.scatter(points[headers[0]], points[headers[1]], points[headers[2]], c=km.predict(points), marker='D')
+    ax.scatter(km.cluster_centers_[:,0], km.cluster_centers_[:,1], km.cluster_centers_[:,2], c='r', marker='+')
+    ax.set_xlabel(headers[0])
+    ax.set_ylabel(headers[1])
+    ax.set_zlabel(headers[2])
+    pyplot.show()
 
 
 
