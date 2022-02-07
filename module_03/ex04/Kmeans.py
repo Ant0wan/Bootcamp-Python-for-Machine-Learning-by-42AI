@@ -44,21 +44,26 @@ def main(*args):
 
     args = parser.parse_args()
 
-    kmean = KmeansClustering(args.max_iter, args.ncentroid)
+    raw = pandas.read_csv('solar_system_census.csv')
+
+    mask = raw.columns.str.match("Unnamed")
+    points = raw.loc[:,~mask]
+    print(list(points.columns))
+
+    #kmean = KmeansClustering(args.max_iter, args.ncentroid)
     #kmean.fit()
 
-    points = pandas.read_csv('solar_system_census.csv')
 
-    fig = pyplot.figure()
-    ax = fig.add_subplot(111, projection='3d')
+# Display dataset
+ #   fig = pyplot.figure()
+ #   ax = fig.add_subplot(111, projection='3d')
 
+ #   x = points['height'].values
+ #   y = points['weight'].values
+ #   z = points['bone_density'].values
 
-    x = points['height'].values
-    y = points['weight'].values
-    z = points['bone_density'].values
-
-    ax.scatter(x, y, z, c='r', marker='o')
-    pyplot.show()
+ #   ax.scatter(x, y, z, c='r', marker='o')
+ #   pyplot.show()
 
 
 
