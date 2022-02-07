@@ -5,13 +5,14 @@ input: python Kmeans.py filepath='../ressources/solar_system_census.csv' ncentro
 tuto: https://www.youtube.com/watch?v=EItlUEPCIzM
 """
 
-import argparse
-import sys
-
-import numpy
-import pandas
 from matplotlib import pyplot
 from mpl_toolkits.mplot3d import Axes3D
+from sklearn.cluster import KMeans
+
+import argparse
+import pandas
+import numpy
+import sys
 
 
 class KmeansClustering:
@@ -45,10 +46,19 @@ def main(*args):
     args = parser.parse_args()
 
     raw = pandas.read_csv('solar_system_census.csv')
-
     mask = raw.columns.str.match("Unnamed")
     points = raw.loc[:,~mask]
-    print(list(points.columns))
+
+    headers = list(points.columns)
+
+    #km = KMeans(n_clusters=args.ncentroid)
+    km = KMeans(n_clusters=4)
+
+    predicted = km.fit_predict(points[headers])
+
+    points['cluster'] = predicted
+    print(points)
+
 
     #kmean = KmeansClustering(args.max_iter, args.ncentroid)
     #kmean.fit()
