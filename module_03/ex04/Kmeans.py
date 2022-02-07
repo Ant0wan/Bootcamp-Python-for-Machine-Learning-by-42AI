@@ -64,6 +64,7 @@ def main(*args):
 #    points['cluster'] = predicted
     #print(km.labels_)
 
+
     # Plot list
     fig = pyplot.figure()
     ax = fig.add_subplot(projection='3d')
@@ -72,7 +73,7 @@ def main(*args):
 
     for centroid in range(args.ncentroid):
         mask = km.labels_ == centroid
-        print(sum(mask), 'elements in centroid', centroid)
+        print(sum(mask), 'elements in centroid', centroid, 'with coordinates', km.cluster_centers_[centroid])
         ax.scatter(points[headers[0]][mask], points[headers[1]][mask], points[headers[2]][mask], marker=next(markers))
 
     ax.scatter(km.cluster_centers_[:,0], km.cluster_centers_[:,1], km.cluster_centers_[:,2], c='r', marker='X')
