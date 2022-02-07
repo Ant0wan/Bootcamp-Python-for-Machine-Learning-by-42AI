@@ -6,8 +6,12 @@ tuto: https://www.youtube.com/watch?v=EItlUEPCIzM
 """
 
 import argparse
-import numpy
 import sys
+
+import numpy
+import pandas
+from matplotlib import pyplot
+from mpl_toolkits.mplot3d import Axes3D
 
 
 class KmeansClustering:
@@ -41,7 +45,21 @@ def main(*args):
     args = parser.parse_args()
 
     kmean = KmeansClustering(args.max_iter, args.ncentroid)
-    kmean.fit()
+    #kmean.fit()
+
+    points = pandas.read_csv('solar_system_census.csv')
+
+    fig = pyplot.figure()
+    ax = fig.add_subplot(111, projection='3d')
+
+
+    x = points['height'].values
+    y = points['weight'].values
+    z = points['bone_density'].values
+
+    ax.scatter(x, y, z, c='r', marker='o')
+    pyplot.show()
+
 
 
 if __name__ == '__main__':
