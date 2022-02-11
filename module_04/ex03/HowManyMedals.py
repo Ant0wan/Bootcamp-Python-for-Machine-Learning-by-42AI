@@ -25,7 +25,7 @@ def howManyMedals(df: pandas.DataFrame, name: str) -> dict:
     years = medals_df['Year'].unique()
 
     # Sum medals for each year
-    medals = dict()
+    medals = {}
     for year in years:
         mask = participant_df['Year'] == year
         year_df = participant_df[mask]
