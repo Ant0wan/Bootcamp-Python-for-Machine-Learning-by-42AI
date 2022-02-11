@@ -3,7 +3,6 @@
 ex02
 """
 
-import numpy
 import pandas
 
 
@@ -33,5 +32,5 @@ def howManyMedals(df: pandas.DataFrame, name: str) -> dict:
         medals[year] = {
                         'G': len(year_df[year_df['Medal'] == 'Gold']),
                         'S': len(year_df[year_df['Medal'] == 'Silver']),
-                        'B': len(year_df[year_df['Medal'] == 'Bronze']) }
+                        'B': len(year_df[year_df['Medal'] == 'Bronze'])}
     return medals
