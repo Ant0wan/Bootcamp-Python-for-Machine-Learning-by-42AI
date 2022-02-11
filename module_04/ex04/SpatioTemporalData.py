@@ -18,5 +18,4 @@ class SpatioTemporalData:
 
     def where(self, date: int) -> list:
         """ game location """
-        # "ID","Name","Sex","Age","Height","Weight","Team","NOC","Games","Year","Season","City","Sport","Event","Medal"
-        pass
+        return self.df[self.df['Year'] == date]['City'].unique()
