@@ -26,7 +26,8 @@ class Komparator:
 
         for index, cat in enumerate(categories):
             mask = self.data[categorical_var] == cat
-            axs[index].boxplot(self.data[mask][numerical_var].dropna(), labels=cat)
+            axs[index].boxplot(self.data[mask][numerical_var].dropna(),
+                               labels=cat)
 
         matplotlib.pyplot.show()
 
