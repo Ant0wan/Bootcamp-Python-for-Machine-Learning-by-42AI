@@ -4,20 +4,23 @@ ex06
 """
 
 import pandas
+import matplotlib.pyplot
 
 
 class MyPlotLib:
     """This class implements different plotting methods"""
-
-#    def __init__(self, data: pandas.DataFrame, names: list):
-#        self.data = data
-#        self.names = names
-
     @staticmethod
     def histogram(data: pandas.DataFrame, features: list):
         """lots one histogram for each numerical feature in
         the list"""
-        ax = data.plot.hist(bins=12, alpha=0.5)
+        nfeatures = len(features)
+        fig, axs = matplotlib.pyplot.subplots(ncols=nfeatures)
+        fig.suptitle('Histograms')
+        for hist_index in range(nfeatures):
+            axs[hist_index].set_title(features[hist_index])
+            axs[hist_index].hist(data[features[hist_index]].dropna())
+            axs[hist_index].grid()
+        matplotlib.pyplot.show()
 
     @staticmethod
     def density(data: pandas.DataFrame, features: list):
