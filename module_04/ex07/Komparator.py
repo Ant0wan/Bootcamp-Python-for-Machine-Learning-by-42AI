@@ -28,11 +28,14 @@ class Komparator:
 
     def density(self, categorical_var, numerical_var):
         """displays the density of the numerical variable"""
-        #pandas.DataFrame(data[features]).plot(kind='density')
-        #matplotlib.pyplot.show()
-#        mpl = MyPlotLib()
-#        df = self.data
-#        mpl.density(df, ["Sex", "Height"])
+        categories = list(self.data[categorical_var].unique())
+
+        for cat in categories:
+            mask = self.data[categorical_var] == cat
+            data = self.data[mask][numerical_var]
+            data.plot(kind='density', label=cat, legend=True)
+
+        matplotlib.pyplot.show()
 
     def compare_histograms(self, categorical_var, numerical_var):
         """plots the numerical variable in a separate
