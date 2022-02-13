@@ -6,10 +6,6 @@ ex07
 import pandas
 import matplotlib.pyplot
 
-from MyPlotLib import MyPlotLib
-
-#"ID","Name","Sex","Age","Height","Weight","Team","NOC","Games","Year","Season","City","Sport","Event","Medal"
-
 
 class Komparator:
     """Komparator class"""
@@ -22,9 +18,17 @@ class Komparator:
         variable changes if we only consider the subpopulation
         which belongs to each category
         """
-   #     plt = MyPlotLib()
-   #     plt.box_plot(self.data, [categorical_var, numerical_var])
+        categories = list(self.data[categorical_var].unique())
+        ncat = len(categories)
 
+        # pylint: disable=unused-variable
+        fig, axs = matplotlib.pyplot.subplots(ncols=ncat)
+
+        for index, cat in enumerate(categories):
+            mask = self.data[categorical_var] == cat
+            axs[index].boxplot(self.data[mask][numerical_var].dropna(), labels=cat)
+
+        matplotlib.pyplot.show()
 
     def density(self, categorical_var, numerical_var):
         """displays the density of the numerical variable"""
@@ -44,6 +48,7 @@ class Komparator:
         categories = list(self.data[categorical_var].unique())
         ncat = len(categories)
 
+        # pylint: disable=unused-variable
         fig, axs = matplotlib.pyplot.subplots(ncols=ncat)
 
         for index, cat in enumerate(categories):
